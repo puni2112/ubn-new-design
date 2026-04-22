@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBN · Black Thunder Active+ — Low-Fi Product Page Wireframe</title>
+<style>
+/* ========================================================================
+   LOW-FI WIREFRAME · Ubalance Naturals · Product Page
+   Grayscale + single accent. All CRO pillars from CSV tagged on sections.
+   ======================================================================== */
+:root{
+  --bg:#fafafa; --ink:#1a1a1a; --ink-2:#555; --ink-3:#888;
+  --line:#cfcfcf; --line-2:#e6e6e6;
+  --fill:#ececec; --fill-2:#f4f4f4; --fill-3:#fbfbfb;
+  --accent:#2a6f4d; --accent-2:#225a3e; --accent-soft:#e6f0ea;
+  --tag:#fff3d6; --tag-ink:#8a6d1a;
+  --warn:#fde8e4; --warn-ink:#b34a3b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{scroll-behavior:smooth;overflow-x:hidden;max-width:100vw}
+body{
+  font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg); color:var(--ink);
+  padding-bottom:90px; /* room for mobile sticky CTA */
+  width:100%;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.section{border-top:1px solid var(--line-2);padding:56px 0}
+.section h2{font-size:24px;margin-bottom:8px}
+.section .sub{color:var(--ink-2);margin-bottom:24px;max-width:720px}
+
+/* --- Wireframe annotation system --- */
+.legend{
+  background:#2a2a2a;color:#e8e8e8;font-size:12px;
+  padding:10px 20px;display:flex;gap:18px;flex-wrap:wrap;
+  justify-content:center;align-items:center
+}
+.legend .dot{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.wf-tag{
+  display:inline-block;max-width:100%;
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--tag);color:var(--tag-ink);
+  padding:4px 8px;border-radius:3px;margin-bottom:14px;font-weight:700;
+  line-height:1.5;word-break:break-word;
+}
+.wf-tag em{font-style:normal;opacity:.8;font-weight:500;text-transform:none;letter-spacing:0;margin-left:4px}
+
+/* --- Placeholders --- */
+.ph{
+  background:var(--fill);border:1px dashed var(--line);
+  color:var(--ink-3);display:flex;align-items:center;justify-content:center;
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:center;
+  padding:10px;border-radius:4px;position:relative;
+}
+.ph::before{content:"⌧";font-size:20px;margin-right:8px;opacity:.4}
+.ph.no-x::before{content:""}
+.ph-sm{min-height:60px}
+.ph-md{min-height:140px}
+.ph-lg{min-height:380px}
+.ph-xl{min-height:560px}
+
+/* --- Buttons --- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 22px;border-radius:6px;font-weight:700;font-size:14px;
+  cursor:pointer;border:1px solid transparent;text-align:center;
+  letter-spacing:.02em;
+}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-2)}
+.btn-soft{background:var(--accent-soft);color:var(--accent)}
+.btn-soft:hover{background:#d0e3d7}
+.btn-outline{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-block{width:100%}
+.btn-lg{padding:14px 18px;font-size:14px}
+
+/* Paired CTAs — Buy Now + Add to Cart side by side */
+.cta-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.cta-pair .btn{width:100%;min-width:0}
+
+/* =============== TOP: ANNOUNCEMENT + HEADER =============== */
+.announce{
+  background:#1a1a1a;color:#eee;text-align:center;
+  font-size:12px;padding:8px 16px;letter-spacing:.03em
+}
+.announce span{margin:0 14px;opacity:.9}
+
+.header{
+  background:#fff;border-bottom:1px solid var(--line-2);
+  position:sticky;top:0;z-index:40;
+}
+.header-row{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:14px 0;gap:20px
+}
+.logo{font-weight:800;letter-spacing:.15em;font-size:14px}
+.nav{display:flex;gap:22px;font-size:13px;color:var(--ink-2);font-weight:600}
+.nav a:hover{color:var(--accent)}
+.header-actions{display:flex;justify-content:flex-end;gap:18px;align-items:center;font-size:13px}
+.icon-btn{
+  width:34px;height:34px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line-2);background:#fff
+}
+.cart-count{
+  background:var(--accent);color:#fff;border-radius:10px;
+  font-size:10px;padding:2px 6px;margin-left:4px;font-weight:700
+}
+
+/* --- Sticky quick-nav tabs (appears under hero) --- */
+.quicknav{
+  position:sticky;top:64px;z-index:30;
+  background:#fff;border-bottom:1px solid var(--line-2);
+}
+.quicknav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 0;gap:20px
+}
+.quicknav-tabs{display:flex;gap:6px;overflow-x:auto;flex-wrap:nowrap}
+.quicknav-tabs a{
+  padding:8px 14px;font-size:13px;color:var(--ink-2);
+  border-radius:4px;white-space:nowrap;font-weight:600
+}
+.quicknav-tabs a.active,.quicknav-tabs a:hover{background:var(--accent-soft);color:var(--accent)}
+.quicknav-cta{display:flex;align-items:center;gap:14px}
+.quicknav-cta .price{font-weight:800}
+.quicknav-cta .old{color:var(--ink-3);text-decoration:line-through;font-size:12px;margin-left:6px}
+
+/* =============== BREADCRUMB =============== */
+.breadcrumb{padding:14px 0;font-size:12px;color:var(--ink-3)}
+.breadcrumb span{margin:0 6px}
+
+/* =============== HERO / ABOVE THE FOLD =============== */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;padding:4px 0 20px}
+.gallery{display:grid;grid-template-columns:80px 1fr;gap:14px}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumb{height:80px;font-size:10px}
+.thumb.video::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.main-img{min-height:460px}
+.hero-zoom{
+  position:absolute;top:12px;right:12px;background:#fff;
+  border:1px solid var(--line);border-radius:20px;padding:4px 10px;
+  font-size:11px;color:var(--ink-2)
+}
+
+.buy{display:flex;flex-direction:column;gap:10px}
+.rating-row{display:flex;align-items:center;gap:10px;font-size:13px}
+.stars{letter-spacing:2px;color:#e0a81f;font-size:14px}
+.rating-row a{color:var(--accent);border-bottom:1px dashed var(--accent);font-weight:600}
+.product-title{font-size:24px;line-height:1.1;margin:0}
+.subtitle{color:var(--ink-2);font-size:13px;line-height:1.45}
+.inline-badges{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:4px
+}
+.pill{
+  font-size:11px;color:var(--ink-2);padding:4px 10px;
+  background:var(--fill-2);border:1px solid var(--line-2);border-radius:20px
+}
+.pill.solid{background:var(--accent-soft);color:var(--accent);border-color:transparent;font-weight:600}
+
+/* =================================================================
+   BUY PANEL — compact, space-efficient, clear hierarchy
+   Minimal padding, fewer containers, tight vertical rhythm.
+   ================================================================= */
+
+/* ── Pack selector (ultra-compact for above-fold fit) ── */
+.pack-label{font-weight:700;font-size:13px;margin:8px 0 6px;display:flex;justify-content:space-between;align-items:baseline}
+.pack-label .muted{color:var(--ink-3);font-weight:500;font-size:12px}
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pack{
+  border:1.5px solid var(--line);border-radius:8px;padding:10px 8px;
+  position:relative;cursor:pointer;background:#fff;text-align:center;
+  font-size:11px;line-height:1.3
+}
+.pack .size{font-weight:700;font-size:13px;color:var(--ink)}
+.pack .pack-meta{color:var(--ink-3);font-size:10px;margin-top:1px}
+.pack .per{color:var(--ink-3);font-size:10px;margin-top:3px}
+.pack .save{color:var(--accent);font-weight:700;margin-top:2px;font-size:10px}
+.pack .mrp{color:var(--ink-3);text-decoration:line-through;font-size:10px;margin-top:4px}
+.pack .now{font-weight:800;font-size:14px;margin-top:0}
+.pack.selected{border-color:var(--accent);background:var(--accent-soft)}
+.pack .tag{
+  position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:#fff;font-size:9px;
+  padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.05em;
+  white-space:nowrap
+}
+
+/* ── Subscribe vs one-time (ultra-compact) ── */
+.purchase-mode{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.mode{
+  border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;
+  font-size:12px;background:#fff;cursor:pointer;position:relative
+}
+.mode.selected{border-color:var(--accent);background:var(--accent-soft)}
+.mode .m-title{font-weight:700;font-size:12px;color:var(--ink);display:flex;align-items:center;gap:6px}
+.mode .m-desc{color:var(--ink-2);margin-top:2px;font-size:11px;line-height:1.35}
+.mode .m-save{color:var(--accent);font-weight:700;font-size:10px;margin-top:4px}
+.mode input[type=radio]{accent-color:var(--accent);margin:0}
+
+/* ── Price row (tight) ── */
+.price-row{display:flex;align-items:baseline;gap:8px;margin-top:8px}
+.price-now{font-size:24px;font-weight:800;line-height:1}
+.price-mrp{color:var(--ink-3);text-decoration:line-through;font-size:13px}
+.price-off{background:var(--warn);color:var(--warn-ink);font-size:10px;padding:2px 7px;border-radius:3px;font-weight:700}
+
+/* ── Qty + paired CTAs (one compact row) ── */
+.qty-cta{display:grid;grid-template-columns:96px 1fr;gap:8px;margin-top:6px;align-items:center}
+.qty{
+  display:flex;align-items:center;justify-content:space-between;
+  border:1.5px solid var(--line);border-radius:6px;padding:0 2px;height:42px;background:#fff
+}
+.qty button{background:none;border:0;width:26px;font-size:16px;color:var(--ink-2);cursor:pointer}
+.qty input{width:34px;text-align:center;border:0;font-weight:700;font-size:14px;background:transparent}
+
+.cta-stack{display:grid;gap:6px}
+
+/* ── Compact info strip: scarcity + delivery side-by-side ── */
+.trust-strip{margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.scarcity{
+  display:flex;align-items:center;gap:6px;font-size:11px;
+  color:var(--warn-ink);background:var(--warn);padding:6px 10px;border-radius:4px;
+  min-width:0
+}
+.scarcity .bar{flex:1;height:3px;background:#f3c4ba;border-radius:2px;overflow:hidden;max-width:40px}
+.scarcity .bar i{display:block;width:28%;height:100%;background:var(--warn-ink)}
+.delivery-est{
+  display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-2);
+  border:1px solid var(--line-2);border-radius:4px;padding:6px 10px;background:var(--fill-3);
+  min-width:0
+}
+.delivery-est .countdown{color:var(--warn-ink);font-weight:700}
+
+/* ── Transactional trust strip (NEW section below hero, not in ATF) ── */
+.txn-trust{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--line-2)
+}
+.txn-trust .trust-item{display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--ink-2)}
+.txn-trust .trust-item .ph{width:28px;height:28px;min-height:0;padding:0;border-radius:50%;flex-shrink:0}
+.txn-trust .trust-item .ph::before{font-size:13px;margin:0}
+
+/* =============== TRUST STRIP (certifications) =============== */
+.cert-strip{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:14px;
+  align-items:center;padding:18px 0
+}
+.cert{height:56px;font-size:10px}
+
+/* =============== USP STRIP =============== */
+.usp{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.usp-item{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.usp-item .ph{width:56px;height:56px;min-height:0;border-radius:50%}
+.usp-item .ph::before{font-size:18px;margin:0}
+.usp-item h4{font-size:13px}
+.usp-item p{font-size:12px;color:var(--ink-2)}
+
+/* =============== BENEFITS =============== */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.benefit{
+  border:1px solid var(--line-2);border-radius:8px;padding:22px 18px;background:#fff;
+  display:flex;flex-direction:column;gap:10px
+}
+.benefit .ph{width:52px;height:52px;min-height:0;border-radius:8px}
+.benefit h4{font-size:15px}
+.benefit p{font-size:13px;color:var(--ink-2)}
+
+/* =============== INGREDIENTS =============== */
+.ing-tabs{display:flex;gap:4px;border-bottom:1px solid var(--line-2);margin-bottom:22px;overflow-x:auto}
+.ing-tabs a{padding:10px 16px;font-size:13px;color:var(--ink-2);font-weight:600;white-space:nowrap;border-bottom:2px solid transparent}
+.ing-tabs a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.ing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ing{
+  border:1px solid var(--line-2);border-radius:8px;padding:14px;background:#fff;
+  display:flex;flex-direction:column;gap:10px
+}
+.ing .ph{height:100px;min-height:0}
+.ing h4{font-size:13px}
+.ing .latin{font-style:italic;color:var(--ink-3);font-size:11px;margin-top:-6px}
+.ing p{font-size:12px;color:var(--ink-2);line-height:1.45}
+.ing-more{text-align:center;margin-top:20px}
+
+/* =============== HOW IT WORKS =============== */
+.hiw{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.hiw-step{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.hiw-step .n{
+  width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800
+}
+.hiw-step .ph{width:100%;height:140px;min-height:0}
+.hiw-step h4{font-size:15px}
+.hiw-step p{font-size:13px;color:var(--ink-2)}
+
+/* =============== VIDEO =============== */
+.video-block{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
+.video-block .ph{min-height:360px}
+.video-block .ph::before{content:"▶";font-size:50px;background:rgba(0,0,0,.5);color:#fff;width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0}
+
+/* =============== COMPARISON =============== */
+.compare{
+  border:1px solid var(--line-2);border-radius:10px;overflow:hidden;background:#fff
+}
+.compare-row{display:grid;grid-template-columns:1.8fr 1fr 1fr;border-top:1px solid var(--line-2)}
+.compare-row:first-child{border-top:0;background:var(--fill-2);font-weight:700}
+.compare-row>div{padding:14px 18px;font-size:13px;text-align:center}
+.compare-row>div:first-child{text-align:left;color:var(--ink-2)}
+.compare-row .us{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.compare-row .yes{color:var(--accent);font-weight:700}
+.compare-row .no{color:var(--warn-ink);font-weight:700}
+
+/* =============== SOCIAL PROOF / UGC =============== */
+.ugc-carousel{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.ugc{aspect-ratio:1/1;min-height:0;position:relative}
+.ugc::after{content:"◉";position:absolute;top:8px;right:8px;color:#fff;font-size:14px}
+
+/* =============== REVIEWS =============== */
+.reviews{display:grid;grid-template-columns:320px 1fr;gap:40px;align-items:start}
+.review-summary{
+  background:var(--fill-3);border:1px solid var(--line-2);
+  border-radius:8px;padding:22px;text-align:center
+}
+.big-rating{font-size:48px;font-weight:800}
+.breakdown{margin-top:20px;text-align:left;display:flex;flex-direction:column;gap:8px}
+.brk-row{display:grid;grid-template-columns:36px 1fr 36px;gap:8px;align-items:center;font-size:12px;color:var(--ink-2);cursor:pointer}
+.brk-row .brk-bar{height:6px;background:var(--fill);border-radius:3px;overflow:hidden}
+.brk-row .brk-bar i{display:block;height:100%;background:#e0a81f}
+.review-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.review-filters .pill{cursor:pointer}
+.review-list{display:grid;gap:14px}
+.review{
+  border:1px solid var(--line-2);border-radius:8px;padding:18px;background:#fff
+}
+.review-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.review-head .n{font-weight:700;font-size:13px}
+.review-head .v{font-size:11px;color:var(--accent);font-weight:600}
+.review-body{font-size:13px;color:var(--ink-2);line-height:1.55}
+.review-photos{display:flex;gap:6px;margin-top:10px}
+.review-photos .ph{width:60px;height:60px;min-height:0}
+.write-review{margin-top:20px;text-align:center}
+
+/* =============== FREQUENTLY BOUGHT TOGETHER =============== */
+.fbt{
+  border:1px solid var(--line-2);border-radius:10px;padding:24px;background:#fff;
+  display:grid;grid-template-columns:1fr 280px;gap:28px;align-items:center
+}
+.fbt-items{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.fbt-item{flex:1;min-width:140px;text-align:center;display:flex;flex-direction:column;gap:8px}
+.fbt-item .ph{height:150px;min-height:0}
+.fbt-item .name{font-size:13px;font-weight:600}
+.fbt-item .price{font-size:12px;color:var(--ink-2)}
+.fbt-item label{display:flex;align-items:center;gap:6px;justify-content:center;font-size:12px;color:var(--ink-2)}
+.fbt-plus{font-size:24px;color:var(--ink-3);align-self:center}
+.fbt-summary{border-left:1px dashed var(--line);padding-left:24px}
+.fbt-summary .total{font-size:22px;font-weight:800;margin:6px 0}
+.fbt-summary .save{color:var(--accent);font-weight:700;font-size:13px;margin-bottom:12px}
+
+/* =============== FAQ =============== */
+.faq-groups{display:grid;grid-template-columns:200px 1fr;gap:30px}
+.faq-groups aside{display:flex;flex-direction:column;gap:4px}
+.faq-groups aside a{
+  padding:10px 14px;border-radius:6px;font-size:13px;color:var(--ink-2);font-weight:600
+}
+.faq-groups aside a.active,.faq-groups aside a:hover{background:var(--accent-soft);color:var(--accent)}
+details.q{border-bottom:1px solid var(--line-2);padding:14px 0}
+details.q summary{
+  list-style:none;cursor:pointer;display:flex;justify-content:space-between;
+  font-weight:600;font-size:14px
+}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";font-size:20px;color:var(--ink-3);font-weight:400}
+details.q[open] summary::after{content:"−"}
+details.q .a{margin-top:10px;color:var(--ink-2);font-size:13px}
+
+/* =============== SECURITY / TRUST STRIP =============== */
+.sec{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.sec-item{
+  border:1px solid var(--line-2);border-radius:8px;padding:16px;background:#fff;
+  display:flex;gap:12px;align-items:center
+}
+.sec-item .ph{width:42px;height:42px;min-height:0;border-radius:50%;flex-shrink:0}
+.sec-item h4{font-size:13px}
+.sec-item p{font-size:12px;color:var(--ink-2)}
+
+.pay-methods{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  padding:20px 0 0;border-top:1px dashed var(--line-2);margin-top:20px
+}
+.pay-methods .ph{width:56px;height:34px;min-height:0;font-size:9px}
+
+/* =============== UPSELL =============== */
+.upsell{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.up{
+  border:1px solid var(--line-2);border-radius:8px;padding:14px;background:#fff;
+  display:flex;flex-direction:column;gap:8px
+}
+.up .ph{height:200px;min-height:0}
+.up .name{font-size:13px;font-weight:700}
+.up .pr{font-size:13px}
+.up .pr .old{color:var(--ink-3);text-decoration:line-through;margin-left:6px;font-size:11px}
+.up .stars{font-size:12px}
+
+/* =============== FOOTER =============== */
+footer{background:#1a1a1a;color:#bbb;padding:50px 0 30px;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:30px}
+.foot-col h5{color:#fff;font-size:13px;margin-bottom:12px;letter-spacing:.08em;text-transform:uppercase}
+.foot-col a{display:block;font-size:12px;padding:4px 0;color:#bbb}
+.foot-col a:hover{color:#fff}
+.foot-bottom{
+  border-top:1px solid #333;margin-top:30px;padding-top:20px;
+  display:flex;justify-content:space-between;font-size:11px;color:#888;flex-wrap:wrap;gap:10px
+}
+
+/* =============== MOBILE STICKY CTA =============== */
+.mobile-cta{
+  display:none;position:fixed;bottom:0;left:0;right:0;
+  background:#fff;border-top:1px solid var(--line);padding:10px 14px;
+  z-index:50;box-shadow:0 -2px 10px rgba(0,0,0,.08);
+  grid-template-columns:1fr 1.4fr;gap:10px;align-items:center
+}
+.mobile-cta .mp{display:flex;flex-direction:column;line-height:1.2}
+.mobile-cta .mp .now{font-weight:800;font-size:16px}
+.mobile-cta .mp .old{color:var(--ink-3);text-decoration:line-through;font-size:11px}
+.mobile-cta .mp .off{color:var(--accent);font-weight:700;font-size:11px}
+
+/* =============== FLOATING CHAT =============== */
+.chat-float{
+  position:fixed;right:20px;bottom:100px;z-index:45;
+  background:var(--accent);color:#fff;border-radius:30px;
+  padding:12px 18px;font-size:13px;font-weight:700;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;
+  display:flex;align-items:center;gap:8px
+}
+.chat-float::before{content:"💬"}
+
+/* =================================================================
+   RESPONSIVE · three breakpoints: 980 (tablet), 640 (mobile), 400 (small)
+   ================================================================= */
+
+/* ============ TABLET · ≤ 980px ============ */
+@media (max-width:980px){
+  .container{padding:0 18px}
+  .section{padding:40px 0}
+  .section h2{font-size:22px}
+
+  /* Announce + legend */
+  .legend{font-size:11px;gap:10px;padding:8px 14px}
+  .announce{font-size:11px;padding:7px 12px}
+  .announce span{margin:0 8px}
+
+  /* Header / Nav */
+  .nav{display:none}
+  .header-row{grid-template-columns:1fr auto;padding:12px 0}
+  .header-actions{gap:10px}
+
+  /* Sticky quicknav */
+  .quicknav{top:60px}
+  .quicknav-inner{padding:10px 0}
+  .quicknav-cta{display:none}
+  .quicknav-tabs{gap:2px}
+  .quicknav-tabs a{padding:8px 10px;font-size:12px}
+
+  /* Hero — minmax(0,1fr) prevents grid cells from expanding past their column */
+  .hero{grid-template-columns:minmax(0,1fr);gap:24px;padding:4px 0 24px}
+  .hero > *{min-width:0;max-width:100%}
+  .buy{min-width:0;max-width:100%;width:100%}
+  .gallery{grid-template-columns:minmax(0,1fr);gap:10px;min-width:0}
+  .thumbs{flex-direction:row;order:2;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
+  .thumb{flex:0 0 72px;height:72px;font-size:9px}
+  .main-img{min-height:380px}
+
+  /* Section grids */
+  .benefits{grid-template-columns:repeat(2,1fr)}
+  .ing-grid{grid-template-columns:repeat(2,1fr)}
+  .hiw{grid-template-columns:1fr;gap:22px}
+  .video-block{grid-template-columns:1fr;gap:20px}
+  .video-block .ph{min-height:240px}
+  .usp{grid-template-columns:repeat(2,1fr);gap:20px}
+  .ugc-carousel{grid-template-columns:repeat(3,1fr)}
+  .reviews{grid-template-columns:1fr;gap:28px}
+  .fbt{grid-template-columns:1fr;padding:20px}
+  .fbt-summary{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:20px}
+  .faq-groups{grid-template-columns:1fr;gap:18px}
+  .faq-groups aside{flex-direction:row;overflow-x:auto;flex-wrap:nowrap;gap:4px;border-bottom:1px solid var(--line-2);padding-bottom:8px;margin-bottom:8px}
+  .faq-groups aside a{flex-shrink:0;white-space:nowrap}
+  .sec{grid-template-columns:repeat(2,1fr)}
+  .upsell{grid-template-columns:repeat(2,1fr)}
+  .cert-strip{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:24px}
+
+  /* Reviews filters horizontal scroll */
+  .review-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+  .review-filters .pill{flex-shrink:0}
+
+  /* Comparison — horizontal scroll to prevent crushed text */
+  .compare{overflow-x:auto}
+  .compare-row{grid-template-columns:minmax(220px,1.6fr) minmax(140px,1fr) minmax(140px,1fr);min-width:560px}
+
+  /* Chat bubble smaller on tablet */
+  .chat-float{padding:10px 14px;font-size:12px}
+}
+
+/* ============ MOBILE · ≤ 820px ============ */
+@media (max-width:820px){
+  body{padding-bottom:86px}
+  .container{padding:0 14px;max-width:100vw}
+  .section{padding:26px 0}
+  .section h2{font-size:19px;line-height:1.25}
+  .section .sub{font-size:13px;margin-bottom:16px}
+
+  /* Wireframe labels — compact + wrap cleanly */
+  .wf-tag{font-size:9px;padding:3px 7px;margin-bottom:10px;max-width:100%}
+  .wf-tag em{display:block;margin-top:2px;font-size:9px}
+
+  /* Legend */
+  .legend{font-size:10px;gap:8px;padding:7px 12px;flex-wrap:wrap;justify-content:flex-start}
+
+  /* Announce — wrap, no horizontal scroll */
+  .announce{font-size:10.5px;padding:6px 10px;line-height:1.5;white-space:normal}
+  .announce span{margin:0 6px;display:inline-block;white-space:nowrap}
+
+  /* Header — simplified 3-col: hamburger | centered logo | cart */
+  .header-row{grid-template-columns:32px 1fr 32px;padding:16px 0;gap:10px}
+  .logo{font-size:12px;letter-spacing:.14em;text-align:center}
+  .icon-btn{width:34px;height:34px;font-size:15px;border:0;background:transparent}
+  .cart-count{font-size:9px;padding:1px 5px}
+  .m-menu{justify-self:start}
+  .header-actions{gap:0;justify-content:flex-end}
+
+  /* Quicknav — sleeker: text-only, underline active, airy padding */
+  .quicknav{top:64px}
+  .quicknav-inner{max-width:100%;overflow:hidden;padding:0}
+  .quicknav-tabs{max-width:100%;gap:0}
+  .quicknav-tabs a{
+    padding:14px 14px;font-size:13px;font-weight:500;color:var(--ink-2);
+    border-radius:0;border-bottom:2px solid transparent;
+    background:transparent !important
+  }
+  .quicknav-tabs a.active{
+    color:var(--ink);font-weight:700;
+    border-bottom-color:var(--accent)
+  }
+
+  /* Breadcrumb — single back link, subtle, lots of breathing room */
+  .breadcrumb{padding:14px 0 8px;font-size:12px;line-height:1.4}
+  .m-back{
+    color:var(--ink-2);font-weight:500;
+    display:inline-block;padding:4px 0
+  }
+
+  /* Hero typography */
+  .product-title{font-size:22px}
+  .subtitle{font-size:13px}
+  .inline-badges .pill{font-size:10px;padding:3px 8px}
+  .main-img{min-height:340px}
+
+  /* Pack cards — horizontal layout per card */
+  .packs{grid-template-columns:1fr;gap:10px}
+  .pack{
+    padding:14px 16px;text-align:left;
+    display:grid;grid-template-columns:1fr auto;
+    column-gap:12px;row-gap:2px;align-items:center
+  }
+  .pack .tag{position:absolute;top:-9px;left:14px;transform:none}
+  .pack .size{font-size:14px;grid-column:1;grid-row:1}
+  .pack > div[style*="capsules"]{grid-column:1;grid-row:2;font-size:11px !important}
+  .pack .mrp{grid-column:2;grid-row:1;margin:0;font-size:12px}
+  .pack .now{grid-column:2;grid-row:2;margin:0;font-size:16px;text-align:right}
+  .pack .save{grid-column:1/-1;grid-row:3;margin-top:4px;font-size:11px}
+  .pack .per{grid-column:1/-1;grid-row:4;margin-top:0;font-size:11px}
+
+  /* Subscribe / one-time */
+  .purchase-mode{grid-template-columns:1fr;gap:8px}
+  .mode{padding:12px 14px}
+
+  /* Price + CTA */
+  .price-row{flex-wrap:wrap;gap:8px}
+  .price-now{font-size:24px}
+  .price-mrp{font-size:13px}
+  .price-off{font-size:10px;padding:2px 7px}
+  .qty-cta{grid-template-columns:96px 1fr;gap:8px}
+  .qty{height:50px}
+  .btn-lg{padding:15px 18px;font-size:14px}
+
+  /* Scarcity / delivery */
+  .scarcity{font-size:12px;flex-wrap:wrap;gap:6px}
+  .scarcity .bar{max-width:100%;flex:1 1 100%;order:3}
+  .delivery-est{font-size:12px;padding:9px 12px}
+
+  /* Trust row */
+  .trust-row{grid-template-columns:repeat(2,1fr);gap:14px;padding-top:12px}
+
+  /* Certifications + USP + Benefits + Ingredients */
+  .cert-strip{grid-template-columns:repeat(2,1fr);gap:10px}
+  .cert{height:50px;font-size:9px}
+  .benefits{grid-template-columns:1fr;gap:12px}
+  .benefit{padding:16px 14px}
+  .benefit h4{font-size:14px}
+  .benefit p{font-size:12px}
+  .usp{grid-template-columns:1fr 1fr;gap:16px}
+  .usp-item h4{font-size:12px}
+  .usp-item p{font-size:11px}
+  .ing-tabs a{padding:9px 12px;font-size:12px}
+  .ing-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .ing{padding:10px}
+  .ing .ph{height:80px}
+  .ing h4{font-size:12px}
+  .ing .latin{font-size:10px}
+  .ing p{font-size:11px;line-height:1.4}
+
+  /* HIW */
+  .hiw-step .ph{height:140px}
+  .hiw-step h4{font-size:14px}
+  .hiw-step p{font-size:12px}
+
+  /* Compare stays horizontal-scroll from tablet rule */
+  .compare-row>div{padding:12px 14px;font-size:12px}
+
+  /* UGC */
+  .ugc-carousel{grid-template-columns:repeat(2,1fr);gap:8px}
+
+  /* Reviews */
+  .review-summary{padding:18px}
+  .big-rating{font-size:36px}
+  .review{padding:14px}
+  .review-head{flex-direction:column;align-items:flex-start;gap:6px}
+  .review-head > span{font-size:11px}
+  .review-body{font-size:12px}
+  .review-photos .ph{width:50px;height:50px}
+
+  /* FBT — stack items vertically, hide + signs */
+  .fbt{padding:14px}
+  .fbt-items{flex-direction:column;gap:10px}
+  .fbt-plus{display:none}
+  .fbt-item{
+    flex-direction:row;text-align:left;align-items:center;
+    gap:12px;width:100%;min-width:0;padding:10px;
+    border:1px solid var(--line-2);border-radius:6px
+  }
+  .fbt-item .ph{width:70px;height:70px;flex-shrink:0}
+  .fbt-item label{justify-content:flex-start}
+  .fbt-summary{padding-top:16px}
+  .fbt-summary .total{font-size:20px}
+
+  /* Security strip */
+  .sec{grid-template-columns:1fr;gap:10px}
+  .sec-item{padding:14px}
+  .pay-methods .ph{width:48px;height:30px;font-size:8px}
+
+  /* Upsell */
+  .upsell{grid-template-columns:1fr 1fr;gap:12px}
+  .up{padding:10px}
+  .up .ph{height:140px}
+  .up .name{font-size:12px}
+  .up .pr{font-size:12px}
+
+  /* Footer */
+  .foot-grid{grid-template-columns:1fr;gap:26px}
+  .foot-bottom{flex-direction:column;gap:6px;text-align:center;font-size:10px}
+
+  /* Mobile sticky CTA — show only on mobile */
+  .mobile-cta{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:8px 12px}
+  .mobile-cta.m2{display:grid}
+  .mobile-cta .mp .now{font-size:15px}
+  .mobile-cta .mp .old{font-size:10px}
+  .mobile-cta .mp .off{font-size:10px}
+  .mobile-cta .btn{padding:12px 14px;font-size:13px}
+
+  /* Chat bubble — smaller, out of CTA way */
+  .chat-float{bottom:78px;right:12px;padding:9px 12px;font-size:11px}
+}
+
+/* ============ SMALL MOBILE · ≤ 400px ============ */
+@media (max-width:400px){
+  .container{padding:0 12px}
+  .section{padding:26px 0}
+  .product-title{font-size:20px}
+  .price-now{font-size:22px}
+  .main-img{min-height:300px}
+  .thumb{flex:0 0 58px;height:58px;font-size:8px}
+
+  /* Tighter grids */
+  .ing-grid,.usp,.ugc-carousel,.upsell{grid-template-columns:1fr}
+  .trust-row{grid-template-columns:1fr 1fr;gap:10px}
+
+  /* CTA stacks if very narrow */
+  .qty-cta{grid-template-columns:1fr;gap:8px}
+  .qty{max-width:140px;margin:0 auto}
+
+  /* Compare still scrolls */
+  .compare-row{min-width:500px}
+
+  /* FBT item image smaller */
+  .fbt-item .ph{width:60px;height:60px}
+
+  /* Mobile CTA tighter */
+  .mobile-cta{padding:8px 10px;gap:10px}
+  .mobile-cta .btn{padding:11px 12px;font-size:12px}
+
+  /* Chat even smaller */
+  .chat-float{font-size:10px;padding:8px 10px}
+}
+
+/* =================================================================
+   MOBILE-FIRST ENHANCEMENTS
+   — swipe patterns, native radio cards, collapsible sections
+   ALL mobile-only components are hidden on desktop by default.
+   Display rules live INSIDE the mobile @media query so they don't
+   leak into desktop view.
+   ================================================================= */
+
+/* Default: every mobile-only element is hidden */
+.mobile-only,
+.m-hero,
+.quick-chips,
+.m-packs,
+.m-ing-scroll,
+.m-ugc-scroll,
+.m-rev-scroll,
+.m-up-scroll,
+.scroll-hint{display:none}
+
+/* --- Mobile hero (swipe carousel) base styles --- */
+.m-hero{
+  position:relative;background:var(--fill);
+  border-bottom:1px solid var(--line-2);
+  width:100%;aspect-ratio:1/1;max-height:520px;overflow:hidden
+}
+.m-hero-track{
+  width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none
+}
+.m-hero-track::-webkit-scrollbar{display:none}
+.m-hero-slide{
+  flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start;
+  background:var(--fill);align-items:center;justify-content:center;
+  font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;
+  text-align:center;border-right:1px dashed var(--line);position:relative;padding:20px
+}
+.m-hero-slide:nth-child(even){background:var(--fill-2)}
+.m-hero-slide.video::before{
+  content:"▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.55);
+  color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;z-index:1
+}
+.m-hero-overlay-top{
+  position:absolute;top:12px;left:12px;right:12px;z-index:2;
+  justify-content:space-between;pointer-events:none
+}
+.m-hero-overlay-top .pill{
+  background:rgba(0,0,0,.75);color:#fff;border:0;pointer-events:auto
+}
+.m-hero-overlay-top .icon-btn{
+  background:rgba(255,255,255,.9);border:0;pointer-events:auto
+}
+.m-hero-dots{
+  position:absolute;bottom:12px;left:0;right:0;z-index:2;
+  gap:5px;justify-content:center;pointer-events:none
+}
+.m-hero-dots i{
+  width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.25)
+}
+.m-hero-dots i.on{background:#1a1a1a;width:20px;border-radius:3px}
+.m-hero-count{
+  position:absolute;bottom:14px;right:14px;z-index:2;
+  background:rgba(0,0,0,.65);color:#fff;font-size:10px;
+  padding:3px 9px;border-radius:12px;letter-spacing:.04em;font-weight:600
+}
+
+/* --- Mobile quick benefit chips --- */
+.quick-chips{
+  gap:8px;padding:14px 0 4px;overflow-x:auto;
+  scrollbar-width:none;max-width:100%;min-width:0;width:100%
+}
+.quick-chips::-webkit-scrollbar{display:none}
+.quick-chips .chip{
+  flex:0 0 auto;background:var(--accent-soft);color:var(--accent);
+  padding:9px 13px;border-radius:20px;font-size:11px;font-weight:700;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+  border:1px solid rgba(42,111,77,.15)
+}
+.quick-chips .chip .i{font-size:13px}
+
+/* --- Mobile pack cards (radio-style list) --- */
+.m-packs{gap:10px;margin-top:6px;width:100%;max-width:100%;min-width:0}
+.m-pack{
+  border:1.5px solid var(--line);border-radius:10px;padding:14px;
+  background:#fff;position:relative;display:grid;
+  grid-template-columns:22px 1fr auto;align-items:center;gap:12px;
+  cursor:pointer;width:100%;min-width:0
+}
+.m-pack.selected{
+  border-color:var(--accent);background:var(--accent-soft);
+  border-width:2px;padding:13px
+}
+.m-pack .rad{
+  width:20px;height:20px;border:2px solid var(--line);
+  border-radius:50%;position:relative;justify-self:center;flex-shrink:0
+}
+.m-pack.selected .rad{border-color:var(--accent)}
+.m-pack.selected .rad::after{
+  content:"";position:absolute;inset:3px;
+  background:var(--accent);border-radius:50%
+}
+.m-pack .info{min-width:0;overflow:hidden}
+.m-pack .info .title{font-weight:700;font-size:14px;color:var(--ink);white-space:normal}
+.m-pack .info .meta{color:var(--ink-3);font-size:11px;margin-top:2px}
+.m-pack .info .per-tag{
+  display:inline-block;background:var(--accent);color:#fff;
+  font-size:10px;padding:2px 7px;border-radius:3px;
+  margin-top:6px;font-weight:700;letter-spacing:.03em
+}
+.m-pack .price{text-align:right;flex-shrink:0}
+.m-pack .price .now{font-weight:800;font-size:16px;display:block;color:var(--ink)}
+.m-pack .price .mrp{
+  color:var(--ink-3);text-decoration:line-through;
+  font-size:11px;display:block
+}
+.m-pack .ribbon{
+  position:absolute;top:-9px;right:16px;background:var(--accent);
+  color:#fff;font-size:9px;padding:3px 8px;border-radius:10px;
+  font-weight:700;letter-spacing:.04em;white-space:nowrap
+}
+.m-pack .ribbon.gold{background:#8a6d1a}
+
+/* --- Mobile horizontal scroll carousels (ingredients/UGC/reviews/upsell) --- */
+.m-ing-scroll, .m-ugc-scroll, .m-rev-scroll, .m-up-scroll{
+  gap:10px;padding:4px 0 12px;
+  overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  max-width:100%;min-width:0;width:100%
+}
+.m-ing-scroll::-webkit-scrollbar,
+.m-ugc-scroll::-webkit-scrollbar,
+.m-rev-scroll::-webkit-scrollbar,
+.m-up-scroll::-webkit-scrollbar{display:none}
+
+.m-ing-scroll .ing{
+  flex:0 0 160px;scroll-snap-align:start;display:flex;
+  flex-direction:column;gap:8px;padding:12px
+}
+.m-ing-scroll .ing .ph{height:100px}
+
+.m-ugc-scroll{gap:8px}
+.m-ugc-scroll .ph{
+  flex:0 0 150px;aspect-ratio:1/1;scroll-snap-align:start;min-height:0
+}
+
+.m-rev-scroll{gap:12px}
+.m-rev-scroll .review{
+  flex:0 0 270px;scroll-snap-align:start;min-width:0
+}
+
+.m-up-scroll .up{flex:0 0 160px;scroll-snap-align:start}
+.m-up-scroll .up .ph{height:150px}
+
+/* --- Scroll hint --- */
+.scroll-hint{
+  align-items:center;gap:4px;
+  font-size:10px;color:var(--ink-3);padding:0;
+  letter-spacing:.04em;text-transform:uppercase;margin-top:4px
+}
+
+/* ═══════════ TURN ON MOBILE LAYOUT AT ≤820px ═══════════ */
+@media (max-width:820px){
+  /* Show mobile-only elements with their correct display types */
+  .mobile-only{display:block}
+  .mobile-only.flex{display:flex}
+  .mobile-only.grid{display:grid}
+  .m-hero{display:block}
+  .m-hero-track{display:flex}
+  .m-hero-slide{display:flex}
+  .m-hero-overlay-top{display:flex}
+  .m-hero-dots{display:flex}
+  .quick-chips{display:flex}
+  .m-packs{display:grid}
+  .m-ing-scroll,.m-ugc-scroll,.m-rev-scroll,.m-up-scroll{display:flex}
+  .scroll-hint{display:inline-flex}
+
+  /* Hide desktop counterparts */
+  .desktop-only{display:none !important}
+  .hero .gallery{display:none}
+  .packs{display:none}
+  .ing-grid{display:none}
+  .ugc-carousel{display:none}
+  .upsell{display:none}
+  .hero-zoom{display:none}
+}
+
+/* --- Enhanced mobile sticky CTA v2 — price summary + two buttons stacked --- */
+.mobile-cta.m2{
+  grid-template-columns:1fr;gap:8px;
+  padding:10px 12px 12px;
+  box-shadow:0 -4px 16px rgba(0,0,0,.08)
+}
+.mobile-cta.m2 .mp-block{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:8px;line-height:1.2;min-width:0;flex-wrap:wrap
+}
+.mobile-cta.m2 .mp-size{
+  font-size:10px;color:var(--ink-3);
+  letter-spacing:.06em;text-transform:uppercase;font-weight:700;
+  order:-1;flex:0 0 100%
+}
+.mobile-cta.m2 .mp-price-row{
+  display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;min-width:0
+}
+.mobile-cta.m2 .mp-price-row .now{font-weight:800;font-size:18px;color:var(--ink)}
+.mobile-cta.m2 .mp-price-row .old{
+  color:var(--ink-3);text-decoration:line-through;font-size:11px
+}
+.mobile-cta.m2 .mp-price-row .off{
+  background:var(--warn);color:var(--warn-ink);
+  font-size:9px;padding:2px 5px;border-radius:3px;font-weight:700
+}
+.mobile-cta.m2 .mp-delivery{font-size:11px;color:var(--accent);font-weight:600}
+.mobile-cta.m2 .cta-pair{width:100%;gap:8px}
+.mobile-cta.m2 .cta-pair .btn{width:100%;min-width:0;padding:13px 8px;font-size:14px;white-space:nowrap}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     LEGEND (wireframe annotations guide)
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="legend">
+  <span><i class="dot" style="background:#fff3d6;border:1px solid #8a6d1a"></i>Yellow tag = CRO pillar coverage</span>
+  <span><i class="dot" style="background:#ececec;border:1px dashed #cfcfcf"></i>Dashed box = image/video placeholder</span>
+  <span><i class="dot" style="background:#2a6f4d"></i>Green = primary CTA</span>
+  <span><i class="dot" style="background:#e6f0ea;border:1px solid #2a6f4d"></i>Soft green = selected state</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ANNOUNCEMENT BAR
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="announce">
+  <span>✓ Free Shipping on orders ₹999+</span>
+  <span>✓ 100% Natural Ayurvedic</span>
+  <span>✓ COD Available</span>
+  <span>✓ 30-Day Returns</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="container header-row">
+    <span class="icon-btn mobile-only m-menu">☰</span>
+    <div class="logo">UBALANCE&nbsp;·&nbsp;NATURALS</div>
+    <nav class="nav">
+      <a>Shop All</a><a>Men's Wellness</a><a>Women's Wellness</a><a>Bestsellers</a><a>Our Story</a><a>Blog</a>
+    </nav>
+    <div class="header-actions">
+      <span class="icon-btn desktop-only">⌕</span>
+      <span class="icon-btn desktop-only">☺</span>
+      <span class="icon-btn">🛒<span class="cart-count">2</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     STICKY QUICK NAV TABS  ◆ CRO: Persistent/Mobile UX · Quick Nav Tabs
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="quicknav">
+  <div class="container quicknav-inner">
+    <div class="quicknav-tabs">
+      <a class="active" href="#overview">Overview</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#how">How It Works</a>
+      <a href="#compare">Compare</a>
+      <a href="#reviews">Reviews (247)</a>
+      <a href="#faqs">FAQs</a>
+    </div>
+    <div class="quicknav-cta">
+      <span class="price">₹3,299<span class="old">₹3,999</span></span>
+      <button class="btn btn-primary">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BREADCRUMB — full path on desktop, simple "back" on mobile
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="container breadcrumb">
+  <span class="desktop-only">Home <span>›</span> Men's Wellness <span>›</span> Vitality &amp; Strength <span>›</span> Black Thunder Active+</span>
+  <a class="mobile-only m-back">‹ Men's Wellness</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO / ABOVE THE FOLD
+     ◆ CRO: Hero Media · Title · Ratings Snippet · Pricing Cluster · Primary CTA · Inline Trust Badges · Pack Selector · Delivery Estimator · Urgency
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="overview" class="container">
+  <span class="wf-tag">ABOVE THE FOLD <em>· Hero · Title · Rating · Pack · Subscribe · Price · CTA · Trust · Delivery · Scarcity</em></span>
+
+  <div class="hero">
+    <!-- ═══ MOBILE-ONLY: swipeable hero carousel ═══ -->
+    <div class="m-hero mobile-only">
+      <div class="m-hero-overlay-top">
+        <span class="pill">★ Bestseller</span>
+        <span class="icon-btn">♡</span>
+      </div>
+      <div class="m-hero-track">
+        <div class="m-hero-slide">Slide 1<br>Bottle Front</div>
+        <div class="m-hero-slide">Slide 2<br>Back / Label</div>
+        <div class="m-hero-slide video">Slide 3<br>30s Video</div>
+        <div class="m-hero-slide">Slide 4<br>Herbs Flat-lay</div>
+        <div class="m-hero-slide">Slide 5<br>Capsule Shot</div>
+        <div class="m-hero-slide">Slide 6<br>Lifestyle</div>
+      </div>
+      <div class="m-hero-dots">
+        <i class="on"></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <span class="m-hero-count">1 / 6</span>
+    </div>
+
+    <!-- LEFT: Desktop Gallery -->
+    <div class="gallery">
+      <div class="thumbs">
+        <div class="ph thumb">Image 1<br>Bottle Front</div>
+        <div class="ph thumb">Image 2<br>Back / Label</div>
+        <div class="ph thumb">Image 3<br>Herbs Flat-lay</div>
+        <div class="ph thumb">Image 4<br>Capsule Shot</div>
+        <div class="ph thumb video">Video<br>30s Usage</div>
+        <div class="ph thumb">Image 5<br>Lifestyle</div>
+      </div>
+      <div class="ph main-img" style="position:relative">
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+          <span>MAIN HERO MEDIA</span>
+          <span style="font-size:10px;opacity:.7">High-res bottle · 1:1 · autoplay muted video option (A/B)</span>
+        </div>
+        <span class="hero-zoom">⌕ Hover to Zoom</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Buy Box -->
+    <div class="buy">
+      <div class="inline-badges">
+        <span class="pill solid">★ Bestseller</span>
+        <span class="pill">100% Ayurvedic</span>
+        <span class="pill">No Chemicals</span>
+      </div>
+
+      <h1 class="product-title">Black Thunder Active+</h1>
+      <p class="subtitle">Ayurvedic Vitality Tonic for Men — Stamina, Strength &amp; Energy. 16 clinically-studied herbs in every capsule.</p>
+
+      <div class="rating-row">
+        <span class="stars">★★★★★</span>
+        <strong>4.7</strong>
+        <span style="color:var(--ink-2)">·</span>
+        <a href="#reviews">247 verified reviews</a>
+      </div>
+
+      <!-- ═══ MOBILE-ONLY: scannable benefit chips ═══ -->
+      <div class="quick-chips mobile-only flex">
+        <span class="chip"><span class="i">🌿</span>100% Ayurvedic</span>
+        <span class="chip"><span class="i">🔬</span>Clinically Tested</span>
+        <span class="chip"><span class="i">✓</span>No Side Effects</span>
+        <span class="chip"><span class="i">⚡</span>Fast Results</span>
+        <span class="chip"><span class="i">🇮🇳</span>Made in India</span>
+      </div>
+
+      <!-- Pack Selector -->
+      <div class="pack-label">
+        <span>Choose your pack</span>
+        <span class="muted">Save more with bigger packs</span>
+      </div>
+
+      <!-- ═══ DESKTOP: vertical card grid ═══ -->
+      <div class="packs">
+        <div class="pack">
+          <div class="size">1 Bottle</div>
+          <div class="pack-meta">60 capsules · 30 days</div>
+          <div class="mrp">₹3,999</div>
+          <div class="now">₹3,299</div>
+          <div class="per">₹109 / serving</div>
+        </div>
+        <div class="pack selected">
+          <span class="tag">Most Popular</span>
+          <div class="size">2 Bottles</div>
+          <div class="pack-meta">120 capsules · 60 days</div>
+          <div class="mrp">₹7,998</div>
+          <div class="now">₹5,999</div>
+          <div class="save">Save ₹1,999 (25%)</div>
+          <div class="per">₹99 / serving</div>
+        </div>
+        <div class="pack">
+          <span class="tag" style="background:#8a6d1a">Best Value</span>
+          <div class="size">3 Bottles</div>
+          <div class="pack-meta">180 capsules · 90 days</div>
+          <div class="mrp">₹11,997</div>
+          <div class="now">₹8,399</div>
+          <div class="save">Save ₹3,598 (30%)</div>
+          <div class="per">₹93 / serving</div>
+        </div>
+      </div>
+
+      <!-- ═══ MOBILE-ONLY: radio-style pack list ═══ -->
+      <div class="m-packs mobile-only grid">
+        <label class="m-pack">
+          <span class="rad"></span>
+          <div class="info">
+            <div class="title">1 Bottle · 30-day supply</div>
+            <div class="meta">60 capsules · ₹109 per serving</div>
+          </div>
+          <div class="price">
+            <span class="mrp">₹3,999</span>
+            <span class="now">₹3,299</span>
+          </div>
+        </label>
+        <label class="m-pack selected">
+          <span class="ribbon">★ MOST POPULAR</span>
+          <span class="rad"></span>
+          <div class="info">
+            <div class="title">2 Bottles · 60-day supply</div>
+            <div class="meta">120 capsules · ₹99 per serving</div>
+            <span class="per-tag">SAVE ₹1,999 (25%)</span>
+          </div>
+          <div class="price">
+            <span class="mrp">₹7,998</span>
+            <span class="now">₹5,999</span>
+          </div>
+        </label>
+        <label class="m-pack">
+          <span class="ribbon gold">BEST VALUE</span>
+          <span class="rad"></span>
+          <div class="info">
+            <div class="title">3 Bottles · 90-day supply</div>
+            <div class="meta">180 capsules · ₹93 per serving</div>
+            <span class="per-tag">SAVE ₹3,598 (30%)</span>
+          </div>
+          <div class="price">
+            <span class="mrp">₹11,997</span>
+            <span class="now">₹8,399</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- Purchase Mode: Subscribe vs One-Time -->
+      <div class="purchase-mode">
+        <label class="mode">
+          <div class="m-title"><input type="radio" name="mode"> One-Time Purchase</div>
+          <div class="m-desc">Single delivery</div>
+        </label>
+        <label class="mode selected">
+          <div class="m-title"><input type="radio" name="mode" checked> Subscribe &amp; Save</div>
+          <div class="m-desc">Delivered every 30 days · Skip/cancel anytime</div>
+          <div class="m-save">+ Extra 15% off forever</div>
+        </label>
+      </div>
+
+      <!-- Price -->
+      <div class="price-row">
+        <span class="price-now">₹5,099</span>
+        <span class="price-mrp">₹7,998</span>
+        <span class="price-off">SAVE 36%</span>
+      </div>
+
+      <!-- Qty + paired CTAs on one row -->
+      <div class="qty-cta">
+        <div class="qty">
+          <button>−</button><input value="1"><button>+</button>
+        </div>
+        <div class="cta-pair">
+          <button class="btn btn-primary btn-lg">⚡ Buy Now</button>
+          <button class="btn btn-soft btn-lg">🛍 Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- ═══ INFO STRIP — scarcity + delivery (2-col, compact) ═══ -->
+      <div class="trust-strip">
+        <div class="scarcity">
+          <span>🔥</span>
+          <span>Only <strong>23 left</strong></span>
+          <span class="bar"><i></i></span>
+        </div>
+        <div class="delivery-est">
+          <span>🚚</span>
+          <span>Get by <strong>Thu, 24 Apr</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TRANSACTIONAL TRUST STRIP  ◆ CRO: Trust Micro Badges
+     Moved out of hero ATF to keep above-fold compact
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="container">
+  <div class="txn-trust">
+    <div class="trust-item"><span class="ph">🔒</span>Secure Payment</div>
+    <div class="trust-item"><span class="ph">🚚</span>Free Ship ₹999+</div>
+    <div class="trust-item"><span class="ph">💵</span>COD Available</div>
+    <div class="trust-item"><span class="ph">↺</span>30-Day Returns</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CERTIFICATION STRIP  ◆ CRO: Certifications & Claims
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--fill-3);padding:30px 0">
+  <div class="container">
+    <span class="wf-tag">CERTIFICATIONS &amp; CLAIMS <em>· authenticity badges</em></span>
+    <div class="cert-strip">
+      <div class="ph cert">FSSAI<br>Licensed</div>
+      <div class="ph cert">GMP<br>Certified</div>
+      <div class="ph cert">AYUSH<br>Approved</div>
+      <div class="ph cert">ISO<br>9001:2015</div>
+      <div class="ph cert">Cruelty<br>Free</div>
+      <div class="ph cert">Lab<br>Tested</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     USP STRIP  ◆ CRO: USP / Feature Icons
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <span class="wf-tag">USP / FEATURE ICONS <em>· 5 horizontal differentiators</em></span>
+    <div class="usp">
+      <div class="usp-item"><span class="ph">🌿</span><h4>100% Ayurvedic</h4><p>16 potent herbs, no fillers</p></div>
+      <div class="usp-item"><span class="ph">⚗️</span><h4>No Chemicals</h4><p>Zero synthetic additives</p></div>
+      <div class="usp-item"><span class="ph">🔬</span><h4>Clinically Tested</h4><p>Third-party verified potency</p></div>
+      <div class="usp-item"><span class="ph">🇮🇳</span><h4>Made in India</h4><p>Sourced &amp; formulated locally</p></div>
+      <div class="usp-item"><span class="ph">✓</span><h4>No Side Effects</h4><p>Safe for long-term daily use</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     BENEFITS  ◆ PDF: Product Position 2 · Benefits
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="benefits" class="section">
+  <div class="container">
+    <span class="wf-tag">BENEFITS SECTION <em>· outcome-focused value</em></span>
+    <h2>What Black Thunder Active+ does for you</h2>
+    <p class="sub">Four core outcomes backed by traditional Ayurvedic science &amp; modern research.</p>
+
+    <div class="benefits">
+      <div class="benefit">
+        <div class="ph"></div>
+        <h4>Boosts Stamina &amp; Vigor</h4>
+        <p>Helps sustain energy through long days and workouts. Reduces stress-driven fatigue.</p>
+      </div>
+      <div class="benefit">
+        <div class="ph"></div>
+        <h4>Strength &amp; Muscle</h4>
+        <p>Supports recovery and lean muscle building when paired with training.</p>
+      </div>
+      <div class="benefit">
+        <div class="ph"></div>
+        <h4>Focus &amp; Mental Energy</h4>
+        <p>Adaptogens sharpen concentration and reduce mental fog.</p>
+      </div>
+      <div class="benefit">
+        <div class="ph"></div>
+        <h4>Natural Vitality</h4>
+        <p>Restores hormonal balance gradually — the Ayurvedic way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     INGREDIENTS  ◆ CRO: Ingredients / Composition (accordion/tabs + visuals)
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="ingredients" class="section" style="background:var(--fill-3)">
+  <div class="container">
+    <span class="wf-tag">INGREDIENTS / COMPOSITION <em>· tabs + visual cards</em></span>
+    <h2>16 Ayurvedic herbs. Zero shortcuts.</h2>
+    <p class="sub">Every capsule is transparently sourced. Tap any herb to see origin, dosage, and role.</p>
+
+    <div class="ing-tabs">
+      <a class="active">★ Hero Herbs</a>
+      <a>Adaptogens</a>
+      <a>Vitality Support</a>
+      <a>Muscle &amp; Recovery</a>
+      <a>Full List (16)</a>
+    </div>
+
+    <div class="ing-grid">
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Shuddha Shilajit</h4>
+        <div class="latin">Asphaltum punjabianum</div>
+        <p>Purified Himalayan mineral resin. Supports testosterone, stamina, and cellular energy.</p>
+      </div>
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Ashwagandha</h4>
+        <div class="latin">Withania somnifera</div>
+        <p>Classical adaptogen. Reduces cortisol, improves strength and recovery.</p>
+      </div>
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Safed Musli</h4>
+        <div class="latin">Chlorophytum borivilianum</div>
+        <p>Traditional vitality herb. Supports vigor and natural energy.</p>
+      </div>
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Kaunch Beej</h4>
+        <div class="latin">Mucuna pruriens</div>
+        <p>Rich in natural L-DOPA. Supports mood, motivation, and muscle building.</p>
+      </div>
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Gokshura</h4>
+        <div class="latin">Tribulus terrestris</div>
+        <p>Classical balya (strength) herb. Used for athletic performance in Ayurveda.</p>
+      </div>
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Vidarikand</h4>
+        <div class="latin">Pueraria tuberosa</div>
+        <p>Rejuvenative root. Supports tissue strength and recovery.</p>
+      </div>
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Kesar (Saffron)</h4>
+        <div class="latin">Crocus sativus</div>
+        <p>Potent antioxidant. Supports mood, focus, and micro-circulation.</p>
+      </div>
+      <div class="ing">
+        <div class="ph"></div>
+        <h4>Dalchini</h4>
+        <div class="latin">Cinnamomum verum</div>
+        <p>Blood-sugar support and warming carrier herb.</p>
+      </div>
+    </div>
+
+    <!-- ═══ MOBILE-ONLY: horizontal scroll ingredient carousel ═══ -->
+    <div class="m-ing-scroll mobile-only flex">
+      <div class="ing"><div class="ph"></div><h4>Shuddha Shilajit</h4><div class="latin">Asphaltum</div><p>Energy &amp; testosterone support.</p></div>
+      <div class="ing"><div class="ph"></div><h4>Ashwagandha</h4><div class="latin">Withania somnifera</div><p>Stress &amp; recovery.</p></div>
+      <div class="ing"><div class="ph"></div><h4>Safed Musli</h4><div class="latin">C. borivilianum</div><p>Vitality &amp; vigor.</p></div>
+      <div class="ing"><div class="ph"></div><h4>Kaunch Beej</h4><div class="latin">Mucuna pruriens</div><p>Natural L-DOPA.</p></div>
+      <div class="ing"><div class="ph"></div><h4>Gokshura</h4><div class="latin">T. terrestris</div><p>Strength &amp; performance.</p></div>
+      <div class="ing"><div class="ph"></div><h4>Vidarikand</h4><div class="latin">P. tuberosa</div><p>Tissue strength.</p></div>
+      <div class="ing"><div class="ph"></div><h4>Kesar</h4><div class="latin">Crocus sativus</div><p>Antioxidant &amp; mood.</p></div>
+      <div class="ing"><div class="ph"></div><h4>+ 9 more</h4><div class="latin">Tap to view all</div><p>Full 16-herb breakdown.</p></div>
+    </div>
+    <div class="scroll-hint mobile-only flex">← Swipe to see all 16 herbs →</div>
+
+    <div class="ing-more">
+      <button class="btn btn-ghost">Show all 16 ingredients ↓</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HOW IT WORKS  ◆ PDF: Product Position 4
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="how" class="section">
+  <div class="container">
+    <span class="wf-tag">HOW IT WORKS <em>· mechanism + timeline + usage</em></span>
+    <h2>How Black Thunder Active+ works</h2>
+    <p class="sub">A simple 3-step routine. Noticeable changes in 3–4 weeks.</p>
+
+    <div class="hiw">
+      <div class="hiw-step">
+        <div class="n">1</div>
+        <div class="ph"></div>
+        <h4>Take 2 capsules daily</h4>
+        <p>After breakfast and dinner, with warm water or milk.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="n">2</div>
+        <div class="ph"></div>
+        <h4>Herbs work at source</h4>
+        <p>Adaptogens regulate stress hormones; vitalizers support natural testosterone.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="n">3</div>
+        <div class="ph"></div>
+        <h4>Feel the shift in 3–4 weeks</h4>
+        <p>Most users report better energy, focus, and stamina by week 3.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     VIDEO  ◆ CRO: Product Demonstration Video (20-60s, lazy-loaded)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--fill-3)">
+  <div class="container">
+    <span class="wf-tag">PRODUCT DEMONSTRATION VIDEO <em>· 30–60s · lazy-loaded</em></span>
+    <div class="video-block">
+      <div class="ph">VIDEO · Founder / Ayurveda Doctor explains formulation (45s)</div>
+      <div>
+        <h2 style="margin-bottom:14px">See how we formulate it</h2>
+        <p style="color:var(--ink-2);margin-bottom:14px">From farm-sourced herbs to the third-party lab test. No shortcuts, no fillers, no preservatives.</p>
+        <ul style="color:var(--ink-2);font-size:13px;padding-left:18px;display:flex;flex-direction:column;gap:6px">
+          <li>Single-origin Shilajit, purified 7 times</li>
+          <li>Cold-pressed and vacuum-encapsulated</li>
+          <li>Tested for heavy metals, microbes &amp; pesticides</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     COMPARISON  ◆ PDF: Position 5 · CSV: Comparison section (requested)
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="compare" class="section">
+  <div class="container">
+    <span class="wf-tag">COMPARISON SECTION <em>· us vs. alternatives</em></span>
+    <h2>Why choose Black Thunder Active+</h2>
+    <p class="sub">Side-by-side with typical men's supplements on the market.</p>
+
+    <div class="compare">
+      <div class="compare-row">
+        <div>&nbsp;</div>
+        <div class="us">UBN Black Thunder Active+</div>
+        <div>Generic Brands</div>
+      </div>
+      <div class="compare-row">
+        <div>100% Ayurvedic herbs</div>
+        <div class="us yes">✓</div>
+        <div class="no">Mixed synthetics</div>
+      </div>
+      <div class="compare-row">
+        <div>Free from chemicals &amp; fillers</div>
+        <div class="us yes">✓</div>
+        <div class="no">✗</div>
+      </div>
+      <div class="compare-row">
+        <div>Third-party lab tested</div>
+        <div class="us yes">✓</div>
+        <div>Rarely disclosed</div>
+      </div>
+      <div class="compare-row">
+        <div>FSSAI + GMP + AYUSH certified</div>
+        <div class="us yes">All 3</div>
+        <div>Usually 1</div>
+      </div>
+      <div class="compare-row">
+        <div>Transparent ingredient dosages</div>
+        <div class="us yes">✓ Every mg listed</div>
+        <div class="no">"Proprietary blend"</div>
+      </div>
+      <div class="compare-row">
+        <div>Subscribe &amp; Save</div>
+        <div class="us yes">✓ 15% off forever</div>
+        <div class="no">✗</div>
+      </div>
+      <div class="compare-row">
+        <div>30-day money back</div>
+        <div class="us yes">✓</div>
+        <div>7-day or none</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SOCIAL PROOF / UGC  ◆ CRO: Social Proof Section · UGC Photo Carousel
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--fill-3)">
+  <div class="container">
+    <span class="wf-tag">SOCIAL PROOF · UGC CAROUSEL <em>· Instagram + influencers</em></span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+      <div>
+        <h2>#UBNTransformations</h2>
+        <p class="sub" style="margin-bottom:0">Real men. Real 90-day results. Tag <strong>@ubalancenaturals</strong> to be featured.</p>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost" style="padding:10px 14px">‹</button>
+        <button class="btn btn-ghost" style="padding:10px 14px">›</button>
+      </div>
+    </div>
+    <div class="ugc-carousel">
+      <div class="ph ugc">UGC 1<br>@user · IG</div>
+      <div class="ph ugc">UGC 2<br>Influencer</div>
+      <div class="ph ugc">UGC 3<br>Before/After</div>
+      <div class="ph ugc">UGC 4<br>Reel / Video</div>
+      <div class="ph ugc">UGC 5<br>Testimonial card</div>
+    </div>
+
+    <!-- ═══ MOBILE-ONLY: swipeable UGC scroll ═══ -->
+    <div class="m-ugc-scroll mobile-only flex">
+      <div class="ph">UGC 1<br>@user</div>
+      <div class="ph">UGC 2<br>Influencer</div>
+      <div class="ph">UGC 3<br>Before/After</div>
+      <div class="ph">UGC 4<br>Reel</div>
+      <div class="ph">UGC 5<br>Testimonial</div>
+      <div class="ph">UGC 6<br>@user</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REVIEWS  ◆ CRO: Ratings Breakdown · Top Reviews · Filter by Stars
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="reviews" class="section">
+  <div class="container">
+    <span class="wf-tag">REVIEWS <em>· breakdown + filter + photo-rich top reviews</em></span>
+    <h2>What 247 customers are saying</h2>
+    <p class="sub">Verified reviews from confirmed buyers. We never filter out negative feedback.</p>
+
+    <div class="reviews">
+      <!-- Left: Summary + Breakdown -->
+      <div class="review-summary">
+        <div class="big-rating">4.7</div>
+        <div class="stars" style="font-size:20px">★★★★★</div>
+        <div style="color:var(--ink-2);margin-top:4px;font-size:13px">Based on 247 verified reviews</div>
+
+        <div class="breakdown">
+          <div class="brk-row"><span>5★</span><span class="brk-bar"><i style="width:72%"></i></span><span>178</span></div>
+          <div class="brk-row"><span>4★</span><span class="brk-bar"><i style="width:18%"></i></span><span>44</span></div>
+          <div class="brk-row"><span>3★</span><span class="brk-bar"><i style="width:6%"></i></span><span>15</span></div>
+          <div class="brk-row"><span>2★</span><span class="brk-bar"><i style="width:2%"></i></span><span>6</span></div>
+          <div class="brk-row"><span>1★</span><span class="brk-bar"><i style="width:1%"></i></span><span>4</span></div>
+        </div>
+
+        <button class="btn btn-outline btn-block" style="margin-top:18px">Write a Review</button>
+      </div>
+
+      <!-- Right: Reviews -->
+      <div>
+        <div class="review-filters">
+          <span class="pill solid">All (247)</span>
+          <span class="pill">★ With Photos (58)</span>
+          <span class="pill">5-star (178)</span>
+          <span class="pill">4-star (44)</span>
+          <span class="pill">3-star (15)</span>
+          <span class="pill">2-star (6)</span>
+          <span class="pill">1-star (4)</span>
+          <span class="pill">Sort: Most Helpful ▾</span>
+        </div>
+
+        <div class="review-list">
+          <div class="review">
+            <div class="review-head">
+              <div>
+                <div class="n">Rahul M. <span class="v">✓ Verified Purchase</span></div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <span style="color:var(--ink-3);font-size:12px">2 weeks ago</span>
+            </div>
+            <div class="review-body">
+              <strong>Actually works. Felt it by week 3.</strong><br>
+              Tried 4 different men's supplements before. This is the first one where I felt the stamina difference during workouts. No crash, no stomach issues. On my second bottle via subscription now.
+            </div>
+            <div class="review-photos">
+              <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="review-head">
+              <div>
+                <div class="n">Arjun S. <span class="v">✓ Verified Purchase</span></div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <span style="color:var(--ink-3);font-size:12px">1 month ago</span>
+            </div>
+            <div class="review-body">
+              <strong>Clean label, clean effects.</strong><br>
+              Love that every herb is listed with mg dosage. No "proprietary blend" nonsense. Energy has been more steady across the day, not the jittery caffeine kind.
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="review-head">
+              <div>
+                <div class="n">Vikram T. <span class="v">✓ Verified Purchase</span></div>
+                <div class="stars">★★★★☆</div>
+              </div>
+              <span style="color:var(--ink-3);font-size:12px">3 weeks ago</span>
+            </div>
+            <div class="review-body">
+              <strong>Good — give it time.</strong><br>
+              First 10 days I felt nothing. By week 3 noticeable stamina bump in the gym. Would be 5 stars if results came sooner but honestly that's how Ayurveda works.
+            </div>
+          </div>
+        </div>
+
+        <div class="write-review">
+          <button class="btn btn-ghost">Load 244 more reviews</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FREQUENTLY BOUGHT TOGETHER  ◆ CRO: Combo & Pack · FBT
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--fill-3)">
+  <div class="container">
+    <span class="wf-tag">FREQUENTLY BOUGHT TOGETHER <em>· combo with savings</em></span>
+    <h2>Complete the men's vitality stack</h2>
+    <p class="sub">Customers who bought Black Thunder Active+ also bought these. Save 18% as a combo.</p>
+
+    <div class="fbt">
+      <div class="fbt-items">
+        <div class="fbt-item">
+          <div class="ph"></div>
+          <div class="name">Black Thunder Active+</div>
+          <div class="price">₹3,299</div>
+          <label><input type="checkbox" checked> This item</label>
+        </div>
+        <span class="fbt-plus">+</span>
+        <div class="fbt-item">
+          <div class="ph"></div>
+          <div class="name">Stamina &amp; Endurance Booster</div>
+          <div class="price">₹1,999</div>
+          <label><input type="checkbox" checked> Add</label>
+        </div>
+        <span class="fbt-plus">+</span>
+        <div class="fbt-item">
+          <div class="ph"></div>
+          <div class="name">Immunity &amp; Sleep Detox</div>
+          <div class="price">₹1,499</div>
+          <label><input type="checkbox" checked> Add</label>
+        </div>
+      </div>
+      <div class="fbt-summary">
+        <div style="color:var(--ink-2);font-size:12px">Combo price (3 items)</div>
+        <div class="total">₹5,577<span style="color:var(--ink-3);font-weight:400;font-size:14px;text-decoration:line-through;margin-left:8px">₹6,797</span></div>
+        <div class="save">You save ₹1,220 (18%)</div>
+        <button class="btn btn-primary btn-block btn-lg">Add All 3 to Cart</button>
+        <div style="text-align:center;font-size:11px;color:var(--ink-3);margin-top:8px">Free shipping unlocked</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FAQs  ◆ CRO: FAQ Section (grouped by theme, accordion)
+     ═══════════════════════════════════════════════════════════════ -->
+<section id="faqs" class="section">
+  <div class="container">
+    <span class="wf-tag">FAQ SECTION <em>· themed accordion</em></span>
+    <h2>Frequently asked questions</h2>
+    <p class="sub">Can't find an answer? Chat with our Ayurveda consultant — bottom right.</p>
+
+    <div class="faq-groups">
+      <aside>
+        <a class="active">About the product</a>
+        <a>Usage &amp; dosage</a>
+        <a>Results &amp; safety</a>
+        <a>Shipping &amp; returns</a>
+        <a>Subscription</a>
+      </aside>
+      <div>
+        <details class="q" open>
+          <summary>Who is Black Thunder Active+ for?</summary>
+          <div class="a">Men 21+ looking for natural support for stamina, strength, and vitality. Not recommended for those under 18 or on prescription hormone therapy without a doctor's consultation.</div>
+        </details>
+        <details class="q">
+          <summary>How long until I see results?</summary>
+          <div class="a">Most users notice a shift in energy and focus by week 2–3. Strength and stamina improvements typically compound over 60–90 days of consistent use.</div>
+        </details>
+        <details class="q">
+          <summary>Are there any side effects?</summary>
+          <div class="a">Black Thunder Active+ is made from 100% natural Ayurvedic herbs with no known side effects at the recommended dosage. If you have existing medical conditions or take medications, consult your doctor first.</div>
+        </details>
+        <details class="q">
+          <summary>Can I take it with other supplements or medication?</summary>
+          <div class="a">Generally safe with standard multivitamins and protein. If you are on blood pressure, diabetes, or hormone medication, please consult your physician before starting.</div>
+        </details>
+        <details class="q">
+          <summary>How fast is delivery?</summary>
+          <div class="a">Metro cities: 2–3 days. Rest of India: 4–6 days. Free shipping on orders above ₹999. COD available.</div>
+        </details>
+        <details class="q">
+          <summary>What is your return policy?</summary>
+          <div class="a">30-day money-back guarantee. If you're not satisfied, email support@ubnaturals.com for a full refund — no questions asked.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TRUST / SECURITY STRIP  ◆ CRO: Trust / Security Section
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:var(--fill-3)">
+  <div class="container">
+    <span class="wf-tag">TRUST / SECURITY <em>· payment, SSL, guarantees</em></span>
+    <div class="sec">
+      <div class="sec-item"><div class="ph">🔒</div><div><h4>SSL 256-bit Encrypted</h4><p>Your data is fully protected</p></div></div>
+      <div class="sec-item"><div class="ph">💳</div><div><h4>Razorpay Secured</h4><p>PCI-DSS compliant checkout</p></div></div>
+      <div class="sec-item"><div class="ph">↺</div><div><h4>30-Day Money Back</h4><p>Full refund, no questions</p></div></div>
+      <div class="sec-item"><div class="ph">☎</div><div><h4>Human Support</h4><p>Mon–Sat · 10 am – 7 pm IST</p></div></div>
+    </div>
+    <div class="pay-methods">
+      <div class="ph">VISA</div><div class="ph">MC</div><div class="ph">RuPay</div>
+      <div class="ph">UPI</div><div class="ph">NetBank</div><div class="ph">GPay</div>
+      <div class="ph">PhonePe</div><div class="ph">COD</div><div class="ph">Paytm</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     UPSELL  ◆ PDF: Product Position 9 · Related Products
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <span class="wf-tag">UPSELL <em>· complete the routine</em></span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+      <div>
+        <h2>You may also like</h2>
+        <p class="sub" style="margin-bottom:0">Bestsellers paired with Black Thunder Active+.</p>
+      </div>
+      <a style="color:var(--accent);font-weight:700">View all →</a>
+    </div>
+    <div class="upsell">
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Ashwagandha KSM-66 Pro</div>
+        <div class="stars">★★★★★ <span style="color:var(--ink-3)">(124)</span></div>
+        <div class="pr"><strong>₹1,499</strong><span class="old">₹1,799</span></div>
+        <button class="btn btn-outline">+ Add to Cart</button>
+      </div>
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Shilajit Gold Resin</div>
+        <div class="stars">★★★★★ <span style="color:var(--ink-3)">(89)</span></div>
+        <div class="pr"><strong>₹2,299</strong><span class="old">₹2,799</span></div>
+        <button class="btn btn-outline">+ Add to Cart</button>
+      </div>
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Immunity &amp; Sleep Detox</div>
+        <div class="stars">★★★★☆ <span style="color:var(--ink-3)">(62)</span></div>
+        <div class="pr"><strong>₹1,499</strong><span class="old">₹1,799</span></div>
+        <button class="btn btn-outline">+ Add to Cart</button>
+      </div>
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Testo Balance for Men</div>
+        <div class="stars">★★★★★ <span style="color:var(--ink-3)">(47)</span></div>
+        <div class="pr"><strong>₹2,199</strong><span class="old">₹2,599</span></div>
+        <button class="btn btn-outline">+ Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- ═══ MOBILE-ONLY: swipeable upsell ═══ -->
+    <div class="m-up-scroll mobile-only flex">
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Ashwagandha KSM-66 Pro</div>
+        <div class="stars">★★★★★ <span style="color:var(--ink-3);font-size:10px">(124)</span></div>
+        <div class="pr"><strong>₹1,499</strong><span class="old">₹1,799</span></div>
+        <button class="btn btn-outline" style="padding:10px;font-size:12px">+ Add</button>
+      </div>
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Shilajit Gold Resin</div>
+        <div class="stars">★★★★★ <span style="color:var(--ink-3);font-size:10px">(89)</span></div>
+        <div class="pr"><strong>₹2,299</strong><span class="old">₹2,799</span></div>
+        <button class="btn btn-outline" style="padding:10px;font-size:12px">+ Add</button>
+      </div>
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Immunity &amp; Sleep Detox</div>
+        <div class="stars">★★★★☆ <span style="color:var(--ink-3);font-size:10px">(62)</span></div>
+        <div class="pr"><strong>₹1,499</strong><span class="old">₹1,799</span></div>
+        <button class="btn btn-outline" style="padding:10px;font-size:12px">+ Add</button>
+      </div>
+      <div class="up">
+        <div class="ph"></div>
+        <div class="name">Testo Balance for Men</div>
+        <div class="stars">★★★★★ <span style="color:var(--ink-3);font-size:10px">(47)</span></div>
+        <div class="pr"><strong>₹2,199</strong><span class="old">₹2,599</span></div>
+        <button class="btn btn-outline" style="padding:10px;font-size:12px">+ Add</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h5>Ubalance Naturals</h5>
+        <p style="font-size:12px;line-height:1.7">Rooted in Ayurveda. Built for modern life. 100% natural supplements, clinically tested, transparently dosed.</p>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <div class="ph" style="width:32px;height:32px;min-height:0">IG</div>
+          <div class="ph" style="width:32px;height:32px;min-height:0">FB</div>
+          <div class="ph" style="width:32px;height:32px;min-height:0">YT</div>
+          <div class="ph" style="width:32px;height:32px;min-height:0">X</div>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Shop</h5>
+        <a>Men's Wellness</a><a>Women's Wellness</a><a>Vitality</a><a>Immunity</a><a>Sleep &amp; Stress</a><a>Bestsellers</a>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <a>Track Order</a><a>Shipping &amp; Returns</a><a>Contact Us</a><a>WhatsApp Us</a><a>FAQs</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a>Our Story</a><a>Ayurveda Blog</a><a>Ingredient Sourcing</a><a>Lab Reports</a><a>Press</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a>Privacy Policy</a><a>Terms of Service</a><a>Refund Policy</a><a>Disclaimer</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Ubalance Naturals Pvt. Ltd. All rights reserved.</span>
+      <span>FSSAI Lic. No. XXXXXXXXXXXXX · GMP · AYUSH Approved</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FLOATING LIVE CHAT  ◆ CRO: Live Chat for pre-purchase doubts
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="chat-float">Ask our Ayurveda expert</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MOBILE STICKY CTA BAR  ◆ CRO: Persistent / Mobile UX
+     Row 1: Quick price summary (pack · price · savings)
+     Row 2: Paired Buy Now + Add to Cart buttons
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="mobile-cta m2">
+  <div class="mp-block">
+    <span class="mp-size">2 Bottles · Subscribe &amp; Save</span>
+    <span class="mp-price-row">
+      <span class="now">₹5,099</span>
+      <span class="old">₹7,998</span>
+      <span class="off">SAVE 36%</span>
+      <span class="mp-delivery">· Free ship</span>
+    </span>
+  </div>
+  <div class="cta-pair">
+    <button class="btn btn-primary">⚡ Buy Now</button>
+    <button class="btn btn-soft">🛍 Add to Cart</button>
+  </div>
+</div>
+
+<!-- NOTE: Lazy-loading + skeleton loaders are implementation-level
+     (loading="lazy" on <img>, IntersectionObserver for videos, skeleton
+     shimmer on review/UGC blocks). Covered as CRO pillar but not
+     visually expressible in a low-fi wireframe. -->
+
+</body>
+</html>
