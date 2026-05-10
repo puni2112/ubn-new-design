@@ -971,11 +971,9 @@ Object.assign(vaStyles, {
   },
   fMetaBig: {
     fontFamily: '"Instrument Serif", Georgia, serif',
-    fontStyle: 'italic',
-    fontSize: 20,
-    lineHeight: 1.0,
-    color: '#1a4d2e',
-    letterSpacing: '-0.01em',
+    fontSize: 19,
+    color: '#1a1a1a',
+    lineHeight: 1.15,
     whiteSpace: 'nowrap',
   },
   fMetaSmall: {
