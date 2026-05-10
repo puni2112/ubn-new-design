@@ -240,9 +240,9 @@ function VariationAV2() {
       <div style={vaStyles.formulary}>
         <div style={vaStyles.fHeadRow}>
           <div>
-            <div style={vaStyles.fMastEyebrow}>The Formulary</div>
+            <div style={vaStyles.fMastEyebrow}>The Ancient Secret Formula</div>
             <h3 style={vaStyles.fMastTitle}>
-              Ayurvedic <em style={vaStyles.fMastTitleEm}>&amp; natural</em> actives
+              20 Ayurvedic <em style={vaStyles.fMastTitleEm}>&amp; natural</em> actives
             </h3>
           </div>
           <div style={vaStyles.fMeta}>
