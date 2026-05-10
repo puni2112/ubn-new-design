@@ -219,7 +219,7 @@ function VariationAV2() {
         20 Herbs. 2 Rituals. <em style={vaStyles.hookEm}>1 Transformation.</em>
       </div>
       <p style={vaStyles.body}>
-        Each protocol delivers the complete 20-active formula in 10 ml a day — choose the rhythm that fits your routine.
+        Each protocol delivers the complete 20-active herb formula in each dose, choose the rhythm that fits your routine.
       </p>
       <div style={vaStyles.dosageRow}>
         {[c.dosageA, c.dosageB].map((d, i) => (
