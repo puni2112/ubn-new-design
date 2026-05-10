@@ -122,26 +122,26 @@ const SUPPORT_HERBS = [
 
 // Unified ingredient ledger — first 4 are "featured", rest revealed via accordion
 const ALL_HERBS = [
-  { name: 'Shilajit',     latin: 'Asphaltum punjabinum',      role: 'Mineral resin', note: 'Mitochondrial fuel from the high Himalaya.' },
-  { name: 'Ashwagandha',  latin: 'Withania somnifera',        role: 'Adaptogen',     note: 'The royal restorer of strength and calm.' },
-  { name: 'Safed Musli',  latin: 'Chlorophytum borivilianum', role: 'Vitalizer',     note: 'White gold of the Aravalli — sustained stamina.' },
-  { name: 'Kaunch Beej',  latin: 'Mucuna pruriens',           role: 'Drive',         note: 'Velvet bean prized for natural dopamine support.' },
-  { name: 'Ginseng',      latin: 'Panax ginseng',             role: 'Adaptogen',     note: 'Six-year root for clean, steady energy.' },
-  { name: 'Kesar',        latin: 'Crocus sativus',            role: 'Circulation',   note: 'Hand-picked Kashmiri saffron threads.' },
-  { name: 'Vidarikand',   latin: 'Pueraria tuberosa',         role: 'Tonic',         note: 'Restorative tuber for tissue building.' },
-  { name: 'Gokhru',       latin: 'Tribulus terrestris',       role: 'Vitalizer',     note: 'Classical Ayurvedic vigor herb.' },
-  { name: 'Shatavari',    latin: 'Asparagus racemosus',       role: 'Adaptogen',     note: 'Cooling balancer for endurance.' },
-  { name: 'Triphala',     latin: 'Three-fruit blend',         role: 'Digestive',     note: 'Foundational gut & assimilation support.' },
-  { name: 'Ginger',       latin: 'Zingiber officinale',       role: 'Carrier',       note: 'Activates absorption of every active.' },
-  { name: 'Aloe Vera',    latin: 'Aloe barbadensis',          role: 'Soothing',      note: 'Cools and carries the formula.' },
-  { name: 'Cinnamon',     latin: 'Cinnamomum verum',          role: 'Warming',       note: 'Circulatory warmth and clean sweetness.' },
-  { name: 'Akarkara',     latin: 'Anacyclus pyrethrum',       role: 'Vitalizer',     note: 'Pellitory root for nerve tone.' },
-  { name: 'Jaiphal',      latin: 'Myristica fragrans',        role: 'Calming',       note: 'Nutmeg seed for restful nights.' },
-  { name: 'Lavang',       latin: 'Syzygium aromaticum',       role: 'Aromatic',      note: 'Clove for digestive fire.' },
-  { name: 'Gond Pater',   latin: 'Gum resin',                 role: 'Binder',        note: 'Traditional formulary binder.' },
-  { name: 'Vang Bhasam',  latin: 'Calx of tin',               role: 'Bhasma',        note: 'Classical mineral calx.' },
-  { name: 'Loh Bhasam',   latin: 'Calx of iron',              role: 'Bhasma',        note: 'Iron calx for blood vitality.' },
-  { name: 'Moti Bhasam',  latin: 'Pearl calx',                role: 'Bhasma',        note: 'Pearl calx — cooling, mineralizing.' },
+  { name: 'Shilajit',     latin: 'Asphaltum punjabinum',      qty: '25 mg',   note: 'Mitochondrial fuel from the high Himalaya.' },
+  { name: 'Ashwagandha',  latin: 'Withania somnifera',        qty: '250 mg',  note: 'The royal restorer of strength and calm.' },
+  { name: 'Ginseng',      latin: 'Panax ginseng',             qty: '1000 mg', note: 'Six-year root for clean, steady energy.' },
+  { name: 'Akarkara',     latin: 'Anacyclus pyrethrum',       qty: '50 mg',   note: 'Pellitory root for nerve tone.' },
+  { name: 'Kaunch Beej',  latin: 'Mucuna pruriens',           qty: '50 mg',   note: 'Velvet bean prized for natural dopamine support.' },
+  { name: 'Shatavari',    latin: 'Asparagus racemosus',       qty: '50 mg',   note: 'Cooling balancer for endurance.' },
+  { name: 'Safed Musli',  latin: 'Chlorophytum borivilianum', qty: '50 mg',   note: 'White gold of the Aravalli — sustained stamina.' },
+  { name: 'Jaiphal',      latin: 'Myristica fragrans',        qty: '50 mg',   note: 'Nutmeg seed for restful nights.' },
+  { name: 'Gokhru',       latin: 'Tribulus terrestris',       qty: '50 mg',   note: 'Classical Ayurvedic vigor herb.' },
+  { name: 'Vidarikand',   latin: 'Pueraria tuberosa',         qty: '50 mg',   note: 'Restorative tuber for tissue building.' },
+  { name: 'Aloe Vera',    latin: 'Aloe barbadensis',          qty: '2000 mg', note: 'Cools and carries the formula.' },
+  { name: 'Triphala',     latin: 'Emblica officinalis',       qty: '100 mg',  note: 'Foundational gut & assimilation support.' },
+  { name: 'Lavang',       latin: 'Syzygium aromaticum',       qty: '25 mg',   note: 'Clove for digestive fire.' },
+  { name: 'Dalchini',     latin: 'Cinnamomum verum',          qty: '25 mg',   note: 'Circulatory warmth and clean sweetness.' },
+  { name: 'Gond Pater',   latin: 'Gum tragacanth',            qty: '20 mg',   note: 'Traditional formulary binder.' },
+  { name: 'Ginger',       latin: 'Zingiber officinale',       qty: '10 mg',   note: 'Activates absorption of every active.' },
+  { name: 'Vang Bhasam',  latin: 'Calx of tin',               qty: '5 mg',    note: 'Classical mineral calx.' },
+  { name: 'Loh Bhasam',   latin: 'Calx of iron',              qty: '5 mg',    note: 'Iron calx for blood vitality.' },
+  { name: 'Moti Bhasam',  latin: 'Pearl calx',                qty: '5 mg',    note: 'Pearl calx — cooling, mineralizing.' },
+  { name: 'Kesar',        latin: 'Crocus sativus',            qty: '5 mg',    note: 'Hand-picked Kashmiri saffron threads.' },
 ];
 
 const FEATURED_COUNT = 4;
@@ -257,7 +257,7 @@ function VariationAV2() {
               <span style={vaStyles.fRowIdx}>{String(i + 1).padStart(2, '0')}</span>
               <span style={vaStyles.fRowName}>{h.name}</span>
               <span style={vaStyles.fRowLatin}>{h.latin}</span>
-              <span style={vaStyles.fRowRole}>{h.role}</span>
+              <span style={vaStyles.fRowQty}>{h.qty}</span>
             </div>
           ))}
           <div
@@ -274,7 +274,7 @@ function VariationAV2() {
                   <span style={vaStyles.fRowIdx}>{String(i + FEATURED_COUNT + 1).padStart(2, '0')}</span>
                   <span style={vaStyles.fRowName}>{h.name}</span>
                   <span style={vaStyles.fRowLatin}>{h.latin}</span>
-                  <span style={vaStyles.fRowRole}>{h.role}</span>
+                  <span style={vaStyles.fRowQty}>{h.qty}</span>
                 </div>
               ))}
             </div>
@@ -1026,15 +1026,16 @@ Object.assign(vaStyles, {
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   },
-  fRowRole: {
+  fRowQty: {
     fontFamily: '"Geist Mono", monospace',
-    fontSize: 8.5,
-    letterSpacing: '0.14em',
+    fontSize: 11,
+    letterSpacing: '0.06em',
     textTransform: 'uppercase',
     color: '#1a4d2e',
-    background: '#f3eede',
-    padding: '2px 7px',
-    borderRadius: 999,
+    fontWeight: 500,
+    fontVariantNumeric: 'tabular-nums',
+    minWidth: 60,
+    textAlign: 'right',
   },
   fToggle: {
     width: '100%',
