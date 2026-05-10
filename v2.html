@@ -237,6 +237,37 @@
       /* Light breathing between consecutive sections of the right rail */
       .vA-host > div > * + * { margin-top: 4px; }
 
+      /* Formulary rows: stack name above Latin so scientific names don't truncate */
+      .vA-host .f-row {
+        grid-template-columns: 24px minmax(0, 1fr) auto !important;
+        grid-template-rows: auto auto !important;
+        column-gap: 10px !important;
+        row-gap: 1px !important;
+      }
+      .vA-host .f-row-idx {
+        grid-column: 1 !important;
+        grid-row: 1 / span 2 !important;
+        align-self: center !important;
+      }
+      .vA-host .f-row-name {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        margin-right: 0 !important;
+      }
+      .vA-host .f-row-latin {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        min-width: 0 !important;
+      }
+      .vA-host .f-row-qty {
+        grid-column: 3 !important;
+        grid-row: 1 / span 2 !important;
+        align-self: center !important;
+      }
+
       /* Sticky buy bar at bottom */
       .vA-buy-stick {
         position: fixed;

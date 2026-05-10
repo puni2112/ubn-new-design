@@ -252,11 +252,11 @@ function VariationAV2() {
 
         <div style={vaStyles.fList}>
           {ALL_HERBS.slice(0, FEATURED_COUNT).map((h, i) => (
-            <div key={h.name} style={vaStyles.fRow}>
-              <span style={vaStyles.fRowIdx}>{String(i + 1).padStart(2, '0')}</span>
-              <span style={vaStyles.fRowName}>{h.name}</span>
-              <span style={vaStyles.fRowLatin}>{h.latin}</span>
-              <span style={vaStyles.fRowQty}>{h.qty}</span>
+            <div key={h.name} className="f-row" style={vaStyles.fRow}>
+              <span className="f-row-idx" style={vaStyles.fRowIdx}>{String(i + 1).padStart(2, '0')}</span>
+              <span className="f-row-name" style={vaStyles.fRowName}>{h.name}</span>
+              <span className="f-row-latin" style={vaStyles.fRowLatin}>{h.latin}</span>
+              <span className="f-row-qty" style={vaStyles.fRowQty}>{h.qty}</span>
             </div>
           ))}
           <div
@@ -269,11 +269,11 @@ function VariationAV2() {
           >
             <div style={vaStyles.fAccordionInner}>
               {ALL_HERBS.slice(FEATURED_COUNT).map((h, i) => (
-                <div key={h.name} style={vaStyles.fRow}>
-                  <span style={vaStyles.fRowIdx}>{String(i + FEATURED_COUNT + 1).padStart(2, '0')}</span>
-                  <span style={vaStyles.fRowName}>{h.name}</span>
-                  <span style={vaStyles.fRowLatin}>{h.latin}</span>
-                  <span style={vaStyles.fRowQty}>{h.qty}</span>
+                <div key={h.name} className="f-row" style={vaStyles.fRow}>
+                  <span className="f-row-idx" style={vaStyles.fRowIdx}>{String(i + FEATURED_COUNT + 1).padStart(2, '0')}</span>
+                  <span className="f-row-name" style={vaStyles.fRowName}>{h.name}</span>
+                  <span className="f-row-latin" style={vaStyles.fRowLatin}>{h.latin}</span>
+                  <span className="f-row-qty" style={vaStyles.fRowQty}>{h.qty}</span>
                 </div>
               ))}
             </div>
