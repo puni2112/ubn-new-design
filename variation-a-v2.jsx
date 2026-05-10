@@ -215,8 +215,11 @@ function VariationAV2() {
       </div>
 
       {/* Dosage — 2 col compact */}
-      <p style={vaStyles.dosageIntro}>
-        <em style={vaStyles.emphasis}>Two rituals, one transformation.</em> Each protocol delivers the complete 20-active formula in 10 ml a day — choose the rhythm that fits your routine.
+      <div style={vaStyles.noJittersLine}>
+        20 Herbs. 2 Rituals. <em style={vaStyles.hookEm}>1 Transformation.</em>
+      </div>
+      <p style={vaStyles.body}>
+        Each protocol delivers the complete 20-active formula in 10 ml a day — choose the rhythm that fits your routine.
       </p>
       <div style={vaStyles.dosageRow}>
         {[c.dosageA, c.dosageB].map((d, i) => (
@@ -519,12 +522,6 @@ const vaStyles = {
     color: '#5a5a5a',
     marginBottom: 8,
     fontWeight: 500,
-  },
-  dosageIntro: {
-    margin: '8px 0 12px',
-    fontSize: 13.5,
-    lineHeight: 1.5,
-    color: '#2a2a2a',
   },
   benefitsBlock: {
     margin: '14px -4px 18px',
