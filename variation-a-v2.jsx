@@ -1017,7 +1017,7 @@ Object.assign(vaStyles, {
     fontWeight: 500,
   },
   fRowLatin: {
-    fontFamily: '"Instrument Serif", Georgia, serif',
+    fontFamily: 'inherit',
     fontStyle: 'italic',
     fontSize: 11.5,
     color: '#5a5a5a',
