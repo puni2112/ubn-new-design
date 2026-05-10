@@ -455,7 +455,7 @@ const vaStyles = {
   },
   transformLine: {
     fontFamily: '"Instrument Serif", Georgia, serif',
-    fontSize: 24,
+    fontSize: 28,
     lineHeight: 1.15,
     fontWeight: 400,
     color: '#1a4d2e',
