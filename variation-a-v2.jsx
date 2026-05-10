@@ -997,7 +997,7 @@ Object.assign(vaStyles, {
   },
   fRow: {
     display: 'grid',
-    gridTemplateColumns: '24px minmax(90px, auto) 1fr auto',
+    gridTemplateColumns: '24px 170px 1fr auto',
     alignItems: 'baseline',
     columnGap: 10,
     padding: '7px 0',
@@ -1016,7 +1016,6 @@ Object.assign(vaStyles, {
     letterSpacing: 0,
     color: '#1a1a1a',
     fontWeight: 500,
-    marginRight: 18,
   },
   fRowLatin: {
     fontFamily: 'inherit',
