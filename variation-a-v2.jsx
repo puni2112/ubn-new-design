@@ -241,7 +241,7 @@ function VariationAV2() {
         <div style={vaStyles.fHeadRow}>
           <div>
             <h3 style={vaStyles.fMastTitle}>
-              20 Ayurvedic <em style={vaStyles.fMastTitleEm}>&amp; 100% natural actives</em>
+              20 Ayurvedic &amp; 100% natural actives
             </h3>
           </div>
           <div style={vaStyles.fMeta}>
@@ -949,7 +949,7 @@ Object.assign(vaStyles, {
   },
   fMastTitle: {
     fontFamily: '"Instrument Serif", Georgia, serif',
-    fontSize: 17,
+    fontSize: 20,
     lineHeight: 1.1,
     letterSpacing: '-0.01em',
     color: '#1a1a1a',
