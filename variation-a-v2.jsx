@@ -1009,11 +1009,12 @@ Object.assign(vaStyles, {
     color: '#c9842b',
   },
   fRowName: {
-    fontFamily: '"Instrument Serif", Georgia, serif',
-    fontSize: 16,
-    lineHeight: 1.05,
-    letterSpacing: '-0.01em',
+    fontFamily: 'inherit',
+    fontSize: 13.5,
+    lineHeight: 1.2,
+    letterSpacing: 0,
     color: '#1a1a1a',
+    fontWeight: 500,
   },
   fRowLatin: {
     fontFamily: '"Instrument Serif", Georgia, serif',
