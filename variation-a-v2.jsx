@@ -246,8 +246,8 @@ function VariationAV2() {
             </h3>
           </div>
           <div style={vaStyles.fMeta}>
-            <span style={vaStyles.fMetaNum}>20</span>
-            <span style={vaStyles.fMetaLbl}>actives<br/>3825 mg / 10 ml</span>
+            <span style={vaStyles.fMetaBig}>3825 mg per 10 ml</span>
+            <span style={vaStyles.fMetaSmall}>High Concentration Formula</span>
           </div>
         </div>
 
@@ -963,19 +963,22 @@ Object.assign(vaStyles, {
   },
   fMeta: {
     display: 'flex',
-    alignItems: 'center',
-    gap: 8,
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    gap: 4,
     paddingBottom: 2,
+    textAlign: 'right',
   },
-  fMetaNum: {
+  fMetaBig: {
     fontFamily: '"Instrument Serif", Georgia, serif',
-    fontSize: 32,
-    lineHeight: 0.9,
-    color: '#1a4d2e',
     fontStyle: 'italic',
-    letterSpacing: '-0.02em',
+    fontSize: 20,
+    lineHeight: 1.0,
+    color: '#1a4d2e',
+    letterSpacing: '-0.01em',
+    whiteSpace: 'nowrap',
   },
-  fMetaLbl: {
+  fMetaSmall: {
     fontFamily: '"Geist Mono", monospace',
     fontSize: 8.5,
     letterSpacing: '0.12em',
