@@ -194,6 +194,10 @@ function VariationAV2() {
       <div style={vaStyles.noJittersLine}>
         No Jitters. No Crash. <em style={vaStyles.hookEm}>No Dependency.</em>
       </div>
+      {/* Body — one tight paragraph */}
+      <p style={vaStyles.body}>
+        <em style={vaStyles.emphasis}>Pure Ayurvedic actives, nothing else.</em> No caffeine, no synthetics, no hidden stimulants — just <strong>steady, sustainable vitality</strong> your body can lean on every single day.
+      </p>
 
       {/* Trust — editorial 3-col with bespoke icons */}
       <div style={vaStyles.trustBlock}>
@@ -444,7 +448,7 @@ const vaStyles = {
     fontWeight: 400,
     color: '#1a4d2e',
     letterSpacing: '-0.015em',
-    margin: '20px 0 9px',
+    margin: '20px 0 0',
   },
   transformLine: {
     fontFamily: '"Instrument Serif", Georgia, serif',
