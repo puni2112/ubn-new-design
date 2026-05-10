@@ -156,10 +156,6 @@ function VariationAV2() {
       {/* Eyebrow + Title row */}
       <div style={vaStyles.headRow} className="v-head-row">
         <div className="v-head-left">
-          <div style={vaStyles.eyebrow}>
-            <span style={vaStyles.eyebrowDot} />
-            <span style={vaStyles.eyebrowText}>Ayurvedic Performance Tonic</span>
-          </div>
           <h1 style={vaStyles.title} className="v-title">{c.brand}</h1>
           <div style={vaStyles.hindi} className="v-hindi">{c.hindi}</div>
         </div>
@@ -215,7 +211,9 @@ function VariationAV2() {
       </div>
 
       {/* Dosage — 2 col compact */}
-      <div style={vaStyles.sectionLabel}>How to take · two protocols</div>
+      <p style={vaStyles.dosageIntro}>
+        <em style={vaStyles.emphasis}>Two rituals, one transformation.</em> Each protocol delivers the complete 20-active formula in 10 ml a day — choose the rhythm that fits your routine.
+      </p>
       <div style={vaStyles.dosageRow}>
         {[c.dosageA, c.dosageB].map((d, i) => (
           <div key={i} style={vaStyles.dosageCard}>
@@ -517,6 +515,12 @@ const vaStyles = {
     color: '#5a5a5a',
     marginBottom: 8,
     fontWeight: 500,
+  },
+  dosageIntro: {
+    margin: '8px 0 12px',
+    fontSize: 13.5,
+    lineHeight: 1.5,
+    color: '#2a2a2a',
   },
   benefitsBlock: {
     margin: '14px -4px 18px',
