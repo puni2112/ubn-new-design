@@ -144,7 +144,7 @@ const ALL_HERBS = [
   { name: 'Kesar',        latin: 'Crocus sativus',            qty: '5 mg',    note: 'Hand-picked Kashmiri saffron threads.' },
 ];
 
-const FEATURED_COUNT = 4;
+const FEATURED_COUNT = 2;
 
 function VariationAV2() {
   const c = window.CONTENT;
