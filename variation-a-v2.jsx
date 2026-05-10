@@ -216,7 +216,7 @@ function VariationAV2() {
 
       {/* Dosage — 2 col compact */}
       <div style={vaStyles.noJittersLine}>
-        20 Herbs. 2 Rituals. <em style={vaStyles.hookEm}>1 Transformation.</em>
+        Twenty Herbs. Two Rituals. <em style={vaStyles.hookEm}>One Transformation.</em>
       </div>
       <p style={vaStyles.body}>
         Each protocol delivers the complete 20-active herb formula in each dose, choose the rhythm that fits your routine.
