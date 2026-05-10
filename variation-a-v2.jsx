@@ -1016,6 +1016,7 @@ Object.assign(vaStyles, {
     letterSpacing: 0,
     color: '#1a1a1a',
     fontWeight: 500,
+    marginRight: 18,
   },
   fRowLatin: {
     fontFamily: 'inherit',
