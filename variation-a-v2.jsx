@@ -242,7 +242,7 @@ function VariationAV2() {
           <div>
             <div style={vaStyles.fMastEyebrow}>The Ancient Secret Formula</div>
             <h3 style={vaStyles.fMastTitle}>
-              20 Ayurvedic <em style={vaStyles.fMastTitleEm}>&amp; natural</em> actives
+              20 Ayurvedic <em style={vaStyles.fMastTitleEm}>&amp; 100% natural actives</em>
             </h3>
           </div>
           <div style={vaStyles.fMeta}>
