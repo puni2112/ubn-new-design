@@ -201,10 +201,6 @@ function VariationAV2() {
 
       {/* Trust — editorial 3-col with bespoke icons */}
       <div style={vaStyles.trustBlock}>
-        <div style={vaStyles.trustHead}>
-          <span style={vaStyles.trustOrnament}>❋</span>
-          <span style={vaStyles.trustHeadEyebrow}>Three commitments</span>
-        </div>
         <div style={vaStyles.trustRow}>
           {c.trust.map((t, i) => (
             <div key={i} style={{...vaStyles.trustItem, ...(i < c.trust.length - 1 ? vaStyles.trustItemDivider : {})}}>
@@ -450,7 +446,7 @@ const vaStyles = {
     fontWeight: 400,
     color: '#1a4d2e',
     letterSpacing: '-0.015em',
-    margin: '20px 0 18px',
+    margin: '20px 0 9px',
   },
   transformLine: {
     fontFamily: '"Instrument Serif", Georgia, serif',
@@ -717,8 +713,8 @@ const vaStyles = {
     color: '#1a1a1a',
   },
   trustBlock: {
-    marginTop: 6,
-    paddingTop: 18,
+    marginTop: 3,
+    paddingTop: 9,
     paddingBottom: 18,
     position: 'relative',
   },
