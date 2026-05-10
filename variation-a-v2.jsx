@@ -219,7 +219,7 @@ function VariationAV2() {
         Twenty Herbs. Two Rituals. <em style={vaStyles.hookEm}>One Transformation.</em>
       </div>
       <p style={vaStyles.body}>
-        Each protocol delivers the complete 20-active herb formula in each dose, choose the rhythm that fits your routine.
+        <em style={vaStyles.emphasis}>Choose your ritual.</em> Each protocol delivers the complete 20-active herb formula in each dose, choose the rhythm that fits your routine.
       </p>
       <div style={vaStyles.dosageRow}>
         {[c.dosageA, c.dosageB].map((d, i) => (
