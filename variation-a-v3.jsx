@@ -867,7 +867,7 @@ const vaStyles = {
   },
   priceMrp: {
     fontFamily: '"Instrument Serif", Georgia, serif',
-    fontSize: 13,
+    fontSize: 13.5,
     color: '#1a1a1a',
     letterSpacing: '-0.005em',
   },
@@ -875,7 +875,7 @@ const vaStyles = {
     display: 'flex',
     alignItems: 'center',
     gap: 6,
-    fontSize: 10.5,
+    fontSize: 12.5,
     color: '#888',
   },
   priceDot: { color: '#bbb' },
