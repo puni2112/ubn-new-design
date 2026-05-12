@@ -508,9 +508,10 @@ const vaStyles = {
     color: '#2a2a2a',
   },
   emphasis: {
-    fontFamily: '"Instrument Serif", Georgia, serif',
+    fontFamily: 'inherit',
     fontStyle: 'italic',
-    fontSize: '1.1em',
+    fontWeight: 500,
+    fontSize: '1em',
     color: '#1a4d2e',
   },
   sectionLabel: {
