@@ -503,7 +503,7 @@ const vaStyles = {
   },
   body: {
     margin: '0 0 16px',
-    fontSize: 13.5,
+    fontSize: 15.5,
     lineHeight: 1.55,
     color: '#2a2a2a',
   },
