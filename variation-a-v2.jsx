@@ -525,7 +525,7 @@ const vaStyles = {
   benefitsBlock: {
     margin: '14px -4px 18px',
     padding: '20px 22px 16px',
-    background: 'linear-gradient(180deg, #f7f0e1 0%, #f3eede 100%)',
+    background: '#faf6ee',
     border: '1px solid #c9842b33',
     borderRadius: 4,
     position: 'relative',
