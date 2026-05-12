@@ -632,9 +632,8 @@ const vaStyles = {
     textAlign: 'center',
   },
   dosageLabel: {
-    fontFamily: '"Geist Mono", monospace',
+    fontFamily: 'inherit',
     fontSize: 10,
-    letterSpacing: '0.08em',
     color: '#1a4d2e',
   },
   dosageDose: {
@@ -974,9 +973,8 @@ Object.assign(vaStyles, {
     whiteSpace: 'nowrap',
   },
   fMetaSmall: {
-    fontFamily: '"Geist Mono", monospace',
+    fontFamily: 'inherit',
     fontSize: 8.5,
-    letterSpacing: '0.12em',
     color: '#888',
     lineHeight: 1.3,
   },
@@ -1024,9 +1022,8 @@ Object.assign(vaStyles, {
     whiteSpace: 'nowrap',
   },
   fRowQty: {
-    fontFamily: '"Geist Mono", monospace',
+    fontFamily: 'inherit',
     fontSize: 11,
-    letterSpacing: '0.06em',
     color: '#1a4d2e',
     fontWeight: 500,
     fontVariantNumeric: 'tabular-nums',
@@ -1046,9 +1043,8 @@ Object.assign(vaStyles, {
     fontFamily: 'inherit',
   },
   fToggleText: {
-    fontFamily: '"Geist Mono", monospace',
+    fontFamily: 'inherit',
     fontSize: 10,
-    letterSpacing: '0.14em',
     color: '#1a4d2e',
     fontWeight: 500,
   },
