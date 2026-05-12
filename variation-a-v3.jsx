@@ -540,7 +540,7 @@ const vaStyles = {
   benefitsRule: {
     flex: 1,
     height: 1,
-    background: 'linear-gradient(to right, #c9842b00, #c9842b66, #c9842b00)',
+    background: 'none',
   },
   benefitsEyebrow: {
     fontFamily: '"Instrument Serif", Georgia, serif',
@@ -568,7 +568,6 @@ const vaStyles = {
     gap: 12,
     padding: '8px 0',
     fontSize: 13.5,
-    borderBottom: '1px dotted #c9842b33',
   },
   benefitIcon: {
     display: 'inline-flex',
