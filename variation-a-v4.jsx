@@ -170,7 +170,7 @@ function VariationAV2() {
       </div>
       {/* Body — one tight paragraph */}
       <p style={vaStyles.body}>
-        <em style={vaStyles.emphasis}>Black Thunder Active+</em> delivers <strong>targeted Ayurvedic nourishment</strong> to help you perform longer, stronger, and consistently.
+        <em className="body-em" style={vaStyles.emphasis}>Black Thunder Active+</em> delivers <strong>targeted Ayurvedic nourishment</strong> to help you perform longer, stronger, and consistently.
       </p>
 
       {/* Benefits — premium highlighted block */}
@@ -199,7 +199,7 @@ function VariationAV2() {
       </div>
       {/* Body — one tight paragraph */}
       <p style={vaStyles.body}>
-        <em style={vaStyles.emphasis}>Pure Ayurvedic actives, nothing else.</em> No caffeine, no synthetics, no hidden stimulants — just <strong>steady, sustainable vitality</strong> your body can lean on every single day.
+        <em className="body-em" style={vaStyles.emphasis}>Pure Ayurvedic actives, nothing else.</em> No caffeine, no synthetics, no hidden stimulants — just <strong>steady, sustainable vitality</strong> your body can lean on every single day.
       </p>
 
       {/* Trust — editorial 3-col with bespoke icons */}
@@ -222,7 +222,7 @@ function VariationAV2() {
         Twenty Herbs. Two Rituals. <em style={vaStyles.hookEm}>One Transformation.</em>
       </div>
       <p style={vaStyles.body}>
-        <em style={vaStyles.emphasis}>Choose your ritual.</em> Each protocol delivers the complete 20-active herb formula in each dose, choose the rhythm that fits your routine.
+        <em className="body-em" style={vaStyles.emphasis}>Choose your ritual.</em> Each protocol delivers the complete 20-active herb formula in each dose, choose the rhythm that fits your routine.
       </p>
       <div style={vaStyles.dosageRow}>
         {[c.dosageA, c.dosageB].map((d, i) => (
@@ -512,8 +512,6 @@ const vaStyles = {
   },
   emphasis: {
     fontFamily: 'inherit',
-    fontStyle: 'italic',
-    fontWeight: 500,
     fontSize: '1em',
     color: '#1a4d2e',
   },
