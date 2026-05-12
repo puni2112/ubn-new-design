@@ -1001,7 +1001,7 @@ Object.assign(vaStyles, {
     borderBottom: '1px solid #1a4d2e10',
   },
   fRowIdx: {
-    fontFamily: '"Geist Mono", monospace',
+    fontFamily: 'inherit',
     fontSize: 9,
     letterSpacing: '0.14em',
     color: '#c9842b',
