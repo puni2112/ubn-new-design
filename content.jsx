@@ -9,11 +9,10 @@ const CONTENT = {
   bodyB: 'Black Thunder Active+ delivers targeted Ayurvedic nourishment to help you perform longer, stronger, and consistently.',
   potency: { value: '3825', unit: 'mg', per: 'per 10 ml', note: 'high-potency liquid formulation' },
   benefits: [
-    { t: 'Endurance', s: 'that lasts' },
-    { t: 'Strength', s: '& faster recovery' },
-    { t: 'Testosterone', s: 'natural balance' },
-    { t: 'Control', s: '& consistency' },
-    { t: 'Vitality', s: 'sustained, daily' },
+    { t: 'Peak Endurance', s: '& Resilience' },
+    { t: 'Strength', s: '& Faster Recovery' },
+    { t: 'Natural Testosterone', s: 'Balance' },
+    { t: 'Confidence', s: 'Control & Drive' },
   ],
   noJitters: ['No Jitters.', 'No Crash.', 'No Dependency.'],
   dosageA: {

@@ -7,50 +7,50 @@ function BenefitIcon({ index }) {
   const accent = '#c9842b';
   const sw = 1.4;
   if (index === 0) {
-    // Endurance — long horizon wave
+    // Peak Endurance & Resilience — rolling wave that climbs to a final peak
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <path d="M3 16 C 6 12, 9 20, 12 16 C 15 12, 18 20, 21 16 C 23 13.3, 24 14.5, 25 14" stroke={stroke} strokeWidth={sw} strokeLinecap="round" fill="none" />
-        <circle cx="25" cy="14" r="1.2" fill={accent} />
+        <path d="M3 18 C 6 14, 9 22, 12 18 C 15 14, 18 22, 21 18 L 24 8" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="24" cy="8" r="1.5" fill={accent} />
       </svg>
     );
   }
   if (index === 1) {
-    // Strength — peak / upward chevron
+    // Strength & Faster Recovery — twin upward arrows (build + rapid rebound)
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <path d="M4 22 L 14 8 L 24 22" stroke={stroke} strokeWidth={sw} strokeLinejoin="round" strokeLinecap="round" fill="none" />
-        <path d="M9 22 L 14 15 L 19 22" stroke={accent} strokeWidth={sw} strokeLinejoin="round" strokeLinecap="round" fill="none" />
+        <path d="M9 23 L 9 6 M5 10 L 9 6 L 13 10" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <path d="M19 23 L 19 13 M16 16 L 19 13 L 22 16" stroke={accent} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </svg>
     );
   }
   if (index === 2) {
-    // Testosterone — balance scale
+    // Natural Testosterone Balance — level beam balance scale
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <path d="M14 5 V 22" stroke={stroke} strokeWidth={sw} strokeLinecap="round" />
-        <path d="M6 9 H 22" stroke={stroke} strokeWidth={sw} strokeLinecap="round" />
-        <path d="M3 16 L 6 9 L 9 16 Z" stroke={stroke} strokeWidth={sw} strokeLinejoin="round" fill="none" />
-        <path d="M19 16 L 22 9 L 25 16 Z" stroke={stroke} strokeWidth={sw} strokeLinejoin="round" fill="none" />
-        <path d="M10 23 H 18" stroke={accent} strokeWidth={sw} strokeLinecap="round" />
+        <path d="M14 6 V 23" stroke={stroke} strokeWidth={sw} strokeLinecap="round" />
+        <path d="M5 10 H 23" stroke={stroke} strokeWidth={sw} strokeLinecap="round" />
+        <path d="M2 17 L 5 10 L 8 17 Z" stroke={stroke} strokeWidth={sw} strokeLinejoin="round" fill="none" />
+        <path d="M20 17 L 23 10 L 26 17 Z" stroke={stroke} strokeWidth={sw} strokeLinejoin="round" fill="none" />
+        <path d="M10 24 H 18" stroke={accent} strokeWidth={sw} strokeLinecap="round" />
       </svg>
     );
   }
   if (index === 3) {
-    // Control — target / crosshair
+    // Confidence, Control & Drive — compass with forward-pointing needle
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="14" r="9" stroke={stroke} strokeWidth={sw} fill="none" />
-        <circle cx="14" cy="14" r="4.5" stroke={stroke} strokeWidth={sw} fill="none" />
-        <circle cx="14" cy="14" r="1.4" fill={accent} />
+        <circle cx="14" cy="14" r="9.5" stroke={stroke} strokeWidth={sw} fill="none" />
+        <path d="M14 5.5 L 17 14 L 14 22.5 L 11 14 Z" stroke={accent} strokeWidth={sw} strokeLinejoin="round" fill="none" />
+        <circle cx="14" cy="14" r="1.3" fill={accent} />
       </svg>
     );
   }
-  // Vitality — sunburst / spark
+  // Fallback (unused with 4 benefits) — minimal spark
   return (
     <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
       <circle cx="14" cy="14" r="4.5" stroke={stroke} strokeWidth={sw} fill="none" />
-      <path d="M14 3 V 6 M14 22 V 25 M3 14 H 6 M22 14 H 25 M6 6 L 8.2 8.2 M19.8 19.8 L 22 22 M22 6 L 19.8 8.2 M6 22 L 8.2 19.8" stroke={accent} strokeWidth={sw} strokeLinecap="round" />
+      <path d="M14 3 V 6 M14 22 V 25 M3 14 H 6 M22 14 H 25" stroke={accent} strokeWidth={sw} strokeLinecap="round" />
     </svg>
   );
 }
