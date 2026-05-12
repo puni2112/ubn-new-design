@@ -636,7 +636,7 @@ const vaStyles = {
   },
   dosageLabel: {
     fontFamily: 'inherit',
-    fontSize: 10,
+    fontSize: 12,
     color: '#1a4d2e',
   },
   dosageDose: {
