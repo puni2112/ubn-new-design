@@ -246,7 +246,7 @@ function VariationAV2() {
           </div>
           <div style={vaStyles.fMeta}>
             <span style={vaStyles.fMetaBig}>3825 mg per 10 ml</span>
-            <span style={vaStyles.fMetaSmall}>High Concentration Formula</span>
+            <span style={vaStyles.fMetaSmall}>High concentration formula</span>
           </div>
         </div>
 
@@ -636,7 +636,6 @@ const vaStyles = {
     fontFamily: '"Geist Mono", monospace',
     fontSize: 10,
     letterSpacing: '0.08em',
-    textTransform: 'uppercase',
     color: '#1a4d2e',
   },
   dosageDose: {
@@ -979,7 +978,6 @@ Object.assign(vaStyles, {
     fontFamily: '"Geist Mono", monospace',
     fontSize: 8.5,
     letterSpacing: '0.12em',
-    textTransform: 'uppercase',
     color: '#888',
     lineHeight: 1.3,
   },
@@ -1030,7 +1028,6 @@ Object.assign(vaStyles, {
     fontFamily: '"Geist Mono", monospace',
     fontSize: 11,
     letterSpacing: '0.06em',
-    textTransform: 'uppercase',
     color: '#1a4d2e',
     fontWeight: 500,
     fontVariantNumeric: 'tabular-nums',
@@ -1053,7 +1050,6 @@ Object.assign(vaStyles, {
     fontFamily: '"Geist Mono", monospace',
     fontSize: 10,
     letterSpacing: '0.14em',
-    textTransform: 'uppercase',
     color: '#1a4d2e',
     fontWeight: 500,
   },
