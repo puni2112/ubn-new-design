@@ -976,7 +976,7 @@ Object.assign(vaStyles, {
   },
   fMetaSmall: {
     fontFamily: 'inherit',
-    fontSize: 8.5,
+    fontSize: 11,
     color: '#888',
     lineHeight: 1.3,
   },
@@ -1046,7 +1046,7 @@ Object.assign(vaStyles, {
   },
   fToggleText: {
     fontFamily: 'inherit',
-    fontSize: 10,
+    fontSize: 11,
     color: '#1a4d2e',
     fontWeight: 500,
   },
