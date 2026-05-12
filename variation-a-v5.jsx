@@ -16,11 +16,11 @@ function BenefitIcon({ index }) {
     );
   }
   if (index === 1) {
-    // Strength & Faster Recovery — twin upward arrows (build + rapid rebound)
+    // Strength & Faster Recovery — heartbeat pulse: tall spike then rapid return to baseline
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <path d="M9 23 L 9 6 M5 10 L 9 6 L 13 10" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <path d="M19 23 L 19 13 M16 16 L 19 13 L 22 16" stroke={accent} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <path d="M2 16 H 9 L 12 6 L 16 22 L 18 16 H 26" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="12" cy="6" r="1.5" fill={accent} />
       </svg>
     );
   }
@@ -37,12 +37,11 @@ function BenefitIcon({ index }) {
     );
   }
   if (index === 3) {
-    // Confidence, Control & Drive — compass with forward-pointing needle
+    // Confidence, Control & Drive — target ring with forward-driving upward arrow
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
         <circle cx="14" cy="14" r="9.5" stroke={stroke} strokeWidth={sw} fill="none" />
-        <path d="M14 5.5 L 17 14 L 14 22.5 L 11 14 Z" stroke={accent} strokeWidth={sw} strokeLinejoin="round" fill="none" />
-        <circle cx="14" cy="14" r="1.3" fill={accent} />
+        <path d="M14 21 L 14 7 M10 11 L 14 7 L 18 11" stroke={accent} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </svg>
     );
   }
