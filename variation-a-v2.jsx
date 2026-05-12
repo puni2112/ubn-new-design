@@ -16,11 +16,11 @@ function BenefitIcon({ index }) {
     );
   }
   if (index === 1) {
-    // Strength & Faster Recovery — heartbeat pulse: tall spike then rapid return to baseline
+    // Strength & Faster Recovery — flexed bicep silhouette (L-shape with muscle bulge)
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <path d="M2 16 H 9 L 12 6 L 16 22 L 18 16 H 26" stroke={stroke} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <circle cx="12" cy="6" r="1.5" fill={accent} />
+        <path d="M3 12 C 5 5, 11 3, 14 12 L 14 4 L 21 4 L 21 12 L 14 12 L 14 19 L 3 19 Z" stroke={stroke} strokeWidth={sw} strokeLinejoin="round" strokeLinecap="round" fill="none" />
+        <circle cx="8.5" cy="7" r="1.4" fill={accent} />
       </svg>
     );
   }
