@@ -16,11 +16,15 @@ function BenefitIcon({ index }) {
     );
   }
   if (index === 1) {
-    // Strength & Faster Recovery — flexed bicep silhouette (L-shape with muscle bulge)
+    // Strength & Faster Recovery — clean dumbbell: bar with two-disc weights each side
     return (
       <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-        <path d="M3 12 C 5 5, 11 3, 14 12 L 14 4 L 21 4 L 21 12 L 14 12 L 14 19 L 3 19 Z" stroke={stroke} strokeWidth={sw} strokeLinejoin="round" strokeLinecap="round" fill="none" />
-        <circle cx="8.5" cy="7" r="1.4" fill={accent} />
+        <path d="M9 14 H 19" stroke={stroke} strokeWidth={sw + 0.6} strokeLinecap="round" />
+        <path d="M9 11 V 17" stroke={stroke} strokeWidth="3" strokeLinecap="round" />
+        <path d="M19 11 V 17" stroke={stroke} strokeWidth="3" strokeLinecap="round" />
+        <path d="M5 8 V 20" stroke={stroke} strokeWidth="3" strokeLinecap="round" />
+        <path d="M23 8 V 20" stroke={stroke} strokeWidth="3" strokeLinecap="round" />
+        <circle cx="14" cy="14" r="1.3" fill={accent} />
       </svg>
     );
   }
