@@ -646,13 +646,13 @@ const vaStyles = {
     marginBottom: 4,
   },
   dosageMix: {
-    fontSize: 12,
+    fontSize: 13,
     color: '#5a5a5a',
     fontStyle: 'italic',
     fontFamily: '"Inter", sans-serif',
   },
   dosageMeta: {
-    fontSize: 11.5,
+    fontSize: 13,
     color: '#5a5a5a',
     paddingTop: 6,
   },
