@@ -1,0 +1,1421 @@
+/* ============================================================
+   UBN · Black Thunder Active+ · Hi-Fi Product Page
+   Brand: dark forest green + warm off-white + copper accent
+   ============================================================ */
+
+:root{
+  /* Palette */
+  --green-900:#0F3A20;
+  --green-800:#1A4D2E;   /* primary brand */
+  --green-700:#235A39;
+  --green-100:#E8EFE5;   /* soft sage tint */
+  --green-50:#F1F5EE;
+
+  --bg:#F7F4EE;          /* warm off-white */
+  --surface:#FFFFFF;
+  --ink:#11201A;
+  --ink-2:#4A584F;
+  --ink-3:#7A857E;
+  --line:#E4DFD3;
+  --line-2:#EFEAE0;
+
+  --copper:#C97B2D;      /* accent — urgency / save */
+  --copper-soft:#F7E9D6;
+  --warn:#B34A3B;
+  --warn-soft:#FCE7E1;
+  --gold:#D4A437;
+  --gold-soft:#FBF1D6;
+
+  /* Radius */
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:22px;
+  --r-xl:32px;
+
+  /* Shadow */
+  --sh-1: 0 1px 2px rgba(17,32,26,.04), 0 4px 12px rgba(17,32,26,.04);
+  --sh-2: 0 6px 24px rgba(17,32,26,.08);
+  --sh-3: 0 18px 60px rgba(17,32,26,.10);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{scroll-behavior:smooth;max-width:100vw}
+html,body{overflow-x:clip}
+body{
+  font:15px/1.55 "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:var(--bg); color:var(--ink);
+  padding-bottom:0;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.display{font-family:"Instrument Serif", "Inter", serif;letter-spacing:-.02em;font-weight:700}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+
+.container{max-width:1240px;margin:0 auto;padding:0 28px}
+.section{padding:96px 0}
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+  color:var(--green-800);background:var(--green-100);
+  padding:7px 14px;border-radius:99px;margin-bottom:18px;
+}
+.section-eyebrow .num{
+  font-family:"Inter";font-weight:800;color:var(--copper);
+  letter-spacing:0;
+}
+.section-title{
+  font-family:"Instrument Serif", serif;font-weight:400;
+  font-size:clamp(32px,4vw,52px);line-height:1.05;
+  color:var(--green-900);letter-spacing:-.025em;
+  text-wrap:balance;max-width:880px;
+}
+.section-title em{font-style:normal;color:var(--copper)}
+.section-sub{
+  font-size:clamp(16px,1.4vw,18px);color:var(--ink-2);
+  max-width:680px;margin-top:18px;line-height:1.55;
+}
+
+/* CRO tag pill — shows which pillar a section covers */
+.cro-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:600;
+  letter-spacing:.04em;color:var(--ink-3);
+  background:#fff;border:1px dashed var(--line);
+  padding:5px 10px;border-radius:4px;
+  margin-bottom:14px;text-transform:uppercase;
+}
+.cro-tag::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--copper);
+}
+
+/* ============================================================
+   ANNOUNCE BAR
+   ============================================================ */
+.announce{
+  background:var(--green-900);color:#E8EFE5;
+  font-size:12.5px;letter-spacing:.02em;
+  padding:10px 20px;overflow:hidden;
+}
+.announce-track{
+  display:flex;gap:48px;align-items:center;justify-content:center;
+  flex-wrap:wrap;
+}
+.announce-track span{display:inline-flex;align-items:center;gap:8px;opacity:.95}
+.announce-track svg{flex-shrink:0;opacity:.7}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{
+  background:rgba(247,244,238,.92);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+  /* not sticky — announce + header scroll away */
+}
+.header-row{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:18px 0;gap:24px;
+}
+.logo{
+  display:inline-flex;align-items:center;
+}
+.logo-img{
+  height:36px;width:auto;display:block;
+}
+.foot-logo-img{
+  filter:brightness(0) invert(1);
+  opacity:.95;
+  height:42px;
+}
+.logo-mark{display:none}
+.nav{display:flex;gap:30px;font-size:13.5px;color:var(--ink-2);font-weight:600;justify-content:center}
+.nav a{position:relative;padding:6px 0}
+.nav a:hover{color:var(--green-800)}
+.nav a.active{color:var(--green-800)}
+.nav a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;
+  background:var(--green-800);border-radius:1px;
+}
+.header-actions{display:flex;justify-content:flex-end;gap:10px;align-items:center}
+.icon-btn{
+  width:38px;height:38px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);background:rgba(255,255,255,.6);
+  color:var(--green-900);position:relative;
+}
+.icon-btn:hover{background:#fff;border-color:var(--green-800)}
+.cart-dot{
+  position:absolute;top:-2px;right:-2px;
+  background:var(--copper);color:#fff;border-radius:99px;
+  font-size:9.5px;padding:1px 5px;font-weight:400;border:2px solid var(--bg);
+  font-family:"Inter";
+}
+
+/* ============================================================
+   QUICKNAV (sticky tab strip with persistent CTA)
+   ============================================================ */
+.quicknav{
+  position:sticky;top:0;z-index:40;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 1px 0 rgba(17,32,26,.02);
+}
+.quicknav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding:14px 0;
+}
+.quicknav-tabs{
+  display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;flex:1;
+}
+.quicknav-tabs::-webkit-scrollbar{display:none}
+.quicknav-tabs a{
+  padding:9px 16px;font-size:13px;color:var(--ink-2);font-weight:600;
+  border-radius:99px;white-space:nowrap;transition:all .15s;
+}
+.quicknav-tabs a:hover{background:var(--green-50);color:var(--green-800)}
+.quicknav-tabs a.active{background:var(--green-800);color:#fff}
+.quicknav-cta{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.quicknav-cta .price{font-family:"Inter";font-weight:800;color:var(--green-900);font-size:16px;letter-spacing:-.01em}
+.quicknav-cta .old{color:var(--ink-3);text-decoration:line-through;font-size:13px;margin-left:6px;font-weight:500}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb{
+  padding:18px 0 8px;font-size:12px;color:var(--ink-3);
+  letter-spacing:.02em;
+}
+.breadcrumb a{margin:0 4px}
+.breadcrumb a:hover{color:var(--green-800)}
+.breadcrumb .sep{color:var(--line);margin:0 2px}
+.breadcrumb .cur{color:var(--ink);font-weight:600}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 22px;border-radius:99px;font-weight:700;font-size:14px;
+  border:1.5px solid transparent;text-align:center;letter-spacing:.01em;
+  transition:all .15s;font-family:"Inter";white-space:nowrap;
+}
+.btn-primary{background:var(--green-800);color:#fff}
+.btn-primary:hover{background:var(--green-900);transform:translateY(-1px);box-shadow:0 8px 22px rgba(26,77,46,.25)}
+.btn-secondary{background:var(--copper);color:#fff}
+.btn-secondary:hover{background:#A86421}
+.btn-outline{background:transparent;color:var(--green-800);border-color:var(--green-800)}
+.btn-outline:hover{background:var(--green-800);color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--green-800);color:var(--green-800)}
+.btn-block{width:100%}
+.btn-lg{padding:18px 28px;font-size:15px}
+.btn-xl{padding:20px 28px;font-size:15px;border-radius:99px}
+
+/* ============================================================
+   HERO / ABOVE THE FOLD
+   ============================================================ */
+.hero{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:48px;padding:24px 0 80px;align-items:start;
+}
+
+/* Gallery */
+.gallery{
+  position:sticky;top:84px;
+  align-self:start;
+  padding-left:100px;
+}
+.thumbs{
+  position:absolute;
+  top:0;bottom:0;left:0;
+  width:84px;
+  display:flex;flex-direction:column;gap:4px;
+  overflow-y:auto;overflow-x:hidden;
+  scrollbar-width:thin;
+  scrollbar-color:#1a4d2e44 transparent;
+  padding-right:4px;
+}
+.thumbs::-webkit-scrollbar{width:6px}
+.thumbs::-webkit-scrollbar-track{background:transparent}
+.thumbs::-webkit-scrollbar-thumb{background:#1a4d2e44;border-radius:99px}
+.thumbs::-webkit-scrollbar-thumb:hover{background:#1a4d2e88}
+.thumb{
+  width:80px;height:80px;flex-shrink:0;
+  border:0;background:transparent;
+  border-radius:4px;overflow:hidden;
+  padding:0;cursor:pointer;position:relative;
+  outline:1.5px solid transparent;outline-offset:-1.5px;
+  transition:outline-color .15s;
+}
+.thumb.active{outline-color:#d4d4d4}
+.thumb:hover{outline-color:#d4d4d4}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.video::after{
+  content:"";position:absolute;inset:0;background:rgba(15,58,32,.35);
+}
+.thumb.video::before{
+  content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  color:#fff;font-size:14px;z-index:1;
+  width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.45);
+  display:flex;align-items:center;justify-content:center;padding-left:2px;
+}
+.thumb-more{
+  aspect-ratio:1/1;border-radius:var(--r-md);
+  background:var(--green-100);color:var(--green-800);font-weight:400;
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+  font-family:"Instrument Serif";cursor:pointer;
+}
+.main-img{
+  aspect-ratio:1/1;border-radius:4px;overflow:hidden;
+  background:#fff;border:1px solid #1a4d2e15;
+  position:relative;
+}
+.main-img img{width:100%;height:100%;object-fit:cover}
+.hero-tags{
+  position:absolute;top:18px;left:18px;display:flex;gap:8px;flex-wrap:wrap;
+}
+.hero-tag{
+  background:rgba(255,255,255,.95);color:var(--green-900);
+  padding:6px 12px;border-radius:99px;font-size:11px;font-weight:700;
+  letter-spacing:.04em;backdrop-filter:blur(8px);
+}
+.hero-tag.copper{background:var(--copper);color:#fff}
+.hero-fav{
+  position:absolute;top:18px;right:18px;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--green-800);cursor:pointer;
+}
+.hero-dots{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  display:flex;gap:6px;
+}
+.hero-dots i{
+  width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.6);
+  display:block;
+}
+.hero-dots i.on{background:var(--green-800);width:24px;border-radius:99px}
+
+/* Buy box */
+.buy{display:flex;flex-direction:column;gap:18px;min-width:0}
+
+.buy-badges{display:flex;gap:8px;flex-wrap:wrap}
+.b-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:6px 11px;border-radius:99px;
+}
+.b-badge.green{background:var(--green-100);color:var(--green-800)}
+.b-badge.copper{background:var(--copper-soft);color:var(--copper)}
+.b-badge.outline{border:1px solid var(--line);color:var(--ink-2);background:#fff}
+
+.product-title{
+  font-family:"Instrument Serif";font-weight:400;
+  font-size:clamp(34px,4vw,46px);line-height:1.02;
+  color:var(--green-900);letter-spacing:-.025em;margin-top:-2px;
+}
+.product-tagline{
+  font-size:17px;line-height:1.5;color:var(--ink-2);font-weight:500;
+}
+.product-tagline strong{color:var(--green-900);font-weight:700}
+
+.rating-row{
+  display:flex;align-items:center;gap:10px;font-size:13.5px;
+  flex-wrap:wrap;
+}
+.stars{color:var(--gold);letter-spacing:1.5px;font-size:15px}
+.rating-row b{font-family:"Instrument Serif";font-weight:400;font-size:14px;color:var(--ink)}
+.rating-row a{color:var(--green-800);font-weight:600;border-bottom:1px solid var(--green-100)}
+.rating-row a:hover{border-bottom-color:var(--green-800)}
+.rating-row .verified{color:var(--ink-3);font-size:12.5px;display:inline-flex;align-items:center;gap:5px}
+
+/* Promise/USP bullets */
+.promise{
+  background:linear-gradient(135deg, var(--green-50), var(--bg));
+  border:1px solid var(--line-2);
+  border-radius:var(--r-md);
+  padding:18px 20px;
+}
+.promise p{
+  font-size:14px;color:var(--ink-2);line-height:1.55;
+}
+.promise p strong{color:var(--green-900);font-weight:700}
+.promise-list{
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;
+  margin-top:12px;padding:0;
+}
+.promise-list li{
+  display:flex;align-items:flex-start;gap:8px;
+  list-style:none;font-size:13px;color:var(--ink);font-weight:500;
+}
+.promise-list li::before{
+  content:"";display:inline-block;flex-shrink:0;
+  width:16px;height:16px;border-radius:50%;background:var(--green-800);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M1 5l3 3 5-6' stroke='%23fff' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size:10px;background-repeat:no-repeat;background-position:center;
+  margin-top:2px;
+}
+
+/* Size toggle (250 / 500) */
+.size-row{display:flex;align-items:center;gap:16px;margin-top:4px}
+.size-label{font-size:13px;font-weight:700;color:var(--ink)}
+.size-pills{
+  display:inline-flex;border:1.5px solid var(--line);
+  background:#fff;border-radius:99px;padding:3px;
+}
+.size-pill{
+  padding:7px 16px;border:0;background:transparent;font-weight:600;font-size:13px;
+  color:var(--ink-2);border-radius:99px;
+}
+.size-pill.active{background:var(--green-800);color:#fff}
+
+/* Pack selector */
+.pack-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:10px;
+}
+.pack-head h3{
+  font-family:"Instrument Serif";font-weight:400;font-size:15px;color:var(--ink);
+}
+.pack-head span{font-size:12px;color:var(--ink-3)}
+.packs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+.pack{
+  position:relative;background:#fff;border:2px solid var(--line);
+  border-radius:var(--r-md);padding:18px 14px 14px;cursor:pointer;
+  display:flex;flex-direction:column;gap:4px;transition:all .15s;
+  min-width:0;
+}
+.pack:hover{border-color:var(--green-700)}
+.pack.selected{
+  border-color:var(--green-800);
+  background:var(--green-50);
+  box-shadow:0 0 0 4px rgba(26,77,46,.08);
+}
+.pack-ribbon{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--copper);color:#fff;font-size:10px;font-weight:700;
+  padding:4px 10px;border-radius:99px;letter-spacing:.04em;white-space:nowrap;
+  text-transform:uppercase;
+}
+.pack-ribbon.gold{background:var(--gold)}
+.pack-size{font-family:"Instrument Serif";font-weight:400;font-size:16px;color:var(--green-900);letter-spacing:-.01em}
+.pack-supply{font-size:11.5px;color:var(--ink-3)}
+.pack-price{
+  display:flex;align-items:baseline;gap:6px;margin-top:6px;flex-wrap:wrap;
+}
+.pack-price .now{font-family:"Instrument Serif";font-weight:400;font-size:18px;color:var(--ink)}
+.pack-price .mrp{font-size:11px;color:var(--ink-3);text-decoration:line-through}
+.pack-save{
+  display:inline-block;font-size:10px;font-weight:700;
+  color:var(--copper);background:var(--copper-soft);
+  padding:2px 7px;border-radius:4px;letter-spacing:.04em;
+  margin-top:4px;width:fit-content;
+}
+.pack-per{font-size:10.5px;color:var(--ink-3);margin-top:2px}
+
+/* Subscribe vs one-time */
+.purchase-mode{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mode{
+  position:relative;background:#fff;border:2px solid var(--line);
+  border-radius:var(--r-md);padding:14px;cursor:pointer;
+  display:flex;align-items:flex-start;gap:10px;
+}
+.mode.selected{
+  border-color:var(--green-800);background:var(--green-50);
+}
+.mode .radio{
+  width:18px;height:18px;border-radius:50%;border:2px solid var(--line);
+  flex-shrink:0;margin-top:1px;position:relative;
+}
+.mode.selected .radio{border-color:var(--green-800)}
+.mode.selected .radio::after{
+  content:"";position:absolute;inset:2px;border-radius:50%;background:var(--green-800);
+}
+.mode-body .m-title{font-weight:700;font-size:13px;color:var(--ink);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.mode-body .m-desc{font-size:11.5px;color:var(--ink-3);margin-top:2px;line-height:1.4}
+.mode-body .m-save{font-size:10px;font-weight:700;color:var(--copper);background:var(--copper-soft);padding:1px 6px;border-radius:3px;letter-spacing:.04em}
+
+/* Price + CTA row */
+.price-row{
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding-top:6px;
+}
+.price-now{
+  font-family:"Instrument Serif";font-weight:400;font-size:34px;color:var(--ink);
+  letter-spacing:-.02em;line-height:1;
+}
+.price-mrp{font-size:15px;color:var(--ink-3);text-decoration:line-through}
+.price-off{
+  background:var(--warn-soft);color:var(--warn);
+  font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;
+  letter-spacing:.03em;
+}
+.price-tax{font-size:11.5px;color:var(--ink-3);margin-left:auto}
+
+.qty-cta{
+  display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:stretch;
+}
+.qty{
+  display:flex;align-items:center;justify-content:space-between;
+  border:1.5px solid var(--line);border-radius:99px;
+  background:#fff;height:52px;padding:0 4px;
+}
+.qty button{
+  width:36px;height:36px;border-radius:50%;border:0;background:transparent;
+  color:var(--ink-2);font-size:18px;
+}
+.qty button:hover{background:var(--green-50);color:var(--green-800)}
+.qty input{
+  width:32px;text-align:center;border:0;background:transparent;
+  font-family:"Instrument Serif";font-weight:400;font-size:15px;color:var(--ink);
+}
+.cta-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cta-stack{display:grid;gap:8px}
+
+/* Trust strip below CTA */
+.atf-trust{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+.scarcity{
+  display:flex;align-items:center;gap:10px;
+  background:var(--warn-soft);color:var(--warn);
+  padding:10px 14px;border-radius:var(--r-md);font-size:12.5px;font-weight:600;
+}
+.scarcity-bar{flex:1;height:4px;background:rgba(179,74,59,.2);border-radius:99px;overflow:hidden;min-width:40px}
+.scarcity-bar i{display:block;width:32%;height:100%;background:var(--warn);border-radius:99px}
+.delivery-est{
+  display:flex;align-items:center;gap:10px;
+  background:var(--green-50);color:var(--green-900);
+  padding:10px 14px;border-radius:var(--r-md);font-size:12.5px;
+}
+.delivery-est b{color:var(--copper);font-family:"Instrument Serif";font-weight:800}
+.delivery-est svg{flex-shrink:0;color:var(--green-800)}
+
+/* Transactional trust micro-row */
+.txn-trust{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  padding-top:8px;margin-top:6px;
+  border-top:1px dashed var(--line);
+}
+.tt-item{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:6px;
+}
+.tt-item .tt-icon{
+  width:36px;height:36px;border-radius:50%;background:var(--green-50);
+  color:var(--green-800);display:flex;align-items:center;justify-content:center;
+}
+.tt-item span{font-size:11px;font-weight:600;color:var(--ink-2);line-height:1.3}
+
+/* CTA bottomline */
+.bottom-line{
+  text-align:center;font-size:12.5px;color:var(--green-800);
+  font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.bottom-line a{border-bottom:1px dashed var(--green-800)}
+
+/* ============================================================
+   SECTION 2: TRUST BAR (Our promise)
+   ============================================================ */
+.our-promise{
+  background:var(--green-900);color:#fff;
+  padding:54px 0;
+}
+.our-promise .container{
+  display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:center;
+}
+.our-promise h2{
+  font-family:"Instrument Serif";font-weight:400;font-size:34px;
+  line-height:1;letter-spacing:-.02em;
+}
+.our-promise h2 em{font-style:normal;color:var(--gold);display:block;font-size:14px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.promise-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.pg-item{display:flex;flex-direction:column;gap:10px}
+.pg-item .ic{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.08);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+}
+.pg-item h4{font-family:"Instrument Serif";font-weight:400;font-size:15px;color:#fff;letter-spacing:-.01em}
+.pg-item p{font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.5}
+
+/* ============================================================
+   SECTION 3: CERTIFICATIONS
+   ============================================================ */
+.certs{
+  background:var(--bg);padding:32px 0;border-bottom:1px solid var(--line);
+}
+.certs-row{
+  display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;
+}
+.certs-label{
+  font-family:"Instrument Serif";font-weight:400;font-size:14px;
+  color:var(--ink-3);letter-spacing:.16em;text-transform:uppercase;
+  line-height:1.4;max-width:140px;
+}
+.cert-list{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:18px;align-items:center;
+}
+.cert{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:14px 8px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.cert-mark{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--green-50);color:var(--green-800);
+  display:flex;align-items:center;justify-content:center;font-weight:400;
+  font-family:"Inter";font-size:11px;letter-spacing:-.02em;
+}
+.cert-name{font-size:11px;color:var(--ink-2);font-weight:600;letter-spacing:.04em}
+
+/* ============================================================
+   SECTION 4: THE CORE PROBLEM
+   ============================================================ */
+.problem{background:var(--bg)}
+.problem-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:48px;
+}
+.problem-visual{
+  aspect-ratio:1/1;border-radius:var(--r-lg);
+  background:linear-gradient(135deg, var(--green-100), var(--green-50));
+  display:flex;align-items:center;justify-content:center;position:relative;
+  border:1px solid var(--line-2);overflow:hidden;
+}
+.problem-visual::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(26,77,46,.08), transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(201,123,45,.08), transparent 40%);
+}
+.problem-visual-content{
+  text-align:center;font-family:"Instrument Serif";color:var(--green-900);
+  z-index:1;font-weight:400;font-size:32px;line-height:1.1;letter-spacing:-.02em;
+  max-width:280px;padding:0 24px;
+}
+.problem-visual-content span{
+  display:block;font-size:13px;color:var(--ink-3);
+  text-transform:uppercase;letter-spacing:.14em;font-weight:600;margin-top:14px;
+}
+.problem-list{display:flex;flex-direction:column;gap:14px}
+.p-item{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:20px 22px;display:flex;align-items:flex-start;gap:18px;
+}
+.p-item .p-num{
+  font-family:"Inter";font-weight:800;font-size:24px;
+  color:var(--copper);line-height:1;flex-shrink:0;width:40px;
+}
+.p-item h4{
+  font-family:"Instrument Serif";font-weight:400;font-size:16px;color:var(--green-900);
+  margin-bottom:4px;letter-spacing:-.01em;
+}
+.p-item p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.p-item p .arrow{color:var(--copper);font-weight:700;margin:0 4px}
+
+.problem-result{
+  margin-top:48px;padding:36px 40px;background:var(--green-900);color:#fff;
+  border-radius:var(--r-lg);text-align:center;
+}
+.problem-result .label{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;
+}
+.problem-result h3{
+  font-family:"Instrument Serif";font-weight:400;font-size:28px;margin-top:10px;
+  letter-spacing:-.015em;
+}
+
+/* ============================================================
+   SECTION 5: THE SOLUTION (POSITIONING SHIFT)
+   ============================================================ */
+.solution{background:#fff}
+.solution-flow{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  margin:48px auto;flex-wrap:wrap;
+}
+.flow-step{
+  background:var(--green-50);color:var(--green-800);
+  padding:14px 22px;border-radius:99px;font-weight:400;
+  font-family:"Instrument Serif";font-size:14px;letter-spacing:-.01em;
+  border:1.5px solid var(--green-100);
+}
+.flow-arrow{
+  color:var(--copper);font-size:18px;margin:0 10px;font-weight:700;
+}
+
+.dual-action{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px;
+}
+.da-card{
+  background:var(--bg);border:1px solid var(--line-2);
+  border-radius:var(--r-lg);padding:36px;position:relative;overflow:hidden;
+}
+.da-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+}
+.da-card.fit::before{background:linear-gradient(90deg,var(--green-800),var(--green-700))}
+.da-card.vit::before{background:linear-gradient(90deg,var(--copper),var(--gold))}
+.da-num{
+  font-family:"Inter";font-weight:800;font-size:14px;letter-spacing:.18em;
+  color:var(--ink-3);text-transform:uppercase;margin-bottom:8px;
+}
+.da-card h3{
+  font-family:"Instrument Serif";font-weight:400;font-size:26px;color:var(--green-900);
+  letter-spacing:-.02em;line-height:1.1;margin-bottom:18px;
+}
+.da-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.da-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:14.5px;color:var(--ink);font-weight:500;
+}
+.da-list li::before{
+  content:"";width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  background:var(--green-800) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M1 5l3 3 5-6' stroke='%23fff' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat;
+}
+.da-card.vit .da-list li::before{background-color:var(--copper)}
+
+/* ============================================================
+   SECTION 6: WHAT YOU WILL FEEL
+   ============================================================ */
+.feel{
+  background:var(--green-900);color:#fff;
+  position:relative;overflow:hidden;
+}
+.feel::before{
+  content:"";position:absolute;top:-100px;right:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle, rgba(212,164,55,.15), transparent 60%);
+}
+.feel .section-title{color:#fff;max-width:720px}
+.feel .section-title em{color:var(--gold)}
+.feel .section-sub{color:rgba(255,255,255,.7)}
+.feel-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:48px;
+}
+.feel-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-md);padding:24px 18px;
+  display:flex;flex-direction:column;gap:12px;
+  backdrop-filter:blur(8px);
+}
+.feel-card .ic{
+  width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--green-900);
+  display:flex;align-items:center;justify-content:center;font-weight:400;
+  font-family:"Inter";font-size:18px;
+}
+.feel-card h4{
+  font-family:"Instrument Serif";font-weight:400;font-size:15px;color:#fff;
+  letter-spacing:-.01em;line-height:1.2;
+}
+.feel-card p{font-size:12.5px;color:rgba(255,255,255,.7);line-height:1.5}
+.feel-quote{
+  margin-top:48px;text-align:center;
+  font-family:"Instrument Serif";font-weight:400;font-style:italic;
+  font-size:24px;color:var(--gold);letter-spacing:-.01em;
+}
+
+/* ============================================================
+   SECTION 7: HOW IT WORKS / POWER OF 20
+   ============================================================ */
+.hiw{background:var(--bg)}
+.hiw-stat{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;margin-top:36px;
+  background:#fff;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--line-2);
+}
+.hiw-stat-item{
+  padding:28px;text-align:center;border-right:1px solid var(--line-2);
+}
+.hiw-stat-item:last-child{border-right:0}
+.hiw-stat-item .n{
+  font-family:"Instrument Serif";font-weight:400;font-size:54px;
+  color:var(--green-800);letter-spacing:-.04em;line-height:1;
+}
+.hiw-stat-item p{
+  font-size:13px;color:var(--ink-2);margin-top:8px;font-weight:500;
+}
+.systems{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:48px;
+}
+.system{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:24px 26px;display:flex;flex-direction:column;gap:12px;
+  position:relative;transition:all .2s;
+}
+.system:hover{border-color:var(--green-700);box-shadow:var(--sh-2);transform:translateY(-2px)}
+.system-head{display:flex;align-items:center;gap:14px}
+.system-num{
+  width:34px;height:34px;border-radius:8px;flex-shrink:0;
+  background:var(--green-800);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Inter";font-weight:800;font-size:14px;
+}
+.system h4{
+  font-family:"Instrument Serif";font-weight:400;font-size:17px;color:var(--green-900);
+  letter-spacing:-.015em;
+}
+.system .what{font-size:13.5px;color:var(--ink);font-weight:500}
+.system .how{font-size:12.5px;color:var(--ink-3);line-height:1.5}
+.system .ings{
+  display:flex;flex-wrap:wrap;gap:6px;padding-top:10px;
+  border-top:1px dashed var(--line);
+}
+.system .ing-chip{
+  font-size:11px;padding:3px 9px;background:var(--green-50);color:var(--green-800);
+  border-radius:99px;font-weight:600;
+}
+.system-hook{
+  font-family:"Inter";font-weight:700;font-size:13px;color:var(--copper);
+  letter-spacing:-.01em;margin-top:4px;
+}
+
+/* ============================================================
+   SECTION 8: 90-DAY JOURNEY
+   ============================================================ */
+.journey{background:#fff}
+.timeline{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  margin-top:48px;position:relative;
+}
+.timeline::before{
+  content:"";position:absolute;top:36px;left:5%;right:5%;height:2px;
+  background:repeating-linear-gradient(to right, var(--line) 0 8px, transparent 8px 16px);
+  z-index:0;
+}
+.t-card{
+  position:relative;z-index:1;display:flex;flex-direction:column;gap:14px;
+  text-align:center;align-items:center;
+}
+.t-day{
+  width:74px;height:74px;border-radius:50%;
+  background:#fff;border:2px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:"Instrument Serif";
+}
+.t-card.active .t-day{background:var(--green-800);border-color:var(--green-800);color:#fff}
+.t-day .d{font-weight:800;font-size:16px;letter-spacing:-.02em}
+.t-day .l{font-size:9px;text-transform:uppercase;letter-spacing:.1em;opacity:.7;font-weight:600}
+.t-phase{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  color:var(--copper);
+}
+.t-card h4{
+  font-family:"Instrument Serif";font-weight:400;font-size:16px;color:var(--green-900);
+  letter-spacing:-.01em;line-height:1.2;
+}
+.t-card p{font-size:13px;color:var(--ink-2);line-height:1.5}
+.t-quote{
+  font-style:italic;color:var(--green-800);font-size:13px;font-weight:600;
+  border-top:1px dashed var(--line);padding-top:10px;width:100%;
+}
+
+/* ============================================================
+   SECTION 9: HOW TO USE
+   ============================================================ */
+.how-use{background:var(--bg)}
+.use-grid{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;
+  margin-top:48px;
+}
+.use-visual{
+  aspect-ratio:1/1;border-radius:var(--r-lg);overflow:hidden;
+  background:var(--surface);border:1px solid var(--line-2);
+}
+.use-visual img{width:100%;height:100%;object-fit:cover}
+.use-steps{display:flex;flex-direction:column;gap:18px}
+.use-step{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:24px 26px;display:flex;gap:18px;align-items:flex-start;
+}
+.use-step .uic{
+  width:54px;height:54px;border-radius:50%;background:var(--green-800);color:#fff;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.use-step .uic svg{width:26px;height:26px}
+.use-step h4{
+  font-family:"Instrument Serif";font-weight:400;font-size:18px;color:var(--green-900);
+  letter-spacing:-.015em;margin-bottom:4px;
+}
+.use-step .amt{
+  font-family:"Inter";font-weight:800;color:var(--copper);font-size:14px;
+}
+.use-step p{font-size:13.5px;color:var(--ink-2);line-height:1.5;margin-top:4px}
+.use-cta{
+  margin-top:18px;padding:20px 24px;background:var(--green-900);color:#fff;
+  border-radius:var(--r-md);display:flex;justify-content:space-between;align-items:center;gap:18px;
+}
+.use-cta p{font-family:"Instrument Serif";font-weight:400;font-size:14px}
+.use-cta p strong{color:var(--gold);font-weight:800}
+.use-disclaimer{
+  margin-top:28px;font-size:11.5px;color:var(--ink-3);line-height:1.6;
+  border-top:1px dashed var(--line);padding-top:18px;font-style:italic;
+}
+
+/* ============================================================
+   SECTION 10: WHY LIQUID FORM MATTERS
+   ============================================================ */
+.liquid{background:#fff}
+.compare-tbl{
+  margin-top:48px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);overflow:hidden;
+}
+.compare-row{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr;
+  border-top:1px solid var(--line-2);align-items:center;
+}
+.compare-row:first-child{border-top:0;background:var(--green-900);color:#fff}
+.compare-row > div{padding:20px 28px;font-size:14px}
+.compare-row > div:first-child{
+  font-family:"Inter";font-weight:400;font-size:15px;color:var(--ink);
+  letter-spacing:-.01em;
+}
+.compare-row:first-child > div{
+  font-family:"Inter";font-weight:400;font-size:13px;
+  text-transform:uppercase;letter-spacing:.1em;text-align:center;
+  color:rgba(255,255,255,.7);
+}
+.compare-row .us{
+  background:var(--green-50);color:var(--green-800);font-weight:400;text-align:center;
+  font-family:"Inter";font-size:15px;
+}
+.compare-row .them{
+  background:#fff;color:var(--ink-3);font-weight:500;text-align:center;
+}
+.compare-row:first-child .us{background:var(--green-800);color:#fff}
+.compare-row:first-child .them{background:rgba(255,255,255,.05);color:rgba(255,255,255,.5)}
+
+/* ============================================================
+   SECTION 11: WHY UBALANCE NATURALS
+   ============================================================ */
+.why-ubn{background:var(--green-900);color:#fff;position:relative;overflow:hidden}
+.why-ubn::before{
+  content:"";position:absolute;bottom:-200px;left:-100px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(212,164,55,.1), transparent 60%);
+}
+.why-ubn .section-title{color:#fff}
+.why-ubn .section-title em{color:var(--gold)}
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;
+}
+.why-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r-md);padding:28px;display:flex;flex-direction:column;gap:12px;
+  position:relative;backdrop-filter:blur(8px);
+}
+.why-card .ic{
+  width:48px;height:48px;border-radius:50%;background:var(--gold);color:var(--green-900);
+  display:flex;align-items:center;justify-content:center;font-weight:800;
+}
+.why-card h4{
+  font-family:"Instrument Serif";font-weight:400;font-size:17px;color:#fff;
+  letter-spacing:-.01em;
+}
+.why-card p{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.55}
+.why-hook{
+  margin-top:48px;padding:32px;background:rgba(0,0,0,.2);border-radius:var(--r-lg);
+  text-align:center;border:1px solid rgba(255,255,255,.1);
+}
+.why-hook p{
+  font-family:"Instrument Serif";font-weight:400;font-size:24px;color:var(--gold);
+  letter-spacing:-.015em;
+}
+
+/* ============================================================
+   SECTION 12: SOCIAL PROOF / UGC
+   ============================================================ */
+.social{background:var(--bg)}
+.review-snippets{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;
+}
+.r-snip{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:24px;display:flex;flex-direction:column;gap:12px;
+}
+.r-snip .stars{font-size:14px;letter-spacing:1.5px}
+.r-snip blockquote{
+  font-family:"Instrument Serif";font-weight:400;font-size:17px;color:var(--green-900);
+  letter-spacing:-.015em;line-height:1.4;
+}
+.r-snip footer{
+  display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-3);
+}
+.r-snip .avatar{
+  width:32px;height:32px;border-radius:50%;background:var(--green-100);color:var(--green-800);
+  display:flex;align-items:center;justify-content:center;font-weight:400;font-family:"Instrument Serif";font-size:12px;
+}
+.r-snip .verified{color:var(--green-800);font-weight:600}
+
+.ugc-row{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:36px;
+}
+.ugc-row .ugc{
+  aspect-ratio:1/1;border-radius:var(--r-md);overflow:hidden;
+  background:linear-gradient(135deg,var(--green-100),var(--bg));
+  border:1px solid var(--line-2);position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.ugc-row .ugc::after{
+  content:"@user";color:var(--ink-3);font-size:11px;
+}
+.ugc-row .ugc.ig::before{
+  content:"";position:absolute;top:8px;right:8px;
+  width:18px;height:18px;border-radius:5px;
+  background:linear-gradient(135deg,#feda75,#d62976,#962fbf);
+}
+
+/* ============================================================
+   SECTION 13: FULL INGREDIENT BREAKDOWN
+   ============================================================ */
+.ing-break{background:#fff}
+.ing-table{
+  margin-top:48px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);overflow:hidden;
+}
+.ing-row{
+  display:grid;grid-template-columns:auto 1fr auto;gap:24px;
+  padding:18px 28px;border-top:1px solid var(--line-2);align-items:center;
+  transition:background .15s;
+}
+.ing-row:first-child{
+  border-top:0;background:var(--green-900);color:#fff;
+  font-family:"Instrument Serif";font-weight:400;font-size:12px;
+  text-transform:uppercase;letter-spacing:.12em;
+}
+.ing-row:hover:not(:first-child){background:var(--green-50)}
+.ing-row .ing-idx{
+  font-family:"Instrument Serif";font-weight:400;color:var(--copper);font-size:13px;width:30px;
+}
+.ing-row .ing-name{
+  font-family:"Instrument Serif";font-weight:400;font-size:15px;color:var(--green-900);
+}
+.ing-row .ing-name em{
+  font-style:italic;font-weight:500;color:var(--ink-3);font-size:13px;font-family:"Inter";
+  margin-left:8px;
+}
+.ing-row .ing-mg{
+  font-family:"Inter";font-weight:800;color:var(--ink);font-size:15px;
+  background:var(--green-50);padding:6px 14px;border-radius:99px;
+}
+.ing-row:first-child .ing-mg{background:transparent;color:rgba(255,255,255,.7);font-weight:700;font-size:12px;letter-spacing:.12em}
+.ing-row:first-child .ing-idx{color:rgba(255,255,255,.7);font-size:12px;font-weight:700;letter-spacing:.12em}
+.ing-hook{
+  margin-top:28px;text-align:center;font-family:"Inter";font-weight:700;
+  font-size:18px;color:var(--copper);letter-spacing:-.01em;
+}
+
+/* ============================================================
+   SECTION 14: FEATURED INGREDIENT SPOTLIGHTS
+   ============================================================ */
+.spotlights{background:var(--bg)}
+.cat-tabs{
+  display:flex;gap:6px;margin-top:36px;overflow-x:auto;scrollbar-width:none;
+  padding-bottom:4px;
+}
+.cat-tabs::-webkit-scrollbar{display:none}
+.cat-tabs a{
+  padding:10px 18px;font-size:13px;font-weight:600;color:var(--ink-2);
+  border-radius:99px;white-space:nowrap;border:1px solid var(--line);
+  background:#fff;
+}
+.cat-tabs a.active{background:var(--green-800);color:#fff;border-color:var(--green-800)}
+
+.spot-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px;
+}
+.spot{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:24px;display:flex;flex-direction:column;gap:14px;
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:all .2s;
+}
+.spot:hover{border-color:var(--green-700);transform:translateY(-2px);box-shadow:var(--sh-2)}
+.spot-img{
+  aspect-ratio:16/10;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-100),var(--bg));
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Instrument Serif";font-weight:400;font-size:22px;color:var(--green-800);
+  letter-spacing:-.02em;border:1px dashed var(--line);
+}
+.spot h4{
+  font-family:"Instrument Serif";font-weight:400;font-size:17px;color:var(--green-900);
+  letter-spacing:-.015em;
+}
+.spot .role{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);
+  font-weight:700;margin-top:-8px;
+}
+.spot ul{
+  list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13px;
+}
+.spot ul li{
+  padding-left:14px;position:relative;color:var(--ink-2);line-height:1.4;
+}
+.spot ul li::before{
+  content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
+  border-radius:50%;background:var(--green-800);
+}
+.spot-hook{
+  font-style:italic;color:var(--green-800);font-size:13px;font-weight:600;
+  padding-top:10px;border-top:1px dashed var(--line);
+}
+
+/* ============================================================
+   SECTION 15: SCIENTIFIC REFERENCES
+   ============================================================ */
+.science{
+  background:linear-gradient(180deg,var(--bg),#fff);
+}
+.refs-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;
+  margin-top:48px;
+}
+.refs-sources{display:grid;gap:12px}
+.ref-source{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:18px 22px;display:flex;align-items:center;gap:16px;
+}
+.ref-source .ic{
+  width:42px;height:42px;border-radius:8px;flex-shrink:0;
+  background:var(--green-50);color:var(--green-800);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Inter";font-weight:800;font-size:12px;letter-spacing:-.02em;
+}
+.ref-source h4{font-family:"Instrument Serif";font-weight:400;font-size:15px;color:var(--green-900);letter-spacing:-.01em}
+.ref-source p{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+
+.refs-points{
+  background:var(--green-900);color:#fff;border-radius:var(--r-lg);padding:36px;
+}
+.refs-points h3{
+  font-family:"Instrument Serif";font-weight:400;font-size:22px;color:var(--gold);
+  letter-spacing:-.015em;margin-bottom:18px;
+}
+.refs-points ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px}
+.refs-points li{
+  display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,.85);line-height:1.5;
+}
+.refs-points li::before{
+  content:"✓";color:var(--gold);font-weight:400;font-family:"Instrument Serif";flex-shrink:0;
+}
+
+/* ============================================================
+   SECTION 16: SYSTEM COVERAGE
+   ============================================================ */
+.system-cov{background:var(--bg)}
+.cov-table{
+  margin-top:48px;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);overflow:hidden;
+}
+.cov-table .compare-row > div{padding:18px 28px}
+.yes-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:"Instrument Serif";font-weight:400;font-size:13px;
+  color:var(--green-800);
+}
+.no-pill{
+  font-size:13px;color:var(--ink-3);font-weight:500;
+}
+.no-pill .x{color:var(--warn);font-weight:700;margin-right:6px}
+.cov-hook{
+  margin-top:28px;text-align:center;font-family:"Inter";font-weight:700;
+  font-size:18px;color:var(--green-800);letter-spacing:-.01em;
+}
+
+/* ============================================================
+   SECTION 17: FAQ
+   ============================================================ */
+.faqs{background:#fff}
+.faq-layout{
+  display:grid;grid-template-columns:240px 1fr;gap:48px;margin-top:48px;align-items:start;
+}
+.faq-cats{display:flex;flex-direction:column;gap:4px;position:sticky;top:160px}
+.faq-cats a{
+  padding:12px 16px;font-size:13.5px;color:var(--ink-2);font-weight:600;
+  border-radius:var(--r-sm);
+}
+.faq-cats a.active{background:var(--green-50);color:var(--green-800)}
+.faq-cats a:hover{background:var(--bg);color:var(--green-800)}
+.faq-list{display:flex;flex-direction:column;gap:8px}
+details.q{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);
+  padding:0;transition:all .15s;
+}
+details.q[open]{border-color:var(--green-800);background:var(--green-50)}
+details.q summary{
+  list-style:none;cursor:pointer;padding:20px 24px;
+  display:flex;justify-content:space-between;align-items:center;gap:18px;
+  font-family:"Instrument Serif";font-weight:400;font-size:15.5px;color:var(--green-900);
+  letter-spacing:-.01em;
+}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{
+  content:"";width:22px;height:22px;border-radius:50%;
+  background:var(--green-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 4l3 3 3-3' stroke='%231A4D2E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/12px no-repeat;
+  transition:transform .2s;flex-shrink:0;
+}
+details.q[open] summary::after{transform:rotate(180deg);background-color:var(--green-800);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2 4l3 3 3-3' stroke='%23fff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+details.q .a{padding:0 24px 22px;font-size:14px;color:var(--ink-2);line-height:1.6}
+
+/* Self-help quiz block */
+.quiz{
+  margin-top:48px;padding:36px 40px;background:var(--green-900);color:#fff;
+  border-radius:var(--r-lg);display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.quiz-body h3{font-family:"Instrument Serif";font-weight:400;font-size:24px;color:#fff;letter-spacing:-.02em}
+.quiz-body p{font-size:14px;color:rgba(255,255,255,.7);margin-top:8px;max-width:520px;line-height:1.5}
+
+/* ============================================================
+   REVIEWS BLOCK
+   ============================================================ */
+.reviews{background:var(--bg)}
+.rev-summary-row{
+  display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:start;margin-top:48px;
+}
+.rev-summary{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-lg);
+  padding:32px;text-align:center;position:sticky;top:160px;
+}
+.rev-big{font-family:"Instrument Serif";font-weight:400;font-size:64px;color:var(--green-900);letter-spacing:-.04em;line-height:1}
+.rev-summary .stars{font-size:18px;margin-top:8px;display:block}
+.rev-summary .total{font-size:13px;color:var(--ink-3);margin-top:8px}
+.rev-breakdown{margin-top:24px;display:flex;flex-direction:column;gap:8px;text-align:left}
+.brk{display:grid;grid-template-columns:40px 1fr 30px;gap:10px;align-items:center;font-size:12px;color:var(--ink-2);cursor:pointer}
+.brk .bar{height:6px;background:var(--green-50);border-radius:99px;overflow:hidden}
+.brk .bar i{display:block;height:100%;background:var(--gold);border-radius:99px}
+
+.rev-list{display:flex;flex-direction:column;gap:14px}
+.rev-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.rev-filters .pill{
+  font-size:12px;padding:7px 14px;background:#fff;border:1px solid var(--line);
+  border-radius:99px;color:var(--ink-2);font-weight:600;cursor:pointer;
+}
+.rev-filters .pill.active{background:var(--green-800);color:#fff;border-color:var(--green-800)}
+.review{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:24px 26px;
+}
+.review-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:14px;flex-wrap:wrap}
+.review-head .who{display:flex;align-items:center;gap:10px}
+.review-head .avatar{
+  width:36px;height:36px;border-radius:50%;background:var(--green-100);color:var(--green-800);
+  display:flex;align-items:center;justify-content:center;font-weight:400;font-family:"Inter";
+}
+.review-head .name{font-weight:700;font-size:14px;color:var(--ink)}
+.review-head .verified{font-size:11px;color:var(--green-800);font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.review-head .date{font-size:12px;color:var(--ink-3);margin-top:2px}
+.review h5{font-family:"Instrument Serif";font-weight:400;font-size:15px;margin-bottom:6px;color:var(--green-900);letter-spacing:-.01em}
+.review .body{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+.review .photos{display:flex;gap:6px;margin-top:14px}
+.review .photos .ph{
+  width:64px;height:64px;border-radius:var(--r-sm);
+  background:linear-gradient(135deg,var(--green-100),var(--bg));border:1px solid var(--line-2);
+}
+.review .helpful{margin-top:12px;font-size:12px;color:var(--ink-3);display:flex;gap:14px}
+.review .helpful button{background:none;border:0;color:var(--ink-3);font-size:12px;display:inline-flex;align-items:center;gap:4px}
+.review .helpful button:hover{color:var(--green-800)}
+
+/* ============================================================
+   FREQUENTLY BOUGHT TOGETHER
+   ============================================================ */
+.fbt-section{background:#fff}
+.fbt-card{
+  margin-top:48px;background:var(--bg);border:1px solid var(--line-2);
+  border-radius:var(--r-lg);padding:36px;
+  display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:center;
+}
+.fbt-items{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.fbt-item{
+  flex:1;min-width:140px;text-align:center;background:#fff;
+  border:1px solid var(--line-2);border-radius:var(--r-md);padding:16px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.fbt-item .ph{
+  aspect-ratio:1/1;border-radius:var(--r-sm);
+  background:linear-gradient(135deg,var(--green-100),var(--bg));
+  border:1px dashed var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:var(--ink-3);text-align:center;padding:8px;
+}
+.fbt-item .ph.main{background:linear-gradient(135deg,var(--green-50),#fff)}
+.fbt-item .name{font-family:"Instrument Serif";font-weight:400;font-size:13px;color:var(--green-900);letter-spacing:-.01em}
+.fbt-item label{display:flex;align-items:center;gap:6px;justify-content:center;font-size:12px;color:var(--ink-2);cursor:pointer}
+.fbt-item label input{accent-color:var(--green-800)}
+.fbt-item .pr{font-family:"Instrument Serif";font-weight:400;font-size:13px;color:var(--ink)}
+.fbt-plus{
+  font-size:24px;color:var(--ink-3);align-self:center;
+  font-family:"Instrument Serif";font-weight:300;
+}
+.fbt-sum{
+  border-left:1px dashed var(--line);padding-left:36px;
+}
+.fbt-sum .total-lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.fbt-sum .total{font-family:"Instrument Serif";font-weight:400;font-size:32px;color:var(--green-900);letter-spacing:-.02em;margin-top:6px}
+.fbt-sum .mrp-line{display:flex;align-items:baseline;gap:8px;margin-top:4px}
+.fbt-sum .mrp-line .old{font-size:14px;color:var(--ink-3);text-decoration:line-through}
+.fbt-sum .save{font-size:12px;color:var(--copper);font-weight:700;background:var(--copper-soft);padding:2px 8px;border-radius:99px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  background:var(--green-900);color:rgba(255,255,255,.65);
+  padding:80px 0 40px;
+}
+.foot-top{
+  display:grid;grid-template-columns:2fr repeat(4,1fr);gap:40px;
+  padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.foot-brand .logo{color:#fff;margin-bottom:18px}
+.foot-brand .logo-mark{background:var(--gold);color:var(--green-900)}
+.foot-brand p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.55);max-width:300px}
+.foot-newsletter{margin-top:20px;display:flex;gap:8px;max-width:300px}
+.foot-newsletter input{
+  flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:#fff;padding:11px 14px;border-radius:99px;font-size:13px;font-family:"Inter";
+}
+.foot-newsletter input::placeholder{color:rgba(255,255,255,.4)}
+.foot-newsletter button{
+  background:var(--gold);color:var(--green-900);border:0;
+  padding:0 18px;border-radius:99px;font-weight:400;font-size:13px;
+  font-family:"Inter";
+}
+.foot-col h5{
+  color:#fff;font-family:"Inter";font-weight:700;font-size:13px;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;
+}
+.foot-col a{
+  display:block;font-size:13px;padding:5px 0;color:rgba(255,255,255,.6);
+}
+.foot-col a:hover{color:#fff}
+.foot-bottom{
+  padding-top:28px;display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:14px;font-size:12px;color:rgba(255,255,255,.45);
+}
+.foot-bottom .pay{display:flex;gap:8px;align-items:center}
+.foot-bottom .pay span{
+  background:rgba(255,255,255,.08);padding:6px 12px;border-radius:6px;
+  font-size:11px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.7);
+}
+
+/* ============================================================
+   STICKY MOBILE CTA + FLOATING CHAT
+   ============================================================ */
+.mobile-cta{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:#fff;border-top:1px solid var(--line);
+  padding:12px 16px;box-shadow:0 -6px 24px rgba(17,32,26,.08);
+  grid-template-columns:auto 1fr;gap:14px;align-items:center;
+}
+.mobile-cta .mp{display:flex;flex-direction:column;line-height:1.1;min-width:100px}
+.mobile-cta .mp .now{font-family:"Instrument Serif";font-weight:400;font-size:18px;color:var(--green-900)}
+.mobile-cta .mp .old{color:var(--ink-3);text-decoration:line-through;font-size:11px;margin-top:2px}
+.mobile-cta .mp .save{font-size:10px;color:var(--copper);font-weight:700;margin-top:2px;letter-spacing:.04em}
+.mobile-cta .cta-pair{width:100%}
+
+.chat-float{
+  position:fixed;right:24px;bottom:24px;z-index:55;
+  background:var(--green-800);color:#fff;border-radius:99px;
+  padding:14px 22px;font-size:14px;font-weight:400;font-family:"Instrument Serif";
+  box-shadow:0 8px 28px rgba(26,77,46,.35);cursor:pointer;
+  display:flex;align-items:center;gap:10px;letter-spacing:-.01em;
+}
+.chat-float:hover{background:var(--green-900);transform:translateY(-2px)}
+.chat-float .ic{
+  width:26px;height:26px;border-radius:50%;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;color:var(--green-900);
+  font-size:14px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  .section{padding:72px 0}
+  .hero{grid-template-columns:1fr;gap:36px}
+  .gallery{position:static;padding-left:0;grid-template-columns:1fr;gap:10px;max-height:none}
+  .thumbs{position:static;width:auto;flex-direction:row;overflow-x:auto;overflow-y:hidden;order:2;padding-bottom:4px;max-height:none}
+  .thumb{flex:0 0 80px}
+  .thumbs::-webkit-scrollbar{display:none}
+  .feel-grid{grid-template-columns:repeat(3,1fr)}
+  .systems{grid-template-columns:1fr}
+  .timeline{grid-template-columns:repeat(2,1fr);gap:32px}
+  .timeline::before{display:none}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .spot-grid{grid-template-columns:1fr 1fr}
+  .cert-list{grid-template-columns:repeat(3,1fr)}
+  .refs-grid{grid-template-columns:1fr}
+  .ugc-row{grid-template-columns:repeat(4,1fr)}
+  .review-snippets{grid-template-columns:1fr}
+  .fbt-card{grid-template-columns:1fr}
+  .fbt-sum{border-left:0;border-top:1px dashed var(--line);padding-left:0;padding-top:24px}
+}
+
+@media (max-width:820px){
+  body{padding-bottom:84px}
+  .container{padding:0 18px}
+  .section{padding:56px 0}
+  .nav{display:none}
+  .header-row{grid-template-columns:auto 1fr auto;gap:14px}
+  .header-actions .icon-btn:not(:last-child){display:none}
+  .quicknav-cta{display:none}
+  .quicknav{top:69px}
+  .product-title{font-size:30px}
+  .promise-list{grid-template-columns:1fr}
+  .packs{grid-template-columns:1fr}
+  .pack{flex-direction:row;align-items:center;text-align:left;padding:14px 16px}
+  .pack-supply{margin-left:auto}
+  .pack-price{margin-top:0}
+  .purchase-mode{grid-template-columns:1fr}
+  .our-promise .container{grid-template-columns:1fr;gap:32px}
+  .promise-grid{grid-template-columns:1fr 1fr}
+  .problem-grid{grid-template-columns:1fr;gap:32px}
+  .feel-grid{grid-template-columns:1fr 1fr}
+  .dual-action{grid-template-columns:1fr}
+  .hiw-stat{grid-template-columns:1fr}
+  .hiw-stat-item{border-right:0;border-bottom:1px solid var(--line-2)}
+  .use-grid{grid-template-columns:1fr}
+  .compare-row{grid-template-columns:1.4fr 1fr 1fr}
+  .compare-row > div{padding:14px 16px;font-size:13px}
+  .why-grid{grid-template-columns:1fr}
+  .spot-grid{grid-template-columns:1fr}
+  .ing-row{grid-template-columns:auto 1fr;gap:14px;padding:14px 18px}
+  .ing-row .ing-mg{grid-column:2;justify-self:start;margin-top:4px}
+  .cat-tabs{margin-top:24px}
+  .faq-layout{grid-template-columns:1fr}
+  .faq-cats{flex-direction:row;overflow-x:auto;position:static;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:14px}
+  .faq-cats a{white-space:nowrap;flex-shrink:0}
+  .quiz{flex-direction:column;text-align:center;padding:28px;align-items:stretch}
+  .rev-summary-row{grid-template-columns:1fr}
+  .rev-summary{position:static}
+  .ugc-row{grid-template-columns:repeat(3,1fr)}
+  .certs-row{grid-template-columns:1fr;gap:20px}
+  .cert-list{grid-template-columns:repeat(3,1fr)}
+  .foot-top{grid-template-columns:1fr 1fr;gap:30px}
+  .mobile-cta{display:grid}
+  .chat-float{bottom:86px;right:14px;padding:11px 16px;font-size:12px}
+  .section-title{font-size:30px}
+  .breadcrumb{font-size:11px}
+  .timeline{grid-template-columns:1fr}
+  .txn-trust{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:520px){
+  .container{padding:0 14px}
+  .product-title{font-size:26px}
+  .price-now{font-size:28px}
+  .ugc-row{grid-template-columns:repeat(2,1fr)}
+  .foot-top{grid-template-columns:1fr}
+  .qty-cta{grid-template-columns:104px 1fr}
+  .cta-pair{grid-template-columns:1fr;gap:8px}
+}
