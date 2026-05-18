@@ -354,13 +354,8 @@ button{font:inherit;cursor:pointer}
   display:flex;align-items:flex-start;gap:8px;
   list-style:none;font-size:13px;color:var(--ink);font-weight:500;
 }
-.promise-list li::before{
-  content:"";display:inline-block;flex-shrink:0;
-  width:16px;height:16px;border-radius:50%;background:var(--green-800);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M1 5l3 3 5-6' stroke='%23fff' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-size:10px;background-repeat:no-repeat;background-position:center;
-  margin-top:2px;
-}
+.promise-list li::before{content:none}
+.promise-icon{width:18px;height:18px;flex-shrink:0;margin-top:1px}
 
 /* Size toggle (250 / 500) */
 .size-row{display:flex;align-items:center;gap:16px;margin-top:4px}
