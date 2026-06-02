@@ -1,0 +1,212 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations (Atelier System)
+   foundations-atelier.css
+   ------------------------------------------------------------
+   The premium, couture-leaning sibling to Forest / Aurora /
+   Botanica / Bold / Mono. Same brand spine — deep botanical
+   green, real herbal honesty — but dressed in high-fashion
+   editorial type and a SINGLE signature move: jewel-toned
+   gradients built entirely WITHIN shades of green.
+
+   Two deliberate departures from its siblings:
+     1. Premium paid-quality typefaces never used elsewhere —
+        Zodiak (an elegant high-contrast didone revival) leads,
+        paired with Satoshi (a refined neutral grotesque). No
+        Bricolage, no Sentient, no Hanken, no Syne. A new register.
+     2. Every gradient stays inside the green family. Where
+        Aurora warmed green into copper & gold, Atelier keeps
+        the light cool and emerald — leaf lifting into deep
+        forest, forest sinking into pine. Gold survives only as
+        a flat, hairline premium accent, never inside a gradient.
+
+   Fonts (Fontshare — premium foundry quality, web-licensed):
+     Zodiak  — display / headlines / accents (didone serif)
+     Satoshi   — body / UI / numerals / labels (neutral grotesque)
+   ============================================================ */
+
+@import url("https://api.fontshare.com/v2/css?f[]=zodiak@300,400,500,700&f[]=satoshi@400,500,700,900&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     EMERALD LADDER — the gradient engine
+     Nine steps of one hue, from deepest pine to living leaf.
+     Every signature gradient is built from this ramp alone.
+     --------------------------------------------------------- */
+  --emerald-950:#06160D;  /* deepest — hero floor, darkest field */
+  --emerald-900:#0A2113;  /* dark sections, deep surface */
+  --emerald-800:#0E2D1B;  /* PRIMARY ground — buttons, dark fields */
+  --emerald-700:#123A22;  /* lifted forest / gradient mid stop */
+  --emerald-600:#1A4E2E;  /* mid emerald */
+  --emerald-500:#246A3D;  /* lifted emerald — gradient top on dark */
+  --emerald-400:#327E4C;  /* bright emerald */
+  --leaf:#56913E;         /* living leaf — links, active, emphasis */
+  --leaf-600:#3C6B2C;     /* hover / pressed */
+  --leaf-400:#7FB867;     /* lifted leaf — gradient lightest stop */
+  --leaf-200:#C6DBB4;     /* accent hairline */
+  --leaf-100:#E5EFDA;     /* faint tint fill */
+
+  /* ---------------------------------------------------------
+     PREMIUM ACCENT — gold, FLAT only.
+     The one warm note, reserved for rating stars & a single
+     hairline premium flourish. It never enters a gradient.
+     --------------------------------------------------------- */
+  --gold:#C8A24A;        --gold-200:#E6D7A6;   --gold-100:#F4ECD4;
+  --positive:#2E7D52;    /* in-stock / verified */
+
+  /* ---------------------------------------------------------
+     LIGHT REGISTER (default page) — cool conservatory light.
+     A pale, faintly green-tinted ivory. Never pure white.
+     --------------------------------------------------------- */
+  --paper:#EFF1E8;       /* page background — cool conservatory ivory */
+  --paper-2:#E7EBDC;     /* recessed wash */
+  --surface:#FAFBF4;     /* cards / raised surfaces */
+  --ink:#11241A;         /* primary text — deep green-black */
+  --ink-2:#374A39;       /* secondary text — moss */
+  --ink-3:#64715F;       /* tertiary / captions — lichen */
+  --ink-4:#95A08C;       /* faint — placeholders — dry sage */
+  --line:#D8DDC9;        /* default hairline */
+  --line-2:#E4E8D7;      /* lighter inner hairline */
+
+  /* ---------------------------------------------------------
+     DEEP REGISTER (the gradient's natural home).
+     Deep emerald grounds, luminous mint type.
+     --------------------------------------------------------- */
+  --d-bg:#081A0F;        /* deep page background */
+  --d-surface:#0E281A;   /* deep card / raised surface */
+  --d-surface-2:#123A22; /* lifted deep surface */
+  --d-ink:#E8F1E4;       /* primary text on deep */
+  --d-ink-2:#B5C7B2;     /* secondary on deep */
+  --d-ink-3:#7B8F7E;     /* tertiary on deep */
+  --d-line:#22392A;      /* hairline on deep */
+  --d-line-2:#2C4634;    /* brighter deep hairline */
+
+  /* ---------------------------------------------------------
+     GRADIENTS — the signature, GREEN ON GREEN.
+     Nothing leaves the hue. Tonal, jewel-like, premium.
+     (Token names mirror the Aurora system for drop-in parity;
+     only the colour story changes — warm → all-emerald.)
+     --------------------------------------------------------- */
+  /* deep jewel — dark sections, primary buttons, tags */
+  --grad-forest:linear-gradient(150deg,#1A4E2E 0%,#0E2D1B 56%,#0A2113 100%);
+  /* living leaf — active state, positive, icon tiles */
+  --grad-leaf:linear-gradient(135deg,#7FB867 0%,#56913E 50%,#3C6B2C 100%);
+  /* the SIGNATURE highest-intent fill — emerald rising to leaf */
+  --grad-ember:linear-gradient(120deg,#327E4C 0%,#1A4E2E 60%,#0E2D1B 100%);
+  /* light card / panel wash — barely-there celadon */
+  --grad-sage:linear-gradient(160deg,#FAFBF4 0%,#EAEFDF 100%);
+  /* accent-word clip & hairline — leaf lifting into deep emerald */
+  --grad-dawn:linear-gradient(95deg,#7FB867 0%,#56913E 38%,#1A4E2E 100%);
+  /* atelier glow — all-green radial mesh for deep hero grounds */
+  --grad-aurora:
+    radial-gradient(120% 120% at 12% 8%, rgba(127,184,103,.26) 0%, rgba(127,184,103,0) 46%),
+    radial-gradient(120% 130% at 92% 12%, rgba(86,145,62,.22) 0%, rgba(86,145,62,0) 44%),
+    radial-gradient(150% 130% at 78% 104%, rgba(36,106,61,.30) 0%, rgba(36,106,61,0) 52%),
+    linear-gradient(160deg,#0E2D1B 0%,#081A0F 100%);
+  /* glow for light grounds — much fainter green */
+  --grad-aurora-light:
+    radial-gradient(110% 120% at 6% 0%, rgba(86,145,62,.13) 0%, rgba(86,145,62,0) 46%),
+    radial-gradient(120% 120% at 100% 10%, rgba(36,106,61,.10) 0%, rgba(36,106,61,0) 42%),
+    linear-gradient(160deg,#F2F4EA 0%,#E8EDDD 100%);
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES — didone serif leads, grotesque supports.
+     No monospace; Satoshi (tracked) carries technical labels.
+     --------------------------------------------------------- */
+  --font-display:"Zodiak", "Georgia", "Times New Roman", serif;
+  --font-sans:"Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono:"Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* ---------------------------------------------------------
+     TYPE SCALE — display is large, high-contrast serif.
+     Labels are Satoshi 600 uppercase, widely tracked.
+     --------------------------------------------------------- */
+  --t-display:clamp(50px,7.8vw,120px);
+  --t-hero:clamp(34px,4.4vw,64px);
+  --t-h2:clamp(26px,2.8vw,38px);
+  --t-h3:22px;
+  --t-h4:17px;
+  --t-body:16px;
+  --t-body-lg:19px;
+  --t-small:13px;
+  --t-tiny:11px;
+
+  --lh-tight:1.0;
+  --lh-snug:1.12;
+  --lh-body:1.62;
+
+  --tr-display:-.02em;    /* didone serif, gentle pull-in */
+  --tr-tight:-.012em;
+  --tr-label:.2em;        /* uppercase Satoshi labels open wide */
+
+  /* ---------------------------------------------------------
+     RADIUS — refined, a touch crisper than Aurora.
+     --------------------------------------------------------- */
+  --r:12px;              /* cards / panels */
+  --r-lg:18px;           /* feature panels / photo frames */
+  --r-input:9px;
+  --r-btn:9px;
+  --r-pill:999px;
+
+  /* ---------------------------------------------------------
+     ELEVATION — soft, emerald-tinted, glow-leaning.
+     --------------------------------------------------------- */
+  --sh-0:none;
+  --sh-1:0 1px 0 rgba(8,26,15,.04);
+  --sh-2:0 14px 34px -20px rgba(8,26,15,.30);
+  --sh-3:0 32px 80px -34px rgba(8,26,15,.42);
+  --glow-leaf:0 18px 50px -22px rgba(86,145,62,.50);
+  --glow-ember:0 18px 50px -22px rgba(36,106,61,.55);  /* now an emerald glow */
+
+  /* ---------------------------------------------------------
+     SPACING
+     --------------------------------------------------------- */
+  --space-section:clamp(76px,9vw,132px);
+  --space-gutter:clamp(24px,5vw,72px);
+  --container:1280px;
+
+  --ease:cubic-bezier(.2,.6,.2,1);
+}
+
+/* ============================================================
+   SEMANTIC DEFAULTS  (opt-in via .ubn wrapper)
+   ============================================================ */
+.ubn{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn h1,.ubn h2,.ubn h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:var(--tr-tight);
+  line-height:var(--lh-snug);
+  text-wrap:balance;
+}
+.ubn h1{font-size:var(--t-hero);font-weight:400;letter-spacing:var(--tr-display);line-height:var(--lh-tight);}
+.ubn h2{font-size:var(--t-h2);}
+.ubn h3{font-size:var(--t-h3);font-weight:500;}
+/* Accent word — gradient-clipped, green into deep emerald. */
+.ubn h1 em,.ubn h2 em{
+  font-style:normal;
+  background:var(--grad-dawn);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.ubn p{font-size:var(--t-body);color:var(--ink-2);line-height:var(--lh-body);}
+.ubn a{color:var(--leaf);text-decoration:none;}
+
+/* Eyebrow — Satoshi index + uppercase tracked label. */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);
+  font-size:var(--t-tiny);font-weight:600;
+  letter-spacing:var(--tr-label);text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ubn-eyebrow .num{color:var(--leaf);}

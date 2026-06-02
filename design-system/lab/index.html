@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBalance Naturals — Design System · Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/design-system/lab/styles.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:var(--lh-body);font-weight:400;font-feature-settings:"tnum" 1}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#fff}
+
+  /* ---- shell ---- */
+  .shell{display:grid;grid-template-columns:288px 1fr;align-items:start}
+  .side{position:sticky;top:0;height:100vh;background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:36px 30px;overflow-y:auto}
+  .side-logo{height:28px;width:auto;filter:brightness(0);margin-bottom:24px}
+  .side-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:38px;display:flex;align-items:center;gap:10px}
+  .side-tag::before{content:"";width:14px;height:14px;border:1px solid var(--accent);position:relative}
+  .side nav{display:flex;flex-direction:column;gap:1px;flex:1}
+  .side nav a{display:flex;gap:14px;align-items:baseline;font-size:13.5px;font-weight:500;color:var(--ink-3);padding:9px 0;transition:color .15s var(--ease);border-bottom:1px solid transparent}
+  .side nav a .n{font-family:var(--font-mono);font-size:11px;color:var(--ink-4);width:24px;transition:color .15s}
+  .side nav a:hover{color:var(--ink)}
+  .side nav a.active{color:var(--ink)}
+  .side nav a.active .n{color:var(--accent)}
+  .side-foot{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-4);margin-top:34px;line-height:1.9;letter-spacing:.01em;border-top:1px solid var(--line);padding-top:18px}
+
+  .main{min-width:0}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 var(--space-gutter);min-width:0}
+
+  /* ---- registration marks ---- */
+  .reg{position:absolute;width:12px;height:12px;pointer-events:none}
+  .reg::before,.reg::after{content:"";position:absolute;background:var(--accent);opacity:.55}
+  .reg::before{left:50%;top:0;width:1px;height:100%;transform:translateX(-.5px)}
+  .reg::after{top:50%;left:0;height:1px;width:100%;transform:translateY(-.5px)}
+
+  /* ---- hero ---- */
+  .hero{background:var(--graphite);color:#fff;padding:clamp(88px,12vw,156px) 0 clamp(74px,10vw,128px);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-dark) 1px,transparent 1px),linear-gradient(90deg,var(--line-dark) 1px,transparent 1px);background-size:48px 48px;opacity:.22;mask-image:radial-gradient(120% 100% at 80% 0%,#000,transparent 75%)}
+  .hero .wrap{position:relative;z-index:1}
+  .hero-kicker{display:flex;align-items:center;gap:14px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:var(--tr-label);text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:32px}
+  .hero-kicker .num{color:var(--accent);font-weight:500}
+  .hero-kicker::after{content:"";flex:1;max-width:140px;height:1px;background:var(--line-dark)}
+  .hero h1{font-weight:500;font-size:var(--t-display);line-height:1.0;letter-spacing:var(--tr-display);margin-bottom:28px;color:#fff}
+  .hero h1 em{font-style:normal;color:#7FD3A4;font-weight:500}
+  .hero p{font-size:var(--t-body-lg);color:rgba(255,255,255,.62);max-width:560px;font-weight:400;line-height:1.55}
+  .hero-meta{display:grid;grid-template-columns:repeat(3,max-content);gap:0;margin-top:52px;border:1px solid var(--line-dark);width:fit-content}
+  .hero-meta .m{display:flex;flex-direction:column;gap:6px;padding:18px 26px;border-right:1px solid var(--line-dark)}
+  .hero-meta .m:last-child{border-right:0}
+  .hero-meta .m .k{font-family:var(--font-mono);font-size:10.5px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
+  .hero-meta .m .v{font-size:15px;color:rgba(255,255,255,.92);font-weight:500}
+
+  /* ---- section ---- */
+  section.doc{padding:var(--space-section) 0;border-bottom:1px solid var(--line)}
+  section.doc.alt{background:var(--surface)}
+  .sec-head{display:flex;flex-direction:column;gap:18px;margin-bottom:52px;max-width:780px}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3)}
+  .eyebrow .num{color:var(--accent)}
+  h2.sec-title{font-weight:500;font-size:var(--t-hero);line-height:1.04;letter-spacing:var(--tr-display);color:var(--ink)}
+  h2.sec-title em{font-style:normal;color:var(--accent)}
+  .lead{font-size:var(--t-body-lg);color:var(--ink-2);max-width:690px;font-weight:400;line-height:1.55}
+  h3.block{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3);margin:0 0 22px;display:flex;align-items:center;gap:12px}
+  h3.block::after{content:"";flex:1;height:1px;background:var(--line)}
+  .mono{font-family:var(--font-mono)}
+
+  /* ---- brand principles ---- */
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-bottom:0}
+  .principle{padding:30px 30px 34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);background:var(--surface)}
+  .principle:nth-child(3n){border-right:0}
+  .principle .pidx{font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-bottom:28px;letter-spacing:.06em}
+  .principle h4{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:var(--tr-tight);margin-bottom:11px}
+  .principle p{font-size:14px;color:var(--ink-2);line-height:1.6}
+
+  /* ---- logo ---- */
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+  .logo-cell{border-right:1px solid var(--line)}
+  .logo-cell:last-child{border-right:0}
+  .logo-stage{height:230px;display:flex;align-items:center;justify-content:center;position:relative}
+  .logo-stage img{height:44px}
+  .logo-stage.light{background:var(--surface)}
+  .logo-stage.light img{filter:brightness(0)}
+  .logo-stage.dark{background:var(--graphite)}
+  .logo-stage.dark img{filter:brightness(0) invert(1)}
+  .logo-cell .cap{padding:15px 22px;font-size:12.5px;color:var(--ink-2);font-weight:500;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px}
+  .logo-cell .cap span{font-family:var(--font-mono);color:var(--ink-4);font-weight:400;font-size:11px}
+  .clearspace{margin-top:18px;border:1px solid var(--line);padding:40px;display:flex;align-items:center;gap:40px;background:var(--surface);flex-wrap:wrap}
+  .cs-box{position:relative;padding:34px;border:1px dashed var(--accent-line);outline:1px solid var(--line)}
+  .cs-box img{height:38px;filter:brightness(0)}
+  .cs-box .x{position:absolute;font-family:var(--font-mono);font-size:11px;color:var(--accent);background:var(--surface);padding:0 5px}
+  .cs-box .x.t{top:-8px;left:50%;transform:translateX(-50%)}
+  .cs-box .x.l{left:-13px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+  .clearspace .csnote{font-size:13px;color:var(--ink-2);max-width:300px;line-height:1.6}
+  .clearspace .csnote b{color:var(--ink);font-weight:600}
+  .dos{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);margin-top:18px}
+  .do-item{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .do-item:nth-child(2n){border-right:0}
+  .do-item:nth-last-child(-n+2){border-bottom:0}
+  .do-item .tick{width:18px;height:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:600;margin-top:0}
+  .do-item.yes .tick{color:var(--accent)}
+  .do-item.no .tick{color:var(--ink-3)}
+  .do-item p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+  .do-item b{color:var(--ink);font-weight:600}
+
+  /* ---- color ---- */
+  .pal{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-right:0}
+  .sw{border-right:1px solid var(--line)}
+  .sw .chip{height:122px;position:relative}
+  .sw .meta{padding:13px 15px;border-top:1px solid var(--line);background:var(--surface)}
+  .sw .nm{font-weight:600;font-size:13px;letter-spacing:-.01em}
+  .sw .hx{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase}
+  .sw .use{font-size:11.5px;color:var(--ink-3);margin-top:9px;line-height:1.4}
+  .pal + .pal{border-top:0}
+  .palwrap{margin-bottom:34px}
+
+  /* ---- typography ---- */
+  .type-spec{border:1px solid var(--line);background:var(--surface)}
+  .type-hero-row{padding:42px 40px 38px;border-bottom:1px solid var(--line);position:relative}
+  .type-hero-row .big{font-size:clamp(54px,8vw,104px);font-weight:500;letter-spacing:var(--tr-display);line-height:.92;color:var(--ink)}
+  .type-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .type-meta .fam{font-size:15px;font-weight:600}
+  .type-meta .role{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+  .weights{display:grid;grid-template-columns:repeat(3,1fr)}
+  .wcell{padding:24px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .wcell:nth-child(3n){border-right:0}
+  .wcell:nth-last-child(-n+3){border-bottom:0}
+  .wcell .ws{font-size:29px;color:var(--ink);line-height:1;margin-bottom:11px}
+  .wcell .wl{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+  .mono-row{border:1px solid var(--line);border-top:0;padding:24px 28px;background:var(--paper-2);font-family:var(--font-mono);font-size:14.5px;color:var(--ink-2);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .mono-row span{color:var(--accent)}
+  .scale-tbl{border:1px solid var(--line);background:var(--surface);margin-top:18px}
+  .scale-line{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline;border-bottom:1px solid var(--line);padding:18px 28px}
+  .scale-line:last-child{border-bottom:0}
+  .scale-tok{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-3)}
+  .scale-samp{font-weight:500;color:var(--ink);letter-spacing:var(--tr-tight);line-height:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* ---- data table / COA — the signature component ---- */
+  .data-tbl{border:1px solid var(--line-strong);background:var(--surface);font-family:var(--font-mono);margin-top:0}
+  .data-tbl .dt-head{display:grid;grid-template-columns:1fr 92px 92px 70px;background:var(--graphite);color:#fff}
+  .data-tbl .dt-head div{padding:12px 16px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.62);border-right:1px solid var(--line-dark)}
+  .data-tbl .dt-head div:last-child{border-right:0;text-align:right}
+  .data-tbl .dt-row{display:grid;grid-template-columns:1fr 92px 92px 70px;border-bottom:1px solid var(--line-2)}
+  .data-tbl .dt-row:last-child{border-bottom:0}
+  .data-tbl .dt-row:nth-child(2n){background:var(--paper-2)}
+  .data-tbl .dt-row div{padding:13px 16px;font-size:13px;color:var(--ink-2);border-right:1px solid var(--line-2);display:flex;align-items:center}
+  .data-tbl .dt-row div:last-child{border-right:0;justify-content:flex-end;color:var(--ink);font-weight:500}
+  .data-tbl .dt-row .ing{font-family:var(--font-sans);color:var(--ink);font-weight:500;letter-spacing:0}
+  .data-tbl .dt-row div.pass{color:var(--accent);font-weight:500;justify-content:flex-end}
+  .data-cap{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-top:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;letter-spacing:.02em}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:var(--r-btn);font-weight:600;font-size:14px;border:1px solid transparent;letter-spacing:.005em;font-family:var(--font-sans);cursor:pointer;transition:all .15s var(--ease)}
+  .btn-primary{background:var(--graphite);color:#fff}
+  .btn-primary:hover{background:var(--graphite-700)}
+  .btn-accent{background:var(--accent);color:#fff}
+  .btn-accent:hover{background:var(--accent-700)}
+  .btn-outline{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+  .btn-outline:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+  .btn-ghost{background:transparent;color:var(--ink-2);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-lg{padding:17px 32px;font-size:15px}
+  .btn-sm{padding:10px 18px;font-size:13px}
+  .btn-data{font-family:var(--font-mono);font-weight:500;letter-spacing:.02em}
+  .btn-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line)}
+  .btn-demo{padding:28px 30px 32px;display:flex;flex-direction:column;gap:18px;align-items:flex-start;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .btn-demo:nth-child(2n){border-right:0}
+  .btn-demo:nth-last-child(-n+2){border-bottom:0}
+  .demo-label{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  .btn-row{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+  .spec-list{display:grid;grid-template-columns:1fr 1fr;margin-top:18px;border:1px solid var(--line);border-bottom:0}
+  .spec-list .row{display:flex;justify-content:space-between;gap:16px;font-size:13px;padding:13px 22px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+  .spec-list .row:nth-child(2n){border-right:0}
+  .spec-list .row span:first-child{color:var(--ink-3)}
+  .spec-list .row span:last-child{font-family:var(--font-mono);color:var(--ink);font-size:12px}
+
+  /* ---- components ---- */
+  .comp-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+  .comp-card{padding:26px 30px;display:flex;flex-direction:column;gap:18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .comp-card:nth-child(2n){border-right:0}
+  .comp-card:nth-last-child(-n+2){border-bottom:0}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:6px 11px;border-radius:var(--r-pill)}
+  .badge.solid{background:var(--graphite);color:#fff}
+  .badge.accent{background:var(--accent-soft);color:var(--accent-700);border:1px solid var(--accent-line)}
+  .badge.line{border:1px solid var(--line-strong);color:var(--ink-2);background:var(--surface)}
+  .badge.dot{border:1px solid var(--line-strong);color:var(--ink-2);background:var(--surface)}
+  .badge.dot::before{content:"";width:6px;height:6px;border-radius:var(--r-dot);background:var(--positive)}
+  .chip{font-family:var(--font-mono);font-size:12px;padding:7px 12px;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);font-weight:400;border-radius:var(--r);letter-spacing:.01em}
+  .chip:hover{border-color:var(--ink);color:var(--ink)}
+  .chip b{color:var(--accent);font-weight:500}
+  .flexrow{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+  .radii{display:flex;gap:14px;align-items:flex-end}
+  .radii .rc div{background:var(--accent-soft);border:1px solid var(--accent);width:60px;height:46px}
+  .radii .rc .rl{font-family:var(--font-mono);font-size:10px;color:var(--ink-3);margin-top:7px;text-align:center}
+  .field{display:flex;flex-direction:column;gap:8px;width:100%}
+  .field label{font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .field input{font-family:var(--font-mono);font-size:14px;padding:12px 14px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:var(--r-input);outline:none;transition:border-color .15s}
+  .field input::placeholder{color:var(--ink-4)}
+  .field input:focus{border-color:var(--accent)}
+  .meter{display:flex;flex-direction:column;gap:10px;width:100%}
+  .meter .ml{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+  .meter .mt{height:8px;background:var(--paper-2);border:1px solid var(--line);position:relative;overflow:hidden}
+  .meter .mt i{position:absolute;inset:0 38% 0 0;background:var(--accent);display:block}
+  .meter .mt.b i{inset:0 14% 0 0}
+  .divline{display:flex;flex-direction:column;gap:14px;width:100%}
+  .divline .dl{height:1px;background:var(--line)}
+  .divline .dl.accent{height:2px;background:var(--accent);width:40px}
+  .divline .dl.dash{height:0;border-top:1px dashed var(--line-strong)}
+
+  /* ---- icons ---- */
+  .icons{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-right:0;border-bottom:0;width:fit-content}
+  .icon-b{width:72px;height:72px;background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .icon-b.dark{background:var(--graphite);color:#fff}
+  .icon-b.accent{background:var(--accent);color:#fff}
+  .glyph-row{margin-top:18px;border:1px solid var(--line);background:var(--paper-2);padding:22px 28px;font-family:var(--font-mono);font-size:20px;letter-spacing:12px;color:var(--ink);display:flex;align-items:center}
+  .icon-meta{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-right:0;border-bottom:0}
+  .icon-meta .im{padding:18px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .icon-meta .im .k{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+  .icon-meta .im .v{font-family:var(--font-mono);font-size:14px;color:var(--ink);font-weight:500}
+
+  /* ---- photography ---- */
+  .photo-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);position:relative}
+  .photo-grid .frame{overflow:hidden;aspect-ratio:1/1;background:var(--paper);position:relative;filter:saturate(.88) contrast(1.02)}
+  .photo-grid .frame img{width:100%;height:100%;object-fit:cover}
+  .photo-grid .frame::after{content:attr(data-tag);position:absolute;left:12px;bottom:12px;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(16,26,20,.66);padding:4px 8px;backdrop-filter:blur(2px)}
+  .photo-rules{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-top:0}
+  .photo-rules .pr{padding:22px 26px;border-right:1px solid var(--line);background:var(--surface)}
+  .photo-rules .pr:last-child{border-right:0}
+  .photo-rules .pr .k{font-family:var(--font-mono);font-size:10.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  .photo-rules .pr p{font-size:13px;color:var(--ink-2);line-height:1.55}
+
+  /* ---- voice ---- */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+  .voice-card{padding:32px 36px;border-right:1px solid var(--line);background:var(--surface)}
+  .voice-card:last-child{border-right:0}
+  .voice-card .vlabel{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .voice-card.write .vlabel{color:var(--accent)}
+  .voice-card.avoid .vlabel{color:var(--ink-3)}
+  .voice-card .vlabel::before{content:"";width:8px;height:8px}
+  .voice-card.write .vlabel::before{background:var(--accent)}
+  .voice-card.avoid .vlabel::before{background:var(--ink-3)}
+  .voice-card .ex{font-size:24px;font-weight:500;line-height:1.32;letter-spacing:var(--tr-tight);margin-bottom:16px}
+  .voice-card.write .ex{color:var(--ink)}
+  .voice-card.avoid .ex{color:var(--ink-4)}
+  .voice-card p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+
+  .end{padding:64px 0 92px;color:var(--ink-3)}
+  .end .mn{font-family:var(--font-mono);font-size:12px;line-height:2;letter-spacing:.01em}
+  .end .mn b{color:var(--ink);font-weight:500}
+
+  @media (max-width:920px){
+    .shell{grid-template-columns:1fr}
+    .side{position:static;height:auto;flex-direction:row;align-items:center;gap:18px;padding:16px 22px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}
+    .side-tag,.side-foot{display:none}
+    .side nav{flex-direction:row;gap:14px}
+    .side nav a{border-bottom:0;white-space:nowrap;padding:4px 0}
+    .side-logo{margin:0}
+    .principles,.weights,.icon-meta,.photo-rules{grid-template-columns:1fr 1fr}
+    .pal{grid-template-columns:1fr 1fr;border-right:1px solid var(--line)}
+    .sw:nth-child(2n) .chip,.sw:nth-child(2n) .meta{border-right:0}
+    .logo-grid,.dos,.btn-grid,.comp-grid,.voice-grid,.photo-grid,.spec-list,.principles,.hero-meta{grid-template-columns:1fr}
+    .scale-line{grid-template-columns:120px 1fr;gap:14px}
+    .data-tbl .dt-head,.data-tbl .dt-row{grid-template-columns:1fr 70px 70px 56px}
+  }
+</style>
+</head>
+<body class="ubn">
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <img class="side-logo" src="/assets/logo.svg" alt="UBalance Naturals">
+    <div class="side-tag">Design System</div>
+    <nav id="toc">
+      <a href="#brand"><span class="n">01</span> Brand</a>
+      <a href="#logo"><span class="n">02</span> Logo</a>
+      <a href="#color"><span class="n">03</span> Color</a>
+      <a href="#type"><span class="n">04</span> Typography</a>
+      <a href="#buttons"><span class="n">05</span> Buttons &amp; CTA</a>
+      <a href="#components"><span class="n">06</span> Components</a>
+      <a href="#icons"><span class="n">07</span> Iconography</a>
+      <a href="#photo"><span class="n">08</span> Photography</a>
+      <a href="#voice"><span class="n">09</span> Voice &amp; Tone</a>
+    </nav>
+    <div class="side-foot">UBALANCE NATURALS<br>SYSTEM 4.0 · LAB · 2026<br>foundations-lab.css</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <div class="hero-kicker"><span class="num">v4.0</span> Visual System · Clinical</div>
+        <h1>Measured, <em>not marketed.</em><br>Proven, not promised.</h1>
+        <p>A clinical identity for UBalance Naturals. Forest green reframed as a precision signal — the colour of a verified reading. Swiss-technical type, tabular data, a hairline grid. The proof is the design.</p>
+        <div class="hero-meta">
+          <div class="m"><span class="k">Type</span><span class="v">Supreme / Tabular</span></div>
+          <div class="m"><span class="k">Accent</span><span class="v">Clinical green</span></div>
+          <div class="m"><span class="k">Method</span><span class="v">Grid · COA · tnum</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 01 BRAND -->
+    <section class="doc" id="brand">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">01</span> The Brand</span>
+          <h2 class="sec-title">We don't make claims. We <em>publish readings.</em></h2>
+          <p class="lead">UBalance Naturals makes high-potency liquid Ayurvedic formulations. The Lab system treats every product as an instrument output — dose, assay, lot and result, stated in figures. Forest green is no longer a leaf; it is a verified value.</p>
+        </div>
+        <div class="principles">
+          <div class="principle">
+            <div class="pidx">P.01</div>
+            <h4>Precise</h4>
+            <p>Every figure is exact and sourced — 3,825&nbsp;mg, not "high potency". Tabular numerals, real units, no rounding for effect.</p>
+          </div>
+          <div class="principle">
+            <div class="pidx">P.02</div>
+            <h4>Verifiable</h4>
+            <p>Each batch carries a certificate of analysis. The design surfaces the proof rather than asking for trust.</p>
+          </div>
+          <div class="principle">
+            <div class="pidx">P.03</div>
+            <h4>Disciplined</h4>
+            <p>A grid of hairlines, no ornament, no glow. Restraint is the signal of a serious formulation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 LOGO -->
+    <section class="doc alt" id="logo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">02</span> Logo</span>
+          <h2 class="sec-title">The mark stays. The <em>method</em> changes.</h2>
+          <p class="lead">We keep the existing medallion wordmark — here it sits in deep forest ink, registered to the grid. No gold, no recolor. The mark is placed with crosshair precision and surrounded by measured clear space.</p>
+        </div>
+        <div class="logo-grid">
+          <div class="logo-cell">
+            <div class="logo-stage light"><span class="reg" style="top:14px;left:14px"></span><span class="reg" style="bottom:14px;right:14px"></span><img src="/assets/logo.svg" alt="Primary logo"></div>
+            <div class="cap">Primary — forest ink on white <span>brightness(0)</span></div>
+          </div>
+          <div class="logo-cell">
+            <div class="logo-stage dark"><img src="/assets/logo.svg" alt="Reversed logo"></div>
+            <div class="cap">Reversed — on forest <span>invert(1)</span></div>
+          </div>
+        </div>
+        <div class="clearspace">
+          <div class="cs-box">
+            <span class="x t">x</span><span class="x l">x</span>
+            <img src="/assets/logo.svg" alt="Logo clear space">
+          </div>
+          <p class="csnote"><b>Clear space &amp; minimum size.</b> Maintain padding equal to the medallion height (x) on every side. Never set the wordmark below 26px tall. The mark scales as one locked unit, aligned to the grid.</p>
+        </div>
+        <div class="dos">
+          <div class="do-item yes"><span class="tick">+</span><p><b>One ink only.</b> Forest green, white, or full reverse. The mark carries no accent colour.</p></div>
+          <div class="do-item yes"><span class="tick">+</span><p><b>Register to grid.</b> Align the mark to the layout's hairline grid; scale uniformly.</p></div>
+          <div class="do-item no"><span class="tick">–</span><p><b>Don't recolor,</b> add shadow, gradient, rotate, or reintroduce the old gold treatment.</p></div>
+          <div class="do-item no"><span class="tick">–</span><p><b>Don't place</b> on a busy photo without a solid forest or white field behind it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 COLOR -->
+    <section class="doc" id="color">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">03</span> Color</span>
+          <h2 class="sec-title">Instrument greys. <em>One</em> verified green.</h2>
+          <p class="lead">The palette is cool and clinical — instrument grey-green, pure-white panels, hairline rules. A single clinical green is the only saturated colour, reserved for verified data, the active state and the figure that passed. Anywhere else, it stops meaning "proven".</p>
+        </div>
+
+        <div class="palwrap">
+          <h3 class="block">Neutrals — cool &amp; clinical</h3>
+          <div class="pal">
+            <div class="sw"><div class="chip" style="background:#11231A"></div><div class="meta"><div class="nm">forest</div><div class="hx">#11231A</div><div class="use">Dark sections · primary button</div></div></div>
+            <div class="sw"><div class="chip" style="background:#101A14"></div><div class="meta"><div class="nm">ink</div><div class="hx">#101A14</div><div class="use">Primary text</div></div></div>
+            <div class="sw"><div class="chip" style="background:#39463E"></div><div class="meta"><div class="nm">ink-2</div><div class="hx">#39463E</div><div class="use">Secondary text</div></div></div>
+            <div class="sw"><div class="chip" style="background:#69736B"></div><div class="meta"><div class="nm">ink-3</div><div class="hx">#69736B</div><div class="use">Captions · muted</div></div></div>
+            <div class="sw"><div class="chip" style="background:#98A099"></div><div class="meta"><div class="nm">ink-4</div><div class="hx">#98A099</div><div class="use">Placeholders</div></div></div>
+          </div>
+          <div class="pal" style="border-top:0">
+            <div class="sw"><div class="chip" style="background:#EEF1ED"></div><div class="meta"><div class="nm">paper</div><div class="hx">#EEF1ED</div><div class="use">Page background</div></div></div>
+            <div class="sw"><div class="chip" style="background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--line)"></div><div class="meta"><div class="nm">surface</div><div class="hx">#FFFFFF</div><div class="use">Panels · cards</div></div></div>
+            <div class="sw"><div class="chip" style="background:#E6EAE4"></div><div class="meta"><div class="nm">paper-2</div><div class="hx">#E6EAE4</div><div class="use">Table zebra · wash</div></div></div>
+            <div class="sw"><div class="chip" style="background:#DCE1DB"></div><div class="meta"><div class="nm">line</div><div class="hx">#DCE1DB</div><div class="use">Hairline borders</div></div></div>
+            <div class="sw"><div class="chip" style="background:#C3CBC1"></div><div class="meta"><div class="nm">line-strong</div><div class="hx">#C3CBC1</div><div class="use">Table frame · inputs</div></div></div>
+          </div>
+        </div>
+
+        <div class="palwrap" style="margin-bottom:0">
+          <h3 class="block">Accent — the only verified colour</h3>
+          <div class="pal">
+            <div class="sw"><div class="chip" style="background:#1E7A4D"></div><div class="meta"><div class="nm" style="color:var(--accent)">clinical</div><div class="hx">#1E7A4D</div><div class="use">Links · active · key data</div></div></div>
+            <div class="sw"><div class="chip" style="background:#155C3A"></div><div class="meta"><div class="nm" style="color:#155C3A">clinical-700</div><div class="hx">#155C3A</div><div class="use">Hover · pressed</div></div></div>
+            <div class="sw"><div class="chip" style="background:#E3F0E8"></div><div class="meta"><div class="nm">clinical-soft</div><div class="hx">#E3F0E8</div><div class="use">Highlighted cell</div></div></div>
+            <div class="sw"><div class="chip" style="background:#BBD8C7"></div><div class="meta"><div class="nm">clinical-line</div><div class="hx">#BBD8C7</div><div class="use">Accent hairline</div></div></div>
+            <div class="sw"><div class="chip" style="background:#B7791F"></div><div class="meta"><div class="nm" style="color:#B7791F">warn</div><div class="hx">#B7791F</div><div class="use">Out-of-range · mono only</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 TYPOGRAPHY -->
+    <section class="doc alt" id="type">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">04</span> Typography</span>
+          <h2 class="sec-title">One grotesque. <em>Mono</em> for every number.</h2>
+          <p class="lead">Supreme sets all language — tight, medium-weight, engineered, never airy. Tabular, a true monospaced face, carries every figure: doses, percentages, lot codes and indices, with tabular numerals locked on. The split is strict — words in Supreme, data in Tabular.</p>
+        </div>
+
+        <div class="type-spec">
+          <div class="type-hero-row">
+            <span class="reg" style="top:16px;right:16px"></span>
+            <div class="big">Aa</div>
+            <div class="type-meta">
+              <div class="fam">Supreme</div>
+              <div class="role">Display · Body · UI — 300–700</div>
+            </div>
+          </div>
+          <div class="weights">
+            <div class="wcell"><div class="ws" style="font-weight:300">Light</div><div class="wl">300 · large display</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:400">Regular</div><div class="wl">400 · body</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:500">Medium</div><div class="wl">500 · display · UI</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:600">Semibold</div><div class="wl">600 · buttons · titles</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:700">Bold</div><div class="wl">700 · rare emphasis</div></div>
+            <div class="wcell"><div class="ws mono" style="font-weight:500;font-family:var(--font-mono)">3,825</div><div class="wl">mono · key figures</div></div>
+          </div>
+        </div>
+        <div class="mono-row">Tabular — <span>01</span>&nbsp; #1E7A4D &nbsp; <span>--accent</span> &nbsp; 3,825&nbsp;mg/10ml &nbsp; <span>LOT&nbsp;UBN-0426</span> &nbsp; 99.2&nbsp;% &nbsp; <span>v4.0</span></div>
+
+        <h3 class="block" style="margin-top:44px">Type scale</h3>
+        <div class="scale-tbl">
+          <div class="scale-line"><span class="scale-tok">--t-display · 94</span><span class="scale-samp" style="font-size:52px">Display</span></div>
+          <div class="scale-line"><span class="scale-tok">--t-hero · 54</span><span class="scale-samp" style="font-size:40px">Section title</span></div>
+          <div class="scale-line"><span class="scale-tok">--t-h2 · 33</span><span class="scale-samp" style="font-size:30px;font-weight:500">Sub-header</span></div>
+          <div class="scale-line"><span class="scale-tok">--t-h3 · 20</span><span class="scale-samp" style="font-size:20px;font-weight:600">Card title</span></div>
+          <div class="scale-line"><span class="scale-tok">--t-body · 16</span><span class="scale-samp" style="font-size:16px;font-weight:400;color:var(--ink-2)">Body copy — Supreme regular, 1.58 line-height</span></div>
+          <div class="scale-line"><span class="scale-tok">--t-tiny · 11 · mono</span><span class="scale-samp mono" style="font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-family:var(--font-mono)">Data label</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 BUTTONS -->
+    <section class="doc" id="buttons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">05</span> Buttons &amp; CTA</span>
+          <h2 class="sec-title">Square corners. <em>Exact</em> hits.</h2>
+          <p class="lead">Controls are near-square (3px), one-pixel bordered, with no shadow at rest. Forest green is the default action; clinical green is reserved for the single highest-intent moment. Hover shifts tone — no motion, no bounce.</p>
+        </div>
+
+        <div class="btn-grid">
+          <div class="btn-demo">
+            <span class="demo-label">Primary — default action</span>
+            <div class="btn-row"><button class="btn btn-primary">Add to Cart</button><button class="btn btn-primary btn-lg">Buy Now</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Accent — single highest intent</span>
+            <div class="btn-row"><button class="btn btn-accent">Subscribe &amp; Save</button><button class="btn btn-accent btn-data btn-sm">View COA →</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Outline — secondary</span>
+            <div class="btn-row"><button class="btn btn-outline">Add to Cart</button><button class="btn btn-outline btn-lg">Lab results</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Ghost — tertiary / quiet</span>
+            <div class="btn-row"><button class="btn btn-ghost">View details</button><button class="btn btn-ghost btn-sm">Cancel</button></div>
+          </div>
+        </div>
+
+        <div class="spec-list">
+          <div class="row"><span>Radius</span><span>3px · near-square</span></div>
+          <div class="row"><span>Font</span><span>Supreme 600 · 14px</span></div>
+          <div class="row"><span>Padding (default)</span><span>14px 26px</span></div>
+          <div class="row"><span>Padding (large)</span><span>17px 32px</span></div>
+          <div class="row"><span>Hover (primary)</span><span>→ forest-700</span></div>
+          <div class="row"><span>Hover (outline)</span><span>invert → ink fill</span></div>
+          <div class="row"><span>Data button</span><span>Tabular 500</span></div>
+          <div class="row"><span>Transition</span><span>.15s ease</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 COMPONENTS -->
+    <section class="doc alt" id="components">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">06</span> Components · Data</span>
+          <h2 class="sec-title">The certificate <em>is</em> the component.</h2>
+          <p class="lead">The signature element is the analysis table — a certificate of analysis rendered as primary UI, not a footnote. Every supporting component is flat, hairline-framed and mono-labelled. Structure comes from the grid, never from depth.</p>
+        </div>
+
+        <h3 class="block">Certificate of analysis — actives assay</h3>
+        <div class="data-tbl">
+          <div class="dt-head"><div>Active botanical</div><div>Dose</div><div>Assay</div><div>Result</div></div>
+          <div class="dt-row"><div class="ing">Ashwagandha (root)</div><div>1,200&nbsp;mg</div><div>99.2&nbsp;%</div><div class="pass">PASS</div></div>
+          <div class="dt-row"><div class="ing">Shilajit (resin)</div><div>&nbsp;&nbsp;500&nbsp;mg</div><div>98.4&nbsp;%</div><div class="pass">PASS</div></div>
+          <div class="dt-row"><div class="ing">Safed Musli</div><div>&nbsp;&nbsp;750&nbsp;mg</div><div>99.6&nbsp;%</div><div class="pass">PASS</div></div>
+          <div class="dt-row"><div class="ing">Gokhru (fruit)</div><div>&nbsp;&nbsp;625&nbsp;mg</div><div>97.9&nbsp;%</div><div class="pass">PASS</div></div>
+          <div class="dt-row"><div class="ing">Ginseng (Panax)</div><div>&nbsp;&nbsp;750&nbsp;mg</div><div>99.1&nbsp;%</div><div class="pass">PASS</div></div>
+        </div>
+        <div class="data-cap"><span>LOT UBN-0426 · TESTED 2026-04-18</span><span>METHOD: HPLC-UV · ISO 17025 LAB</span></div>
+
+        <div class="comp-grid" style="margin-top:40px">
+          <div class="comp-card">
+            <span class="demo-label">Badges</span>
+            <div class="flexrow"><span class="badge solid">Bestseller</span><span class="badge accent">Third-party tested</span></div>
+            <div class="flexrow"><span class="badge dot">In stock</span><span class="badge line">3,825&nbsp;mg/10ml</span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Spec chips — mono</span>
+            <div class="flexrow"><span class="chip">Ashwagandha <b>1,200mg</b></span><span class="chip">Shilajit <b>500mg</b></span><span class="chip">Musli <b>750mg</b></span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Input field</span>
+            <div class="field"><label>Batch lookup</label><input type="text" placeholder="UBN-0000"></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Assay meters — purity %</span>
+            <div class="meter"><div class="ml"><span>Actives</span><span class="mono">99.2%</span></div><div class="mt"><i></i></div><div class="ml" style="margin-top:4px"><span>Heavy metals</span><span class="mono">&lt;0.1ppm</span></div><div class="mt b"><i></i></div></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Corner radius — near square</span>
+            <div class="radii"><div class="rc"><div style="border-radius:var(--r)"></div><div class="rl">3px · card</div></div><div class="rc"><div style="width:84px;border-radius:var(--r-btn)"></div><div class="rl">3px · button</div></div><div class="rc"><div style="width:46px;height:46px;border-radius:var(--r-dot)"></div><div class="rl">dot only</div></div></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Dividers — rule · accent · dashed</span>
+            <div class="divline"><div class="dl"></div><div class="dl accent"></div><div class="dl dash"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 ICONS -->
+    <section class="doc" id="icons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">07</span> Iconography</span>
+          <h2 class="sec-title">1.5px stroke. <em>Square</em> caps.</h2>
+          <p class="lead">A single line-icon set — 1.5px stroke, no fill, square caps and miter joins on a 24px grid, echoing instrument and schematic drawing. Icons inherit currentColor and sit in hairline cells. The only glyphs are + → and the crosshair. No emoji.</p>
+        </div>
+        <div class="icons">
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M7 3h10v5l-4 5v6H11v-6L7 8z"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><rect x="4" y="3" width="16" height="18"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M3 7h18M3 12h18M3 17h18"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><rect x="4" y="4" width="16" height="16"/><path d="M4 10h16"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg></span>
+          <span class="icon-b accent"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 12l5 5L20 6"/></svg></span>
+          <span class="icon-b dark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="icon-meta">
+          <div class="im"><div class="k">Stroke</div><div class="v">1.5px</div></div>
+          <div class="im"><div class="k">Caps / joins</div><div class="v">Square / miter</div></div>
+          <div class="im"><div class="k">Grid</div><div class="v">24 × 24</div></div>
+          <div class="im"><div class="k">Glyphs</div><div class="v">+ → ⊹</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 PHOTOGRAPHY -->
+    <section class="doc alt" id="photo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">08</span> Photography</span>
+          <h2 class="sec-title">Specimen light. <em>Documented,</em> not styled.</h2>
+          <p class="lead">Product shot as specimen — even, shadowless light on a neutral ground, slightly desaturated, captioned with a mono data tag. The botanical is evidence, not decoration. Text never sits on the image; the caption sits beside it.</p>
+        </div>
+        <div class="photo-grid">
+          <span class="reg" style="top:12px;right:12px;z-index:2"></span>
+          <div class="frame" data-tag="FIG.01 · 10ml/dose"><img src="/assets/hero-1.png" alt="Product specimen"></div>
+          <div class="frame" data-tag="FIG.02 · application"><img src="/assets/how-to-use.png" alt="Usage documentation"></div>
+        </div>
+        <div class="photo-rules">
+          <div class="pr"><div class="k">Treatment</div><p>Even, shadowless daylight; slightly desaturated. Neutral grey or white ground. Never moody, never warm-filtered.</p></div>
+          <div class="pr"><div class="k">Crop</div><p>Clean rectangle, 3px radius. A mono data caption sits inside the lower-left corner.</p></div>
+          <div class="pr"><div class="k">Composition</div><p>Bottle centred as specimen with the actives documented around it. Generous, gridded negative space.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 VOICE -->
+    <section class="doc" id="voice">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">09</span> Voice &amp; Tone</span>
+          <h2 class="sec-title">State the figure. <em>Cite the method.</em></h2>
+          <p class="lead">Speak like a report. Give the number, name the test, stop. The clinical system extends to language — no hype, no exclamation, no adjectives doing a verb's job. Confidence reads as a citation.</p>
+        </div>
+        <div class="voice-grid">
+          <div class="voice-card write">
+            <div class="vlabel">We write</div>
+            <p class="ex">"3,825&nbsp;mg of actives per 10ml dose. 99.2% assay, HPLC-verified, every lot."</p>
+            <p>Figures first, units always, method named. One claim per line. Honest about what the data does and doesn't show.</p>
+          </div>
+          <div class="voice-card avoid">
+            <div class="vlabel">We avoid</div>
+            <p class="ex">"The ultimate game-changing miracle boost!!!"</p>
+            <p>No hype, no exclamation, no vague superlatives, no emoji. If a word isn't a measurement or a fact, question whether it belongs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="end">
+      <div class="wrap">
+        <p class="mn"><b>UBALANCE NATURALS · DESIGN SYSTEM v4.0 — LAB</b><br>Tokens: foundations-lab.css · Assets: /assets<br>Clinical · gridded · tabular · forest green as proof</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const links = [...document.querySelectorAll('#toc a')];
+  const map = links.map(a => ({ a, sec: document.querySelector(a.getAttribute('href')) }));
+  const spy = () => {
+    const y = window.scrollY + 160;
+    let cur = map[0];
+    for (const m of map) { if (m.sec && m.sec.offsetTop <= y) cur = m; }
+    links.forEach(a => a.classList.remove('active'));
+    if (cur) cur.a.classList.add('active');
+  };
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+</script>
+</body>
+</html>

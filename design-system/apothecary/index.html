@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBalance Naturals — Design System · Apothecary</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="/design-system/apothecary/styles.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:var(--lh-body);font-weight:400}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--herb);color:var(--surface)}
+
+  /* ---- shell ---- */
+  .shell{display:grid;grid-template-columns:288px 1fr;align-items:start}
+  .side{position:sticky;top:0;height:100vh;background:var(--surface);border-right:1px solid var(--line-strong);display:flex;flex-direction:column;padding:38px 30px;overflow-y:auto}
+  .side-logo{height:30px;width:auto;filter:brightness(0);margin-bottom:8px}
+  .side-est{font-family:var(--font-serif);font-style:italic;font-size:13px;color:var(--ink-3);margin-bottom:24px}
+  .side-tag{font-family:var(--font-sans);font-size:10.5px;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .side nav{display:flex;flex-direction:column;gap:1px;flex:1}
+  .side nav a{display:flex;gap:14px;align-items:baseline;font-size:14px;font-weight:500;color:var(--ink-3);padding:9px 0;transition:color .15s var(--ease)}
+  .side nav a .n{font-family:var(--font-serif);font-style:italic;font-size:14px;color:var(--ink-4);width:22px;transition:color .15s}
+  .side nav a:hover{color:var(--ink)}
+  .side nav a.active{color:var(--ink)}
+  .side nav a.active .n{color:var(--gold-700)}
+  .side-foot{font-family:var(--font-sans);font-size:10px;letter-spacing:.04em;color:var(--ink-4);margin-top:34px;line-height:2;border-top:1px solid var(--line);padding-top:18px;text-transform:uppercase}
+
+  .main{min-width:0}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 var(--space-gutter);min-width:0}
+
+  /* ---- ornamental divider ---- */
+  .orn{display:flex;align-items:center;gap:16px;color:var(--gold-700)}
+  .orn::before,.orn::after{content:"";flex:1;height:1px;background:var(--line-strong)}
+  .orn .dia{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:none}
+  .orn.short::before,.orn.short::after{max-width:54px}
+
+  /* ---- wax seal ---- */
+  .seal{width:96px;height:96px;border-radius:999px;background:radial-gradient(circle at 38% 34%,#2C5A38 0%,#15351F 64%,#0E2616 100%);color:var(--gold-200);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(216,198,140,.35);box-shadow:inset 0 2px 6px rgba(0,0,0,.35),inset 0 -2px 5px rgba(0,0,0,.4)}
+  .seal .sl{font-family:var(--font-sans);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(216,198,140,.7)}
+  .seal .sb{font-family:var(--font-serif);font-style:italic;font-size:20px;line-height:1;margin:3px 0}
+  .seal .sy{font-family:var(--font-sans);font-size:8px;letter-spacing:.16em;color:rgba(216,198,140,.7)}
+
+  /* ---- hero ---- */
+  .hero{background:var(--bottle);color:var(--surface);padding:clamp(56px,7vw,86px) 0;position:relative;overflow:hidden}
+  .hero-frame{position:relative;max-width:1000px;margin:0 auto;padding:clamp(54px,7vw,96px) var(--space-gutter);border-top:1px solid rgba(216,198,140,.4);border-bottom:1px solid rgba(216,198,140,.4)}
+  .hero-frame::before,.hero-frame::after{content:"";position:absolute;left:var(--space-gutter);right:var(--space-gutter);height:3px;border-top:1px solid rgba(216,198,140,.5);border-bottom:1px solid rgba(216,198,140,.2)}
+  .hero-frame::before{top:5px}
+  .hero-frame::after{bottom:5px}
+  .hero-kicker{display:flex;align-items:center;justify-content:center;gap:12px;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--gold-200);margin-bottom:30px}
+  .hero-kicker .yr{font-family:var(--font-serif);font-style:italic;text-transform:none;letter-spacing:0;font-size:15px;font-weight:400}
+  .hero h1{font-family:var(--font-serif);font-weight:400;font-size:var(--t-display);line-height:1.0;letter-spacing:var(--tr-display);margin:0 auto 26px;color:var(--surface);text-align:center;max-width:13ch}
+  .hero h1 em{font-style:italic;color:var(--gold-200);font-weight:400}
+  .hero p{font-size:var(--t-body-lg);color:rgba(246,240,222,.74);max-width:600px;margin:0 auto;font-weight:400;line-height:1.6;text-align:center}
+  .hero-meta{display:flex;justify-content:center;gap:0;margin-top:46px;flex-wrap:wrap;border:1px solid rgba(216,198,140,.3);width:fit-content;margin-left:auto;margin-right:auto}
+  .hero-meta .m{display:flex;flex-direction:column;gap:5px;padding:16px 30px;border-right:1px solid rgba(216,198,140,.3);text-align:center}
+  .hero-meta .m:last-child{border-right:0}
+  .hero-meta .m .k{font-family:var(--font-sans);font-size:10px;color:var(--gold-200);text-transform:uppercase;letter-spacing:.14em;font-weight:600}
+  .hero-meta .m .v{font-family:var(--font-serif);font-size:17px;color:var(--surface);font-style:italic}
+  .hero-seal{display:flex;justify-content:center;margin-top:44px}
+
+  /* ---- section ---- */
+  section.doc{padding:var(--space-section) 0;border-bottom:1px solid var(--line)}
+  section.doc.alt{background:var(--surface)}
+  .sec-head{display:flex;flex-direction:column;gap:18px;margin-bottom:52px;max-width:780px}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3)}
+  .eyebrow .num{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--gold-700);letter-spacing:0;text-transform:none;font-size:16px}
+  h2.sec-title{font-family:var(--font-serif);font-weight:400;font-size:var(--t-hero);line-height:1.06;letter-spacing:var(--tr-display);color:var(--ink)}
+  h2.sec-title em{font-style:italic;color:var(--herb)}
+  .lead{font-size:var(--t-body-lg);color:var(--ink-2);max-width:700px;font-weight:400;line-height:1.6}
+  h3.block{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3);margin:0 0 22px;display:flex;align-items:center;gap:14px}
+  h3.block::after{content:"";flex:1;height:1px;background:var(--line-strong)}
+
+  /* ---- brand principles — cabinet drawers ---- */
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-strong);border-bottom:0}
+  .principle{padding:32px 30px 36px;border-bottom:1px solid var(--line-strong);border-right:1px solid var(--line-strong);background:var(--surface);position:relative}
+  .principle:nth-child(3n){border-right:0}
+  .principle::before{content:"";position:absolute;top:30px;right:30px;width:18px;height:4px;background:var(--gold);border-radius:2px}
+  .principle .pidx{font-family:var(--font-serif);font-style:italic;font-size:17px;color:var(--gold-700);margin-bottom:26px}
+  .principle h4{font-family:var(--font-serif);font-size:23px;font-weight:500;color:var(--ink);letter-spacing:var(--tr-tight);margin-bottom:11px}
+  .principle p{font-size:14px;color:var(--ink-2);line-height:1.62}
+
+  /* ---- logo ---- */
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-strong)}
+  .logo-cell{border-right:1px solid var(--line-strong)}
+  .logo-cell:last-child{border-right:0}
+  .logo-stage{height:236px;display:flex;align-items:center;justify-content:center;position:relative}
+  .logo-stage img{height:46px}
+  .logo-stage.light{background:var(--surface)}
+  .logo-stage.light img{filter:brightness(0)}
+  .logo-stage.dark{background:var(--bottle)}
+  .logo-stage.dark img{filter:brightness(0) invert(1) sepia(.3) saturate(2) hue-rotate(5deg)}
+  .logo-cell .cap{padding:15px 22px;font-size:12.5px;color:var(--ink-2);font-weight:500;border-top:1px solid var(--line-strong);display:flex;justify-content:space-between;gap:14px}
+  .logo-cell .cap span{font-family:var(--font-serif);font-style:italic;color:var(--ink-3);font-weight:400;font-size:13px}
+  .clearspace{margin-top:18px;border:1px solid var(--line-strong);padding:40px;display:flex;align-items:center;gap:40px;background:var(--surface);flex-wrap:wrap}
+  .cs-box{position:relative;padding:34px;border:1px dashed var(--herb-line);outline:1px solid var(--line)}
+  .cs-box img{height:40px;filter:brightness(0)}
+  .cs-box .x{position:absolute;font-family:var(--font-serif);font-style:italic;font-size:13px;color:var(--gold-700);background:var(--surface);padding:0 5px}
+  .cs-box .x.t{top:-10px;left:50%;transform:translateX(-50%)}
+  .cs-box .x.l{left:-14px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+  .clearspace .csnote{font-size:13px;color:var(--ink-2);max-width:300px;line-height:1.62}
+  .clearspace .csnote b{color:var(--ink);font-weight:600}
+  .dos{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-strong);margin-top:18px}
+  .do-item{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);background:var(--surface)}
+  .do-item:nth-child(2n){border-right:0}
+  .do-item:nth-last-child(-n+2){border-bottom:0}
+  .do-item .tick{font-family:var(--font-serif);font-size:18px;flex-shrink:0;line-height:1.2;font-style:italic}
+  .do-item.yes .tick{color:var(--herb)}
+  .do-item.no .tick{color:var(--ink-4)}
+  .do-item p{font-size:13.5px;color:var(--ink-2);line-height:1.58}
+  .do-item b{color:var(--ink);font-weight:600}
+
+  /* ---- color ---- */
+  .pal{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line-strong);border-right:0}
+  .sw{border-right:1px solid var(--line-strong)}
+  .sw .chip{height:124px;position:relative}
+  .sw .meta{padding:13px 15px;border-top:1px solid var(--line-strong);background:var(--surface)}
+  .sw .nm{font-family:var(--font-serif);font-weight:500;font-size:15px;letter-spacing:-.01em}
+  .sw .hx{font-family:var(--font-sans);font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+  .sw .use{font-size:11.5px;color:var(--ink-3);margin-top:9px;line-height:1.42}
+  .pal + .pal{border-top:0}
+  .palwrap{margin-bottom:34px}
+
+  /* ---- typography ---- */
+  .type-spec{border:1px solid var(--line-strong);background:var(--surface)}
+  .type-hero-row{padding:44px 40px 40px;border-bottom:1px solid var(--line-strong)}
+  .type-hero-row .big{font-family:var(--font-serif);font-size:clamp(56px,8.4vw,116px);font-weight:400;letter-spacing:var(--tr-display);line-height:.9;color:var(--ink)}
+  .type-hero-row .big em{font-style:italic;color:var(--herb)}
+  .type-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-top:24px}
+  .type-meta .fam{font-family:var(--font-serif);font-size:17px;font-weight:500}
+  .type-meta .role{font-family:var(--font-sans);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em}
+  .weights{display:grid;grid-template-columns:repeat(3,1fr)}
+  .wcell{padding:26px 28px;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+  .wcell:nth-child(3n){border-right:0}
+  .wcell:nth-last-child(-n+3){border-bottom:0}
+  .wcell .ws{font-family:var(--font-serif);font-size:31px;color:var(--ink);line-height:1;margin-bottom:12px}
+  .wcell .wl{font-family:var(--font-sans);font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.08em}
+  .label-row{border:1px solid var(--line-strong);border-top:0;padding:26px 28px;background:var(--paper-2);font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink-2);text-transform:uppercase;letter-spacing:.22em;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  .label-row span{color:var(--gold-700)}
+  .scale-tbl{border:1px solid var(--line-strong);background:var(--surface);margin-top:18px}
+  .scale-line{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:baseline;border-bottom:1px solid var(--line);padding:20px 28px}
+  .scale-line:last-child{border-bottom:0}
+  .scale-tok{font-family:var(--font-sans);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  .scale-samp{font-family:var(--font-serif);font-weight:400;color:var(--ink);letter-spacing:var(--tr-tight);line-height:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* ---- apothecary label — signature component ---- */
+  .label-card{background:var(--surface-2);border:1px solid var(--bottle);padding:8px;margin-top:0}
+  .label-inner{border:1px solid var(--herb-line);padding:38px 32px 34px;text-align:center;position:relative}
+  .label-inner .lc-orn{margin:0 auto 22px;max-width:200px}
+  .label-inner .lc-pre{font-family:var(--font-sans);font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+  .label-inner .lc-name{font-family:var(--font-serif);font-size:clamp(30px,4vw,46px);line-height:1.04;color:var(--ink);margin-bottom:6px}
+  .label-inner .lc-name em{font-style:italic;color:var(--herb)}
+  .label-inner .lc-lat{font-family:var(--font-serif);font-style:italic;font-size:16px;color:var(--ink-3);margin-bottom:22px}
+  .label-inner .lc-dose{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:11px 4px;margin-bottom:24px}
+  .label-inner .lc-dose b{color:var(--herb-700);font-weight:700}
+  .label-inner .lc-foot{font-family:var(--font-serif);font-style:italic;font-size:14px;color:var(--ink-3)}
+  .label-corner{position:absolute;width:13px;height:13px;border-color:var(--gold);border-style:solid;border-width:0}
+  .label-corner.tl{top:8px;left:8px;border-top-width:1px;border-left-width:1px}
+  .label-corner.tr{top:8px;right:8px;border-top-width:1px;border-right-width:1px}
+  .label-corner.bl{bottom:8px;left:8px;border-bottom-width:1px;border-left-width:1px}
+  .label-corner.br{bottom:8px;right:8px;border-bottom-width:1px;border-right-width:1px}
+
+  /* ---- drop cap ---- */
+  .dropcap{background:var(--surface);border:1px solid var(--line-strong);padding:32px 34px;margin-top:36px;display:flex;gap:8px}
+  .dropcap p{font-family:var(--font-serif);font-size:18px;line-height:1.62;color:var(--ink-2);max-width:62ch}
+  .dropcap p::first-letter{font-family:var(--font-serif);font-size:74px;font-weight:500;line-height:.78;float:left;margin:6px 14px 0 0;color:var(--herb)}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;border-radius:var(--r-btn);font-weight:600;font-size:13px;border:1px solid transparent;letter-spacing:.06em;text-transform:uppercase;font-family:var(--font-sans);cursor:pointer;transition:all .16s var(--ease)}
+  .btn-primary{background:var(--bottle);color:var(--surface)}
+  .btn-primary:hover{background:var(--bottle-700)}
+  .btn-accent{background:var(--surface);color:var(--bottle);border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold)}
+  .btn-accent:hover{background:var(--gold-100)}
+  .btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:var(--surface)}
+  .btn-ghost{background:transparent;color:var(--ink-2);border-color:var(--line-strong)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-lg{padding:17px 34px;font-size:14px}
+  .btn-sm{padding:10px 18px;font-size:11px}
+  .btn-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line-strong)}
+  .btn-demo{padding:28px 30px 32px;display:flex;flex-direction:column;gap:18px;align-items:flex-start;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);background:var(--surface)}
+  .btn-demo:nth-child(2n){border-right:0}
+  .btn-demo:nth-last-child(-n+2){border-bottom:0}
+  .demo-label{font-family:var(--font-sans);font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.16em;font-weight:600}
+  .btn-row{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+  .spec-list{display:grid;grid-template-columns:1fr 1fr;margin-top:18px;border:1px solid var(--line-strong);border-bottom:0}
+  .spec-list .row{display:flex;justify-content:space-between;gap:16px;font-size:13px;padding:13px 22px;border-bottom:1px solid var(--line-strong);border-right:1px solid var(--line-strong)}
+  .spec-list .row:nth-child(2n){border-right:0}
+  .spec-list .row span:first-child{color:var(--ink-3)}
+  .spec-list .row span:last-child{font-family:var(--font-serif);font-style:italic;color:var(--ink);font-size:14px}
+
+  /* ---- components ---- */
+  .comp-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-strong)}
+  .comp-card{padding:26px 30px;display:flex;flex-direction:column;gap:18px;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);background:var(--surface)}
+  .comp-card:nth-child(2n){border-right:0}
+  .comp-card:nth-last-child(-n+2){border-bottom:0}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:var(--r)}
+  .badge.solid{background:var(--bottle);color:var(--surface)}
+  .badge.accent{background:var(--surface);color:var(--gold-700);border:1px solid var(--gold)}
+  .badge.herb{background:var(--herb-soft);color:var(--herb-700);border:1px solid var(--herb-line)}
+  .badge.dot{border:1px solid var(--line-strong);color:var(--ink-2);background:var(--surface)}
+  .badge.dot::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--positive)}
+  .chip{font-family:var(--font-serif);font-style:italic;font-size:15px;padding:6px 14px;background:var(--surface);color:var(--ink-2);border:1px solid var(--line-strong);font-weight:400;border-radius:var(--r)}
+  .chip:hover{border-color:var(--herb);color:var(--herb-700)}
+  .flexrow{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+  .radii{display:flex;gap:14px;align-items:flex-end}
+  .radii .rc div{background:var(--herb-soft);border:1px solid var(--herb);width:60px;height:46px}
+  .radii .rc .rl{font-family:var(--font-sans);font-size:9.5px;color:var(--ink-3);margin-top:7px;text-align:center;text-transform:uppercase;letter-spacing:.06em}
+  .field{display:flex;flex-direction:column;gap:8px;width:100%}
+  .field label{font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  .field input{font-family:var(--font-serif);font-size:16px;padding:12px 14px;border:1px solid var(--line-strong);background:var(--surface-2);color:var(--ink);border-radius:var(--r-input);outline:none;transition:border-color .15s}
+  .field input::placeholder{color:var(--ink-4);font-style:italic}
+  .field input:focus{border-color:var(--herb)}
+  .divline{display:flex;flex-direction:column;gap:16px;width:100%}
+  .divline .dl{height:1px;background:var(--line-strong)}
+  .divline .orn{margin:0}
+  .divline .dl.dash{height:0;border-top:1px dashed var(--line-strong)}
+
+  /* ---- icons ---- */
+  .icons{display:flex;flex-wrap:wrap;border:1px solid var(--line-strong);border-right:0;border-bottom:0;width:fit-content}
+  .icon-b{width:72px;height:72px;background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
+  .icon-b.dark{background:var(--bottle);color:var(--gold-200)}
+  .icon-b.accent{background:var(--herb);color:var(--surface)}
+  .glyph-row{margin-top:18px;border:1px solid var(--line-strong);background:var(--paper-2);padding:22px 28px;font-family:var(--font-serif);font-size:24px;letter-spacing:14px;color:var(--gold-700);display:flex;align-items:center}
+  .icon-meta{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line-strong);border-right:0;border-bottom:0}
+  .icon-meta .im{padding:18px 20px;border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);background:var(--surface)}
+  .icon-meta .im .k{font-family:var(--font-sans);font-size:10px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
+  .icon-meta .im .v{font-family:var(--font-serif);font-size:16px;color:var(--ink);font-weight:500}
+
+  /* ---- photography ---- */
+  .photo-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:1px;background:var(--line-strong);border:1px solid var(--line-strong)}
+  .photo-grid .frame{overflow:hidden;aspect-ratio:1/1;background:var(--paper);position:relative;filter:sepia(.16) saturate(1.02) contrast(1.02)}
+  .photo-grid .frame img{width:100%;height:100%;object-fit:cover}
+  .photo-grid .frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 70px 10px rgba(42,35,23,.28);pointer-events:none}
+  .photo-rules{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-strong);border-top:0}
+  .photo-rules .pr{padding:22px 26px;border-right:1px solid var(--line-strong);background:var(--surface)}
+  .photo-rules .pr:last-child{border-right:0}
+  .photo-rules .pr .k{font-family:var(--font-sans);font-size:10px;color:var(--gold-700);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px;font-weight:600}
+  .photo-rules .pr p{font-size:13px;color:var(--ink-2);line-height:1.58}
+
+  /* ---- voice ---- */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line-strong)}
+  .voice-card{padding:34px 36px;border-right:1px solid var(--line-strong);background:var(--surface)}
+  .voice-card:last-child{border-right:0}
+  .voice-card .vlabel{font-family:var(--font-sans);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .voice-card.write .vlabel{color:var(--herb-700)}
+  .voice-card.avoid .vlabel{color:var(--ink-3)}
+  .voice-card .vlabel::before{content:"";width:8px;height:8px;transform:rotate(45deg)}
+  .voice-card.write .vlabel::before{background:var(--herb)}
+  .voice-card.avoid .vlabel::before{background:var(--ink-4)}
+  .voice-card .ex{font-family:var(--font-serif);font-size:26px;font-weight:400;line-height:1.34;letter-spacing:var(--tr-tight);margin-bottom:16px;font-style:italic}
+  .voice-card.write .ex{color:var(--ink)}
+  .voice-card.avoid .ex{color:var(--ink-4)}
+  .voice-card p{font-size:13.5px;color:var(--ink-2);line-height:1.62}
+
+  .end{padding:64px 0 92px;color:var(--ink-3)}
+  .end .mn{font-family:var(--font-sans);font-size:11px;line-height:2.1;letter-spacing:.06em;text-transform:uppercase}
+  .end .mn b{font-family:var(--font-serif);font-style:italic;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:500;font-size:14px}
+
+  @media (max-width:920px){
+    .shell{grid-template-columns:1fr}
+    .side{position:static;height:auto;flex-direction:row;align-items:center;gap:18px;padding:16px 22px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line-strong)}
+    .side-tag,.side-foot,.side-est{display:none}
+    .side nav{flex-direction:row;gap:14px}
+    .side nav a{white-space:nowrap;padding:4px 0}
+    .side-logo{margin:0}
+    .principles,.weights,.icon-meta,.photo-rules{grid-template-columns:1fr 1fr}
+    .pal{grid-template-columns:1fr 1fr;border-right:1px solid var(--line-strong)}
+    .sw:nth-child(2n) .chip,.sw:nth-child(2n) .meta{border-right:0}
+    .logo-grid,.dos,.btn-grid,.comp-grid,.voice-grid,.photo-grid,.spec-list,.principles,.hero-meta{grid-template-columns:1fr}
+    .scale-line{grid-template-columns:120px 1fr;gap:14px}
+  }
+</style>
+</head>
+<body class="ubn">
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <img class="side-logo" src="/assets/logo.svg" alt="UBalance Naturals">
+    <div class="side-est">Est. herbal dispensary</div>
+    <div class="side-tag">Design System</div>
+    <nav id="toc">
+      <a href="#brand"><span class="n">i</span> Brand</a>
+      <a href="#logo"><span class="n">ii</span> Logo</a>
+      <a href="#color"><span class="n">iii</span> Color</a>
+      <a href="#type"><span class="n">iv</span> Typography</a>
+      <a href="#buttons"><span class="n">v</span> Buttons &amp; CTA</a>
+      <a href="#components"><span class="n">vi</span> Components</a>
+      <a href="#icons"><span class="n">vii</span> Iconography</a>
+      <a href="#photo"><span class="n">viii</span> Photography</a>
+      <a href="#voice"><span class="n">ix</span> Voice &amp; Tone</a>
+    </nav>
+    <div class="side-foot">UBalance Naturals<br>System 4.0 · Apothecary<br>foundations-apothecary.css</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-frame">
+        <div class="hero-kicker">Visual System <span class="yr">№ iv — Apothecary</span></div>
+        <h1>Compounded by hand. <em>Proven</em> by time.</h1>
+        <p>A heritage identity for UBalance Naturals — the deep green of a hand-blown bottle, set on aged paper with a calligraphic serif, double-rule labels and a pressed wax seal. Tradition, stated plainly and printed well.</p>
+        <div class="hero-meta">
+          <div class="m"><span class="k">Type</span><span class="v">Gambetta</span></div>
+          <div class="m"><span class="k">Accent</span><span class="v">Bottle &amp; gold</span></div>
+          <div class="m"><span class="k">Manner</span><span class="v">Letterpress</span></div>
+        </div>
+        <div class="hero-seal">
+          <div class="seal"><span class="sl">Pure · Potent</span><span class="sb">UBN</span><span class="sy">Sealed</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 01 BRAND -->
+    <section class="doc" id="brand">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">i</span> The Brand</span>
+          <h2 class="sec-title">An old dispensary, <em>kept honest.</em></h2>
+          <p class="lead">UBalance Naturals compounds high-potency liquid Ayurvedic formulations from real botanicals. The Apothecary system speaks in the language of the original herbalist's bench — bottle green, aged paper, a hand-set label — without the costume. Heritage as a measure of care, not nostalgia.</p>
+        </div>
+        <div class="principles">
+          <div class="principle">
+            <div class="pidx">№ i</div>
+            <h4>Compounded</h4>
+            <p>Made the slow way, from named botanicals in stated amounts. The label tells you exactly what is in the bottle.</p>
+          </div>
+          <div class="principle">
+            <div class="pidx">№ ii</div>
+            <h4>Sealed</h4>
+            <p>Every batch is closed with the house seal — a mark of who made it and a promise that nothing was added.</p>
+          </div>
+          <div class="principle">
+            <div class="pidx">№ iii</div>
+            <h4>Enduring</h4>
+            <p>Recipes that predate the brand by centuries. We keep the formula and improve only the proof behind it.</p>
+          </div>
+        </div>
+        <div class="dropcap">
+          <p>Founded on the herbalist's principle that a remedy should be named in full and measured in the open, UBalance Naturals carries an old craft into modern shelves. The bottle is green because the glass always was; the type is set with care because a label was once the only guarantee a maker could offer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 LOGO -->
+    <section class="doc alt" id="logo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">ii</span> Logo</span>
+          <h2 class="sec-title">The mark stays. The <em>bottle</em> returns.</h2>
+          <p class="lead">We keep the existing medallion wordmark — here it sits in deep bottle ink on aged paper, or gilded in foil-warm reverse on green. No recolor of the mark itself; the heritage lives in its surroundings — the rules, the seal, the clear space.</p>
+        </div>
+        <div class="logo-grid">
+          <div class="logo-cell">
+            <div class="logo-stage light"><img src="/assets/logo.svg" alt="Primary logo"></div>
+            <div class="cap">Primary — bottle ink on paper <span>brightness(0)</span></div>
+          </div>
+          <div class="logo-cell">
+            <div class="logo-stage dark"><img src="/assets/logo.svg" alt="Reversed logo"></div>
+            <div class="cap">Reversed — gilt on bottle <span>foil-warm</span></div>
+          </div>
+        </div>
+        <div class="clearspace">
+          <div class="cs-box">
+            <span class="x t">x</span><span class="x l">x</span>
+            <img src="/assets/logo.svg" alt="Logo clear space">
+          </div>
+          <p class="csnote"><b>Clear space &amp; minimum size.</b> Maintain padding equal to the medallion height (x) on every side, framed where possible by a single hairline rule. Never set the wordmark below 26px tall. The mark scales as one locked unit.</p>
+        </div>
+        <div class="dos">
+          <div class="do-item yes"><span class="tick">✓</span><p><b>Frame with rules.</b> A single or double hairline border is the house manner; let the mark sit inside it.</p></div>
+          <div class="do-item yes"><span class="tick">✓</span><p><b>Gild on green only.</b> The foil-warm reverse belongs on bottle green or the wax seal — nowhere else.</p></div>
+          <div class="do-item no"><span class="tick">✕</span><p><b>Don't recolor,</b> add drop shadow, rotate, or stretch the mark to fill a frame.</p></div>
+          <div class="do-item no"><span class="tick">✕</span><p><b>Don't crowd</b> the wordmark with ornament; the rule and the seal are the only flourishes permitted.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 COLOR -->
+    <section class="doc" id="color">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">iii</span> Color</span>
+          <h2 class="sec-title">Bottle green. Aged paper. <em>A little</em> gold.</h2>
+          <p class="lead">The palette is warm and printed — bottle green at the base, sepia ink, paper the colour of age. One herb green carries interaction; antique gold is the seal, used flat and sparingly. No bright colour ever, no pure black, no white.</p>
+        </div>
+
+        <div class="palwrap">
+          <h3 class="block">Greens — bottle &amp; herb</h3>
+          <div class="pal">
+            <div class="sw"><div class="chip" style="background:#15351F"></div><div class="meta"><div class="nm">bottle</div><div class="hx">#15351F</div><div class="use">Dark fields · primary button</div></div></div>
+            <div class="sw"><div class="chip" style="background:#0E2616"></div><div class="meta"><div class="nm">bottle-950</div><div class="hx">#0E2616</div><div class="use">Seal · deepest field</div></div></div>
+            <div class="sw"><div class="chip" style="background:#1E4A2C"></div><div class="meta"><div class="nm">bottle-700</div><div class="hx">#1E4A2C</div><div class="use">Hover · lifted</div></div></div>
+            <div class="sw"><div class="chip" style="background:#3E6B33"></div><div class="meta"><div class="nm" style="color:var(--herb)">herb</div><div class="hx">#3E6B33</div><div class="use">Links · active · emphasis</div></div></div>
+            <div class="sw"><div class="chip" style="background:#E6E8D0"></div><div class="meta"><div class="nm">herb-soft</div><div class="hx">#E6E8D0</div><div class="use">Faint tint fill</div></div></div>
+          </div>
+          <div class="pal" style="border-top:0">
+            <div class="sw"><div class="chip" style="background:#ECE3CD"></div><div class="meta"><div class="nm">paper</div><div class="hx">#ECE3CD</div><div class="use">Page background</div></div></div>
+            <div class="sw"><div class="chip" style="background:#F6F0DE;box-shadow:inset 0 0 0 1px var(--line-strong)"></div><div class="meta"><div class="nm">surface</div><div class="hx">#F6F0DE</div><div class="use">Labels · cards</div></div></div>
+            <div class="sw"><div class="chip" style="background:#2A2317"></div><div class="meta"><div class="nm">ink</div><div class="hx">#2A2317</div><div class="use">Sepia text</div></div></div>
+            <div class="sw"><div class="chip" style="background:#867A59"></div><div class="meta"><div class="nm">ink-3</div><div class="hx">#867A59</div><div class="use">Captions · drab</div></div></div>
+            <div class="sw"><div class="chip" style="background:#D6CAA8"></div><div class="meta"><div class="nm">line</div><div class="hx">#D6CAA8</div><div class="use">Aged hairline</div></div></div>
+          </div>
+        </div>
+
+        <div class="palwrap" style="margin-bottom:0">
+          <h3 class="block">Gold — the seal, flat only</h3>
+          <div class="pal">
+            <div class="sw"><div class="chip" style="background:#9A7B3C"></div><div class="meta"><div class="nm" style="color:var(--gold-700)">gold</div><div class="hx">#9A7B3C</div><div class="use">Seals · rules · foil</div></div></div>
+            <div class="sw"><div class="chip" style="background:#7C6230"></div><div class="meta"><div class="nm" style="color:#7C6230">gold-700</div><div class="hx">#7C6230</div><div class="use">Indices · pressed</div></div></div>
+            <div class="sw"><div class="chip" style="background:#D8C68C"></div><div class="meta"><div class="nm">gold-200</div><div class="hx">#D8C68C</div><div class="use">Foil on green</div></div></div>
+            <div class="sw"><div class="chip" style="background:#ECE2C2"></div><div class="meta"><div class="nm">gold-100</div><div class="hx">#ECE2C2</div><div class="use">Faint gilt wash</div></div></div>
+            <div class="sw"><div class="chip" style="background:#2E7D52"></div><div class="meta"><div class="nm" style="color:#2E7D52">positive</div><div class="hx">#2E7D52</div><div class="use">In-stock · verified</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 TYPOGRAPHY -->
+    <section class="doc alt" id="type">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">iv</span> Typography</span>
+          <h2 class="sec-title">A serif that <em>speaks,</em> a grotesque that labels.</h2>
+          <p class="lead">Gambetta — a premium contrast serif — sets all headlines and body, with its calligraphic italic carrying every accent word. Cabinet Grotesk handles small-cap labels, drawer tags and dosing lines. Figures are old-style, set in the serif. No monospace, no third voice.</p>
+        </div>
+
+        <div class="type-spec">
+          <div class="type-hero-row">
+            <div class="big">Aa <em>Bb</em></div>
+            <div class="type-meta">
+              <div class="fam">Gambetta — roman &amp; italic</div>
+              <div class="role">Display · Body · Accents — 400–700</div>
+            </div>
+          </div>
+          <div class="weights">
+            <div class="wcell"><div class="ws" style="font-weight:400">Regular</div><div class="wl">400 · body · display</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:400;font-style:italic">Italic</div><div class="wl">400 it · accent words</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:500">Medium</div><div class="wl">500 · titles</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:700">Bold</div><div class="wl">700 · rare emphasis</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:500;font-style:italic">Medium it.</div><div class="wl">500 it · pull quotes</div></div>
+            <div class="wcell"><div class="ws" style="font-style:italic">3,825</div><div class="wl">old-style figures</div></div>
+          </div>
+        </div>
+        <div class="label-row">Cabinet Grotesk — <span>Labels</span> · Drawer Tags · <span>Dosing</span> · Small Caps</div>
+
+        <h3 class="block" style="margin-top:44px">Type scale</h3>
+        <div class="scale-tbl">
+          <div class="scale-line"><span class="scale-tok">display · 114</span><span class="scale-samp" style="font-size:54px">Display</span></div>
+          <div class="scale-line"><span class="scale-tok">hero · 60</span><span class="scale-samp" style="font-size:42px">Section title</span></div>
+          <div class="scale-line"><span class="scale-tok">h2 · 36</span><span class="scale-samp" style="font-size:32px">Sub-header</span></div>
+          <div class="scale-line"><span class="scale-tok">h3 · 22</span><span class="scale-samp" style="font-size:22px;font-weight:500">Card title</span></div>
+          <div class="scale-line"><span class="scale-tok">body · 16</span><span class="scale-samp" style="font-size:17px;font-weight:400;color:var(--ink-2)">Body copy — Gambetta regular, 1.64 line-height</span></div>
+          <div class="scale-line"><span class="scale-tok">label · 11 · grotesque</span><span class="scale-samp" style="font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)">Small-cap label</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 BUTTONS -->
+    <section class="doc" id="buttons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">v</span> Buttons &amp; CTA</span>
+          <h2 class="sec-title">Pressed, not <em>rounded.</em></h2>
+          <p class="lead">Controls are crisp printed rectangles (2px), set in tracked small-caps. Bottle green is the default action; the gold-bordered button is the single premium moment, like a foil-stamped coupon. Hover deepens the ink — no motion, no bounce.</p>
+        </div>
+
+        <div class="btn-grid">
+          <div class="btn-demo">
+            <span class="demo-label">Primary — default action</span>
+            <div class="btn-row"><button class="btn btn-primary">Add to Cart</button><button class="btn btn-primary btn-lg">Buy Now</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Gold — single premium moment</span>
+            <div class="btn-row"><button class="btn btn-accent">Subscribe &amp; Save</button><button class="btn btn-accent btn-sm">Claim offer</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Outline — secondary</span>
+            <div class="btn-row"><button class="btn btn-outline">Add to Cart</button><button class="btn btn-outline btn-lg">Our story</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Ghost — tertiary / quiet</span>
+            <div class="btn-row"><button class="btn btn-ghost">View details</button><button class="btn btn-ghost btn-sm">Cancel</button></div>
+          </div>
+        </div>
+
+        <div class="spec-list">
+          <div class="row"><span>Radius</span><span>2px · pressed</span></div>
+          <div class="row"><span>Font</span><span>Cabinet Grotesk 600</span></div>
+          <div class="row"><span>Case / tracking</span><span>Small caps · .06em</span></div>
+          <div class="row"><span>Padding (default)</span><span>14px 28px</span></div>
+          <div class="row"><span>Gold button</span><span>1px gold rule</span></div>
+          <div class="row"><span>Hover (primary)</span><span>→ bottle-700</span></div>
+          <div class="row"><span>Hover (outline)</span><span>invert → ink fill</span></div>
+          <div class="row"><span>Transition</span><span>.16s ease</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 COMPONENTS -->
+    <section class="doc alt" id="components">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">vi</span> Components</span>
+          <h2 class="sec-title">The label <em>is</em> the component.</h2>
+          <p class="lead">The signature element is the apothecary label — a double-ruled, centred panel with the botanical name, its Latin binomial and the dose, gilt-cornered. Everything else is flat and rule-framed; ornament is a diamond between two hairlines, never a shadow.</p>
+        </div>
+
+        <h3 class="block">Apothecary label — signature panel</h3>
+        <div class="label-card">
+          <div class="label-inner">
+            <span class="label-corner tl"></span><span class="label-corner tr"></span><span class="label-corner bl"></span><span class="label-corner br"></span>
+            <div class="orn short lc-orn"><span class="dia"></span></div>
+            <div class="lc-pre">UBalance Naturals · Compound No. 04</div>
+            <div class="lc-name">Vital <em>Restorative</em></div>
+            <div class="lc-lat">Withania somnifera &amp; co.</div>
+            <div class="lc-dose">3,825&nbsp;mg actives <b>·</b> 10&nbsp;ml dose <b>·</b> 30 servings</div>
+            <div class="lc-foot">Compounded &amp; sealed by hand</div>
+          </div>
+        </div>
+
+        <div class="comp-grid" style="margin-top:40px">
+          <div class="comp-card">
+            <span class="demo-label">Badges</span>
+            <div class="flexrow"><span class="badge solid">Bestseller</span><span class="badge accent">House Sealed</span></div>
+            <div class="flexrow"><span class="badge dot">In stock</span><span class="badge herb">High bioavailability</span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Ingredient chips — italic</span>
+            <div class="flexrow"><span class="chip">Ashwagandha</span><span class="chip">Shilajit</span><span class="chip">Safed Musli</span><span class="chip">Gokhru</span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Input field</span>
+            <div class="field"><label>Subscribe by post</label><input type="text" placeholder="your address…"></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Ornamental dividers</span>
+            <div class="divline"><div class="orn short"><span class="dia"></span></div><div class="dl"></div><div class="dl dash"></div></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Corner radius — pressed</span>
+            <div class="radii"><div class="rc"><div style="border-radius:var(--r)"></div><div class="rl">2px · card</div></div><div class="rc"><div style="width:84px;border-radius:var(--r-btn)"></div><div class="rl">2px · button</div></div><div class="rc"><div style="width:46px;height:46px;border-radius:999px"></div><div class="rl">seal only</div></div></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Wax seal — house mark</span>
+            <div class="flexrow" style="gap:18px;padding-top:2px"><div class="seal" style="width:74px;height:74px"><span class="sl" style="font-size:7px">Pure</span><span class="sb" style="font-size:16px">UBN</span><span class="sy" style="font-size:7px">Sealed</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 ICONS -->
+    <section class="doc" id="icons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">vii</span> Iconography</span>
+          <h2 class="sec-title">Engraved line. <em>Round</em> caps.</h2>
+          <p class="lead">A single line-icon set in the manner of an old engraving — 1.5px stroke, no fill, round caps and joins on a 24px grid. Icons inherit currentColor and sit in rule-framed cells. Typographic ornaments — the fleuron and diamond — stand in for decoration. No emoji.</p>
+        </div>
+        <div class="icons">
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5l-3.5 9a2 2 0 0 0 1.9 2.7h7.2A2 2 0 0 0 17.5 17L14 8V3"/><path d="M8 14h8"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c5-3 7-7 7-11V5l-7-2-7 2v5c0 4 2 8 7 11z"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-3 4-5 6-5 9a5 5 0 0 0 10 0c0-3-2-5-5-9z"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>
+          <span class="icon-b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8c4 0 7 3 7 3M19 8c-4 0-7 3-7 3"/></svg></span>
+          <span class="icon-b accent"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+          <span class="icon-b dark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="glyph-row">❧ &nbsp; ✦ &nbsp; ❖ &nbsp; ◆ &nbsp; → &nbsp; ✓</div>
+        <div class="icon-meta">
+          <div class="im"><div class="k">Stroke</div><div class="v">1.5px</div></div>
+          <div class="im"><div class="k">Caps / joins</div><div class="v">Round / round</div></div>
+          <div class="im"><div class="k">Grid</div><div class="v">24 × 24</div></div>
+          <div class="im"><div class="k">Ornaments</div><div class="v">❧ ✦ ◆</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 PHOTOGRAPHY -->
+    <section class="doc alt" id="photo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">viii</span> Photography</span>
+          <h2 class="sec-title">Lamplight on the <em>workbench.</em></h2>
+          <p class="lead">Product as it sits on the herbalist's bench — warm, low directional light, a soft vignette, dried botanicals and amber glass. Lightly aged in tone, never clinical. The bottle is the hero; the props are the evidence of craft. Text never sits on the image.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="frame"><img src="/assets/hero-1.png" alt="Product on workbench"></div>
+          <div class="frame"><img src="/assets/how-to-use.png" alt="Botanicals and craft"></div>
+        </div>
+        <div class="photo-rules">
+          <div class="pr"><div class="k">Treatment</div><p>Warm, low directional light with a soft vignette. Gently aged tone — sepia-leaning, rich, never grey or moody.</p></div>
+          <div class="pr"><div class="k">Crop</div><p>Clean rectangle, 2px radius, framed by a hairline rule. The vignette does the edge-work, not a heavy shadow.</p></div>
+          <div class="pr"><div class="k">Composition</div><p>Amber glass and dried botanicals on a worn surface — the bench tells the story of how it was made.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 VOICE -->
+    <section class="doc" id="voice">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">ix</span> Voice &amp; Tone</span>
+          <h2 class="sec-title">Plain words, <em>well set.</em></h2>
+          <p class="lead">Speak like a careful maker, not a marketer. Name the botanical, state the amount, let the craft show. The heritage is in the manner, not in archaic words — we are old-fashioned about honesty, modern about clarity. No hype, no exclamation.</p>
+        </div>
+        <div class="voice-grid">
+          <div class="voice-card write">
+            <div class="vlabel">We write</div>
+            <p class="ex">"Compounded by hand from named botanicals. 3,825&nbsp;mg of actives, sealed in every bottle."</p>
+            <p>Calm, specific, made-by-someone. Real names, real amounts, the maker present in the sentence. Honest about what it is.</p>
+          </div>
+          <div class="voice-card avoid">
+            <div class="vlabel">We avoid</div>
+            <p class="ex">"The ultimate game-changing miracle boost!!!"</p>
+            <p>No hype, no exclamation, no costume-drama "thee &amp; thou", no emoji. Heritage is a standard of care, not a gimmick of language.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="end">
+      <div class="wrap">
+        <p class="mn"><b>UBalance Naturals · Design System 4.0 — Apothecary</b><br>Tokens: foundations-apothecary.css · Assets: /assets<br>Heritage · letterpress · bottle green · aged paper · sealed</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const links = [...document.querySelectorAll('#toc a')];
+  const map = links.map(a => ({ a, sec: document.querySelector(a.getAttribute('href')) }));
+  const spy = () => {
+    const y = window.scrollY + 160;
+    let cur = map[0];
+    for (const m of map) { if (m.sec && m.sec.offsetTop <= y) cur = m; }
+    links.forEach(a => a.classList.remove('active'));
+    if (cur) cur.a.classList.add('active');
+  };
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+</script>
+</body>
+</html>

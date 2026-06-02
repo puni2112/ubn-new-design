@@ -1,0 +1,197 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations (Aurora System)
+   foundations-aurora.css
+   ------------------------------------------------------------
+   A gradient-led, dual-mode sibling to Forest / Bold / Mono.
+   Same brand spine — deep forest green, copper & gold warmth,
+   warm paper neutrals — now expressed through soft tonal
+   gradients rather than flat fields. Two true registers:
+   a luminous Dawn (light) and a deep Dusk (dark).
+
+   Gradients are restrained and premium: green-on-green tonal
+   washes, gentle copper→gold glows mostly on dark grounds, a
+   single gradient-clipped accent word. Never loud, never neon.
+
+   Fonts (Google Fonts):
+     Bricolage Grotesque — display / headlines (warm grotesque)
+     Figtree             — body / UI / numerals (humanist sans)
+     Spline Sans Mono    — index numbers, technical / spec labels
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@300;400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     BRAND GREENS — the unchanged spine
+     --------------------------------------------------------- */
+  --forest-950:#0B1F12;  /* deepest — dusk ground */
+  --forest-900:#102A19;  /* dark sections, dusk surface */
+  --forest-800:#16301E;  /* PRIMARY — buttons, dark fields */
+  --forest-700:#1F4A2E;  /* lifted forest / gradient top stop */
+  --leaf:#56913E;        /* living leaf — links, active, emphasis */
+  --leaf-600:#3C6B2C;    /* hover / pressed */
+  --leaf-200:#CADBB6;    /* accent hairline */
+  --leaf-100:#E7EFDD;    /* faint tint fill */
+
+  /* ---------------------------------------------------------
+     WARM ACCENTS — copper & gold (gradient partners)
+     The emotional warmth, reserved for premium glows and the
+     single highest-intent moment. Mostly seen on dark grounds.
+     --------------------------------------------------------- */
+  --copper:#C97B2D;      --copper-600:#A85F1C;  --copper-100:#F6E7D3;
+  --gold:#D4A437;        --gold-200:#E8D69A;    --gold-100:#FBF1D6;
+  --positive:#2E7D52;    /* in-stock / verified only */
+
+  /* ---------------------------------------------------------
+     DAWN — light register (default page)
+     Warm luminous paper, forest ink. Never pure white.
+     --------------------------------------------------------- */
+  --paper:#F3F1E7;       /* page background — warm light paper */
+  --paper-2:#ECE9DB;     /* recessed wash */
+  --surface:#FCFBF6;     /* cards / raised surfaces */
+  --ink:#15231A;         /* primary text — warm green-black */
+  --ink-2:#3F4A3C;       /* secondary text — bark */
+  --ink-3:#6C7565;       /* tertiary / captions — lichen */
+  --ink-4:#9BA391;       /* faint — placeholders — dry sage */
+  --line:#DEDAC9;        /* default hairline */
+  --line-2:#E8E4D4;      /* lighter inner hairline */
+
+  /* ---------------------------------------------------------
+     DUSK — dark register (true pair, not an afterthought)
+     Deep forest grounds, luminous sage type. Gradients live
+     most naturally here.
+     --------------------------------------------------------- */
+  --d-bg:#0C1F13;        /* dusk page background */
+  --d-surface:#122618;   /* dusk card / raised surface */
+  --d-surface-2:#16301E; /* dusk lifted surface */
+  --d-ink:#EAF1E6;       /* primary text on dusk */
+  --d-ink-2:#B7C6B4;     /* secondary on dusk */
+  --d-ink-3:#7E9180;     /* tertiary on dusk */
+  --d-line:#243A2A;      /* hairline on dusk */
+  --d-line-2:#2E4733;    /* brighter dusk hairline */
+
+  /* ---------------------------------------------------------
+     GRADIENTS — the signature of this system
+     Tonal, low-contrast, premium. Most are green-on-green;
+     warm ones are reserved for accent and dark grounds.
+     --------------------------------------------------------- */
+  /* green tonal washes */
+  --grad-forest:linear-gradient(150deg,#1F4A2E 0%,#16301E 56%,#102A19 100%);
+  --grad-leaf:linear-gradient(135deg,#6BA64C 0%,#56913E 50%,#3C6B2C 100%);
+  --grad-sage:linear-gradient(160deg,#FCFBF6 0%,#EFF2E6 100%);
+  /* warm glow — copper → gold, premium accent */
+  --grad-ember:linear-gradient(120deg,#D4A437 0%,#C97B2D 100%);
+  /* dawn→dusk hairline & text clip — green into copper */
+  --grad-dawn:linear-gradient(90deg,#56913E 0%,#7FA94A 38%,#D4A437 100%);
+  /* aurora glow — soft mesh for dark hero grounds (radial layers) */
+  --grad-aurora:
+    radial-gradient(120% 120% at 12% 8%, rgba(86,145,62,.34) 0%, rgba(86,145,62,0) 46%),
+    radial-gradient(120% 130% at 92% 14%, rgba(212,164,55,.20) 0%, rgba(212,164,55,0) 42%),
+    radial-gradient(140% 120% at 78% 100%, rgba(201,123,45,.16) 0%, rgba(201,123,45,0) 48%),
+    linear-gradient(160deg,#102A19 0%,#0C1F13 100%);
+  /* aurora glow for light grounds — much fainter */
+  --grad-aurora-light:
+    radial-gradient(110% 120% at 8% 0%, rgba(86,145,62,.12) 0%, rgba(86,145,62,0) 44%),
+    radial-gradient(120% 120% at 100% 12%, rgba(212,164,55,.10) 0%, rgba(212,164,55,0) 40%),
+    linear-gradient(160deg,#F6F4EB 0%,#EFEDE1 100%);
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES
+     --------------------------------------------------------- */
+  --font-display:"Bricolage Grotesque", "Figtree", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:"Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono:"Spline Sans Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* ---------------------------------------------------------
+     TYPE SCALE — display warm & medium-light, labels mono
+     --------------------------------------------------------- */
+  --t-display:clamp(48px,7.4vw,112px);
+  --t-hero:clamp(33px,4.3vw,60px);
+  --t-h2:clamp(25px,2.7vw,36px);
+  --t-h3:22px;
+  --t-h4:17px;
+  --t-body:16px;
+  --t-body-lg:19px;
+  --t-small:13px;
+  --t-tiny:11px;
+
+  --lh-tight:1.0;
+  --lh-snug:1.16;
+  --lh-body:1.62;
+
+  --tr-display:-.028em;   /* warm grotesque pulls in */
+  --tr-tight:-.015em;
+  --tr-label:.16em;       /* uppercase mono labels open up */
+
+  /* ---------------------------------------------------------
+     RADIUS — soft, organic, a touch rounder than Forest
+     --------------------------------------------------------- */
+  --r:14px;              /* cards / panels */
+  --r-lg:22px;           /* feature panels */
+  --r-input:10px;
+  --r-btn:10px;
+  --r-pill:999px;
+
+  /* ---------------------------------------------------------
+     ELEVATION — soft, forest-tinted, glow-leaning
+     --------------------------------------------------------- */
+  --sh-0:none;
+  --sh-1:0 1px 0 rgba(16,42,25,.04);
+  --sh-2:0 14px 34px -20px rgba(16,42,25,.30);
+  --sh-3:0 32px 80px -34px rgba(16,42,25,.40);
+  --glow-leaf:0 18px 50px -22px rgba(86,145,62,.55);
+  --glow-ember:0 18px 50px -22px rgba(201,123,45,.50);
+
+  /* ---------------------------------------------------------
+     SPACING
+     --------------------------------------------------------- */
+  --space-section:clamp(76px,9vw,132px);
+  --space-gutter:clamp(24px,5vw,72px);
+  --container:1280px;
+
+  --ease:cubic-bezier(.2,.6,.2,1);
+}
+
+/* ============================================================
+   SEMANTIC DEFAULTS  (opt-in via .ubn wrapper)
+   ============================================================ */
+.ubn{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn h1,.ubn h2,.ubn h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:var(--tr-tight);
+  line-height:var(--lh-snug);
+  text-wrap:balance;
+}
+.ubn h1{font-size:var(--t-hero);font-weight:400;letter-spacing:var(--tr-display);line-height:var(--lh-tight);}
+.ubn h2{font-size:var(--t-h2);}
+.ubn h3{font-size:var(--t-h3);font-weight:600;}
+/* Accent word — gradient-clipped, the signature flourish */
+.ubn h1 em,.ubn h2 em{
+  font-style:normal;
+  background:var(--grad-dawn);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.ubn p{font-size:var(--t-body);color:var(--ink-2);line-height:var(--lh-body);}
+.ubn a{color:var(--leaf);text-decoration:none;}
+
+/* Eyebrow — mono index + uppercase tracked label. */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);
+  font-size:var(--t-tiny);font-weight:500;
+  letter-spacing:var(--tr-label);text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ubn-eyebrow .num{color:var(--leaf);}

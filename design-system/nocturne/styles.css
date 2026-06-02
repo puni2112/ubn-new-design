@@ -1,0 +1,194 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations (Nocturne System)
+   foundations-nocturne.css
+   ------------------------------------------------------------
+   The dark-first sibling to Forest / Aurora / Botanica /
+   Atelier / Lab / Apothecary. Every other system is light-led
+   with dark accents; Nocturne inverts the whole identity. The
+   page ground is a near-black forest, and a single luminous
+   leaf green glows against it — bioluminescence, a night garden,
+   potency at rest. The forest green of the dark between leaves.
+
+   Three deliberate departures from its siblings:
+     1. DARK BY DEFAULT. The canvas is near-black forest; light
+        cards are the exception, not the rule. Contrast is built
+        from luminance, not from ink on paper.
+     2. A premium high-contrast serif leads — Hatton, set LIGHT
+        and large so its thin strokes glow — paired with the
+        quiet premium grotesque General Sans for body and UI.
+     3. The signature is LIGHT itself: a soft radial leaf-glow
+        behind the hero, faint inner glows on raised surfaces,
+        and accent words that emit a gentle green halo. Used
+        sparingly — a few points of light in a dark room.
+
+   Fonts (Fontshare — premium foundry quality, web-licensed):
+     Hatton        — display / headlines / accents (luminous
+                     high-contrast serif, used light)
+     General Sans  — body / UI / labels (quiet neutral grotesque)
+   ============================================================ */
+
+@import url("https://api.fontshare.com/v2/css?f[]=hatton@300,500,700&f[]=general-sans@300,400,500,600,700&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     DARK GROUNDS — near-black forest. The default canvas.
+     A ladder of deep greens, none of them truly black.
+     --------------------------------------------------------- */
+  --bg:#0A1410;          /* page background — near-black forest */
+  --bg-2:#0D1B14;        /* recessed wash / alt section */
+  --surface:#112619;     /* cards / raised surfaces */
+  --surface-2:#15311F;   /* lifted surface / hover */
+  --surface-3:#1A3B26;   /* highest lift / active cell */
+
+  /* ---------------------------------------------------------
+     LUMINOUS TEXT — sage-white, never pure white.
+     Reads as moonlight on green, calibrated for dark grounds.
+     --------------------------------------------------------- */
+  --ink:#EAF2E7;         /* primary text — luminous sage-white */
+  --ink-2:#B0C3AE;       /* secondary text — soft sage */
+  --ink-3:#7D9080;       /* tertiary / captions — dim lichen */
+  --ink-4:#55685B;       /* faint — placeholders, disabled */
+
+  /* ---------------------------------------------------------
+     HAIRLINES — low-luminance green rules. Structure is drawn
+     with light, not with dark ink.
+     --------------------------------------------------------- */
+  --line:#1F3528;        /* default hairline on dark */
+  --line-2:#284233;      /* brighter inner hairline */
+  --line-strong:#33543F; /* emphasised rule / frame */
+
+  /* ---------------------------------------------------------
+     ACCENT — the luminous leaf. The only bright value in the
+     system, and it literally glows. Links, active state, the
+     one emphasised word, the point of light.
+     --------------------------------------------------------- */
+  --leaf:#5FCB80;        /* luminous leaf — links, active, emphasis */
+  --leaf-bright:#8FE7A8; /* brightest — glowing accent words */
+  --leaf-600:#4BAE68;    /* hover / pressed (still bright on dark) */
+  --leaf-dim:#2E6B45;    /* dimmed leaf — borders, quiet accents */
+  --leaf-soft:#15301F;   /* faint leaf tint fill on dark */
+  --leaf-line:#27502F;   /* accent hairline */
+
+  --positive:#5FCB80;    /* in-stock / verified — same luminous leaf */
+
+  /* ---------------------------------------------------------
+     RARE LIGHT REGISTER — a single inverted card style for
+     moments that must read as daylight (e.g. a coupon). Used
+     almost never; the system is dark.
+     --------------------------------------------------------- */
+  --paper:#EAF0E4;       /* the one light surface */
+  --paper-ink:#10231A;   /* text on the light surface */
+
+  /* ---------------------------------------------------------
+     GLOW — the signature. Soft radial leaf-light for hero
+     grounds and faint inner light on raised surfaces.
+     --------------------------------------------------------- */
+  --glow-hero:
+    radial-gradient(120% 110% at 18% 8%, rgba(95,203,128,.20) 0%, rgba(95,203,128,0) 46%),
+    radial-gradient(120% 130% at 88% 18%, rgba(95,203,128,.10) 0%, rgba(95,203,128,0) 44%),
+    radial-gradient(150% 130% at 70% 108%, rgba(75,174,104,.14) 0%, rgba(75,174,104,0) 52%);
+  --glow-leaf:0 0 24px -2px rgba(95,203,128,.55);     /* halo on accent */
+  --glow-soft:0 0 0 1px var(--line-2), 0 18px 50px -28px rgba(0,0,0,.7);
+  --text-glow:0 0 18px rgba(95,203,128,.45);          /* glowing accent text */
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES — luminous serif display, quiet grotesque UI
+     --------------------------------------------------------- */
+  --font-serif:"Hatton", "Hoefler Text", Georgia, "Times New Roman", serif;
+  --font-sans:"General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display:var(--font-serif);
+
+  /* ---------------------------------------------------------
+     TYPE SCALE — display is large and LIGHT so thin strokes
+     glow. Labels are General Sans uppercase, tracked.
+     --------------------------------------------------------- */
+  --t-display:clamp(50px,7.6vw,120px); /* hero */
+  --t-hero:clamp(34px,4.4vw,64px);     /* section titles */
+  --t-h2:clamp(26px,2.8vw,38px);       /* sub-headers */
+  --t-h3:22px;                         /* card titles */
+  --t-h4:17px;                         /* list item titles */
+  --t-body:16px;                       /* base body */
+  --t-body-lg:19px;                    /* lead / tagline */
+  --t-small:13px;                      /* secondary */
+  --t-tiny:11px;                       /* eyebrows, captions */
+
+  --lh-tight:1.0;    /* display */
+  --lh-snug:1.14;    /* card titles */
+  --lh-body:1.62;    /* paragraphs */
+
+  --tr-display:-.02em;   /* contrast serif, gentle pull-in */
+  --tr-tight:-.01em;     /* sub-heads */
+  --tr-label:.2em;       /* uppercase grotesque labels open up */
+
+  /* ---------------------------------------------------------
+     RADIUS — soft, organic; rounded enough to feel like grown
+     things glimpsed in low light.
+     --------------------------------------------------------- */
+  --r:12px;              /* cards / panels */
+  --r-lg:20px;           /* feature panels */
+  --r-input:9px;
+  --r-btn:9px;
+  --r-pill:999px;
+
+  /* ---------------------------------------------------------
+     ELEVATION — depth is darkness plus a faint inner light.
+     --------------------------------------------------------- */
+  --sh-0:none;
+  --sh-1:inset 0 1px 0 rgba(255,255,255,.03);
+  --sh-2:0 18px 44px -26px rgba(0,0,0,.75);
+  --sh-3:0 36px 90px -38px rgba(0,0,0,.85);
+
+  /* ---------------------------------------------------------
+     SPACING
+     --------------------------------------------------------- */
+  --space-section:clamp(76px,9vw,132px);
+  --space-gutter:clamp(24px,5vw,72px);
+  --container:1280px;
+
+  --ease:cubic-bezier(.2,.6,.2,1);
+}
+
+/* ============================================================
+   SEMANTIC DEFAULTS  (opt-in via .ubn wrapper)
+   ============================================================ */
+.ubn{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  background:var(--bg);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn h1,.ubn h2,.ubn h3{
+  font-family:var(--font-serif);
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:var(--tr-tight);
+  line-height:var(--lh-snug);
+  text-wrap:balance;
+}
+.ubn h1{font-size:var(--t-hero);font-weight:300;letter-spacing:var(--tr-display);line-height:var(--lh-tight);}
+.ubn h2{font-size:var(--t-h2);}
+.ubn h3{font-size:var(--t-h3);font-weight:500;}
+/* Accent word — luminous leaf with a soft green halo. */
+.ubn h1 em,.ubn h2 em{
+  font-style:italic;
+  font-weight:300;
+  color:var(--leaf-bright);
+  text-shadow:var(--text-glow);
+}
+.ubn p{font-size:var(--t-body);color:var(--ink-2);line-height:var(--lh-body);}
+.ubn a{color:var(--leaf);text-decoration:none;}
+
+/* Eyebrow — uppercase tracked grotesque with a luminous index. */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-sans);
+  font-size:var(--t-tiny);font-weight:600;
+  letter-spacing:var(--tr-label);text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ubn-eyebrow .num{font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--leaf);letter-spacing:0;text-transform:none;font-size:16px;}

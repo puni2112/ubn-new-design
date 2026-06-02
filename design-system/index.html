@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBalance Naturals — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/design-system/styles.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  /* ---- shell: sidebar + content ---- */
+  .shell{display:grid;grid-template-columns:300px 1fr;align-items:start}
+  .side{position:sticky;top:0;height:100vh;background:var(--green-900);color:#fff;display:flex;flex-direction:column;padding:40px 34px;overflow-y:auto}
+  .side-logo{height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:8px}
+  .side-tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:48px}
+  .side nav{display:flex;flex-direction:column;gap:2px;flex:1}
+  .side nav a{display:flex;gap:12px;align-items:baseline;font-size:14px;font-weight:600;color:rgba(255,255,255,.6);padding:10px 12px;border-radius:8px;transition:all .15s}
+  .side nav a .n{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.35);width:22px}
+  .side nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+  .side nav a.active{background:rgba(212,164,55,.14);color:var(--gold)}
+  .side nav a.active .n{color:var(--gold)}
+  .side-foot{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4);margin-top:32px;line-height:1.7}
+
+  .main{padding:0;min-width:0}
+  .wrap{max-width:980px;margin:0 auto;padding:0 56px;min-width:0}
+
+  /* ---- hero ---- */
+  .hero{background:var(--green-900);color:#fff;padding:120px 0 110px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;top:-120px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,164,55,.16),transparent 62%)}
+  .hero .wrap{position:relative;z-index:1}
+  .hero h1{font-family:var(--font-display);font-weight:500;font-size:84px;line-height:1;letter-spacing:-.03em;margin:22px 0 24px}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p{font-size:20px;color:rgba(255,255,255,.72);max-width:560px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(212,164,55,.14);padding:9px 18px;border-radius:99px}
+
+  /* ---- section ---- */
+  section.doc{padding:88px 0;border-bottom:1px solid var(--line)}
+  section.doc:nth-of-type(even){background:#fff}
+  .sec-head{display:flex;flex-direction:column;gap:16px;margin-bottom:48px}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-800);background:var(--green-100);padding:8px 16px;border-radius:99px;width:fit-content}
+  .eyebrow .num{font-weight:800;color:var(--copper);letter-spacing:0}
+  h2.sec-title{font-family:var(--font-display);font-weight:500;font-size:46px;line-height:1.05;letter-spacing:-.025em;color:var(--green-900)}
+  h2.sec-title em{font-style:normal;color:var(--copper)}
+  .lead{font-size:18px;color:var(--ink-2);max-width:660px}
+  h3.block{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 20px}
+  .note{font-size:13.5px;color:var(--ink-3);line-height:1.6}
+
+  /* ---- brand overview ---- */
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .principle{background:var(--bg);border:1px solid var(--line-2);border-radius:var(--r-lg);padding:30px}
+  section.doc:nth-of-type(even) .principle{background:var(--green-50)}
+  .principle .ic{width:52px;height:52px;border-radius:50%;background:var(--green-800);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .principle h4{font-family:var(--font-display);font-weight:500;font-size:24px;color:var(--green-900);letter-spacing:-.01em;margin-bottom:8px}
+  .principle p{font-size:14px;color:var(--ink-2);line-height:1.55}
+
+  /* ---- logo ---- */
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .logo-cell{border-radius:var(--r-lg);border:1px solid var(--line-2);overflow:hidden}
+  .logo-stage{height:200px;display:flex;align-items:center;justify-content:center}
+  .logo-stage img{height:64px}
+  .logo-stage.light{background:#fff}
+  .logo-stage.paper{background:var(--bg)}
+  .logo-stage.dark{background:var(--green-900)}
+  .logo-stage.dark img{filter:brightness(0) invert(1)}
+  .logo-cell .cap{padding:14px 20px;background:#fff;font-size:13px;color:var(--ink-2);font-weight:600;border-top:1px solid var(--line-2)}
+  .logo-cell .cap span{font-family:var(--font-mono);color:var(--ink-3);font-weight:500}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  .do-item{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:18px 20px}
+  section.doc:nth-of-type(even) .do-item{background:var(--bg)}
+  .do-item .tick{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:700}
+  .do-item.yes .tick{background:var(--green-800)}
+  .do-item.no .tick{background:var(--warn)}
+  .do-item p{font-size:14px;color:var(--ink-2);line-height:1.5}
+  .do-item b{color:var(--ink);font-weight:700}
+
+  /* ---- color ---- */
+  .pal{display:grid;gap:24px}
+  .pal-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .sw{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line-2)}
+  .sw .chip{height:104px}
+  .sw .meta{padding:12px 14px;background:#fff}
+  .sw .nm{font-weight:700;font-size:13.5px}
+  .sw .hx{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-top:3px}
+  .sw .use{font-size:11.5px;color:var(--ink-3);margin-top:6px}
+
+  /* ---- typography ---- */
+  .font-card{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-lg);padding:36px 40px;margin-bottom:16px}
+  section.doc:nth-of-type(even) .font-card{background:var(--bg)}
+  .font-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;border-bottom:1px solid var(--line-2);padding-bottom:18px;margin-bottom:22px}
+  .font-name{font-family:var(--font-display);font-weight:500;font-size:30px;color:var(--green-900);letter-spacing:-.01em}
+  .font-role{font-family:var(--font-mono);font-size:12px;color:var(--copper);text-transform:uppercase;letter-spacing:.06em}
+  .glyphs{font-size:60px;line-height:1.1;color:var(--green-900);letter-spacing:-.01em}
+  .weights{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px}
+  .weights span{font-size:22px}
+  .scale-tbl{display:flex;flex-direction:column}
+  .scale-line{display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:baseline;border-bottom:1px dashed var(--line);padding:16px 0}
+  .scale-line:last-child{border-bottom:0}
+  .scale-tok{font-family:var(--font-mono);font-size:12px;color:var(--ink-3)}
+  .scale-samp{font-family:var(--font-display);font-weight:500;color:var(--green-900);letter-spacing:-.02em;line-height:1}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:99px;font-weight:700;font-size:14px;border:1.5px solid transparent;letter-spacing:.01em;font-family:var(--font-body);cursor:pointer;transition:all .15s}
+  .btn-primary{background:var(--green-800);color:#fff}
+  .btn-primary:hover{background:var(--green-900);transform:translateY(-1px);box-shadow:0 8px 22px rgba(26,77,46,.25)}
+  .btn-secondary{background:var(--copper);color:#fff}
+  .btn-secondary:hover{background:#A86421}
+  .btn-outline{background:transparent;color:var(--green-800);border-color:var(--green-800)}
+  .btn-outline:hover{background:var(--green-800);color:#fff}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--green-800);color:var(--green-800)}
+  .btn-lg{padding:18px 30px;font-size:15px}
+  .btn-sm{padding:10px 18px;font-size:13px}
+  .btn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .btn-demo{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:26px;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+  section.doc:nth-of-type(even) .btn-demo{background:var(--bg)}
+  .btn-demo .demo-label{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  .btn-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .spec-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-top:24px}
+  .spec-list .row{display:flex;justify-content:space-between;gap:16px;font-size:13.5px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .spec-list .row span:first-child{color:var(--ink-3)}
+  .spec-list .row span:last-child{font-family:var(--font-mono);color:var(--ink);font-size:12.5px}
+
+  /* ---- components ---- */
+  .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .comp-card{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-md);padding:26px;display:flex;flex-direction:column;gap:16px}
+  section.doc:nth-of-type(even) .comp-card{background:var(--bg)}
+  .comp-card .demo-label{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 11px;border-radius:99px}
+  .badge.green{background:var(--green-100);color:var(--green-800)}
+  .badge.copper{background:var(--copper-soft);color:var(--copper)}
+  .badge.gold{background:var(--gold);color:var(--green-900)}
+  .badge.outline{border:1px solid var(--line);color:var(--ink-2);background:#fff}
+  .chip{font-size:12px;padding:4px 11px;background:var(--green-50);color:var(--green-800);border-radius:99px;font-weight:600}
+  .flexrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .radii{display:flex;gap:12px;align-items:flex-end}
+  .radii div{background:var(--green-50);border:1.5px solid var(--green-800);width:64px;height:50px}
+  .shadowrow{display:flex;gap:20px}
+  .shadowrow div{width:80px;height:54px;background:#fff;border-radius:var(--r-md);border:1px solid var(--line-2)}
+
+  /* ---- icon + photo ---- */
+  .icons{display:flex;gap:14px;flex-wrap:wrap}
+  .icon-b{width:60px;height:60px;border-radius:50%;background:var(--green-50);color:var(--green-800);display:flex;align-items:center;justify-content:center;border:1px solid var(--line-2)}
+  .icon-b.dark{background:var(--green-900);color:var(--gold);border:0}
+  .photo-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+  .photo-grid .frame{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-2);aspect-ratio:1/1}
+  .photo-grid .frame img{width:100%;height:100%;object-fit:cover}
+
+  /* ---- voice ---- */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .voice-card{border-radius:var(--r-lg);padding:32px 34px;border:1px solid var(--line-2)}
+  .voice-card.write{background:var(--green-50);border-color:var(--green-100)}
+  .voice-card.avoid{background:var(--warn-soft);border-color:#f3d6cd}
+  .voice-card .vlabel{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+  .voice-card.write .vlabel{color:var(--green-800)}
+  .voice-card.avoid .vlabel{color:var(--warn)}
+  .voice-card .ex{font-family:var(--font-display);font-weight:500;font-size:26px;line-height:1.25;letter-spacing:-.01em;margin-bottom:14px}
+  .voice-card.write .ex{color:var(--green-900)}
+  .voice-card.avoid .ex{color:#8f4438}
+  .voice-card p{font-size:14px;color:var(--ink-2);line-height:1.55}
+
+  .end{padding:64px 0 88px;text-align:center;color:var(--ink-3)}
+  .end .mono{font-family:var(--font-mono);font-size:13px;line-height:1.9}
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr}
+    .side{position:static;height:auto;flex-direction:row;align-items:center;gap:20px;padding:18px 22px;overflow-x:auto}
+    .side-tag,.side-foot{display:none}
+    .side nav{flex-direction:row;gap:4px}
+    .side-logo{margin:0}
+    .wrap{padding:0 24px}
+    .hero h1{font-size:52px}
+    .principles,.logo-grid,.pal-row,.btn-grid,.comp-grid,.photo-grid,.voice-grid,.dos,.spec-list{grid-template-columns:1fr}
+    .pal-row{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <img class="side-logo" src="/assets/logo.svg" alt="UBalance Naturals">
+    <div class="side-tag">Brand Guidelines</div>
+    <nav id="toc">
+      <a href="#brand"><span class="n">01</span> Brand</a>
+      <a href="#logo"><span class="n">02</span> Logo</a>
+      <a href="#color"><span class="n">03</span> Color</a>
+      <a href="#type"><span class="n">04</span> Typography &amp; Fonts</a>
+      <a href="#buttons"><span class="n">05</span> Buttons &amp; CTA</a>
+      <a href="#components"><span class="n">06</span> Components</a>
+      <a href="#icons"><span class="n">07</span> Iconography</a>
+      <a href="#photo"><span class="n">08</span> Photography</a>
+      <a href="#voice"><span class="n">09</span> Voice &amp; Tone</a>
+    </nav>
+    <div class="side-foot">UBalance Naturals<br>Version 1.0 · 2026<br>colors_and_type.css</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <span class="kicker">Corporate Brand System</span>
+        <h1>Balance,<br>made <em>visible.</em></h1>
+        <p>The complete identity system for UBalance Naturals — logo, color, type, components and voice. Build on the spine; accent with intent.</p>
+      </div>
+    </div>
+
+    <!-- 01 BRAND -->
+    <section class="doc" id="brand">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">01</span> The Brand</span>
+          <h2 class="sec-title">We don't stimulate the body. We <em>strengthen</em> it.</h2>
+          <p class="lead">UBalance Naturals makes high-potency liquid Ayurvedic formulations for holistic performance. We treat natural formulation as a system reset — addressing why modern life depletes you, not just the surface symptom.</p>
+        </div>
+        <div class="principles">
+          <div class="principle">
+            <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg></span>
+            <h4>Natural &amp; whole</h4>
+            <p>Wild-sourced Ayurvedic ingredients, nothing artificial. The brand looks and feels grown, not manufactured.</p>
+          </div>
+          <div class="principle">
+            <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v6l-5 9a4 4 0 0 0 3.5 6h9A4 4 0 0 0 20 17l-5-9V2M9 2h6"/></svg></span>
+            <h4>Evidence-led</h4>
+            <p>Specific numbers, lab-testing, references. Trust is the design currency — every claim is backed.</p>
+          </div>
+          <div class="principle">
+            <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <h4>Steady, not hyped</h4>
+            <p>"A steady rise in performance." Calm confidence over loud urgency — composure is the premium signal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 LOGO -->
+    <section class="doc" id="logo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">02</span> Logo</span>
+          <h2 class="sec-title">An ornate medallion, a <em>serif</em> wordmark.</h2>
+          <p class="lead">The mark pairs a compass-lotus "U" medallion with a two-line serif wordmark. Use the green-900 version on light grounds; reverse to white on dark.</p>
+        </div>
+        <div class="logo-grid">
+          <div class="logo-cell">
+            <div class="logo-stage light"><img src="/assets/logo.svg" alt="Primary logo"></div>
+            <div class="cap">Primary — on white &amp; light surfaces <span>· #FFFFFF / #F7F4EE</span></div>
+          </div>
+          <div class="logo-cell">
+            <div class="logo-stage dark"><img src="/assets/logo.svg" alt="Reversed logo"></div>
+            <div class="cap">Reversed — on green-900 <span>· filter: brightness(0) invert(1)</span></div>
+          </div>
+        </div>
+        <div class="dos">
+          <div class="do-item yes"><span class="tick">✓</span><p><b>Clear space.</b> Keep space equal to the medallion's height on all sides. Minimum wordmark height 28px.</p></div>
+          <div class="do-item yes"><span class="tick">✓</span><p><b>Lock proportions.</b> Always scale the mark uniformly; medallion and wordmark stay together.</p></div>
+          <div class="do-item no"><span class="tick">✕</span><p><b>Don't recolor</b> the mark, add shadows, outlines, or gradients, or rotate it.</p></div>
+          <div class="do-item no"><span class="tick">✕</span><p><b>Don't place</b> on low-contrast photography without a solid or scrim behind it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 COLOR -->
+    <section class="doc" id="color">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">03</span> Color</span>
+          <h2 class="sec-title">A forest-green spine over <em>warm paper.</em></h2>
+          <p class="lead">Green is the system's backbone — green-800 is primary. Copper drives action and savings; gold elevates on dark grounds. Neutrals are warm and paper-like; never pure black or white.</p>
+        </div>
+
+        <h3 class="block">Core — forest green</h3>
+        <div class="pal-row" style="margin-bottom:36px">
+          <div class="sw"><div class="chip" style="background:#0F3A20"></div><div class="meta"><div class="nm" style="color:var(--green-900)">green-900</div><div class="hx">#0F3A20</div><div class="use">Dark sections, headlines</div></div></div>
+          <div class="sw"><div class="chip" style="background:#1A4D2E"></div><div class="meta"><div class="nm" style="color:var(--green-800)">green-800</div><div class="hx">#1A4D2E</div><div class="use">Primary · buttons · links</div></div></div>
+          <div class="sw"><div class="chip" style="background:#235A39"></div><div class="meta"><div class="nm" style="color:var(--green-700)">green-700</div><div class="hx">#235A39</div><div class="use">Hover / mid</div></div></div>
+          <div class="sw"><div class="chip" style="background:#E8EFE5"></div><div class="meta"><div class="nm">green-100</div><div class="hx">#E8EFE5</div><div class="use">Eyebrows, chips</div></div></div>
+          <div class="sw"><div class="chip" style="background:#F1F5EE"></div><div class="meta"><div class="nm">green-50</div><div class="hx">#F1F5EE</div><div class="use">Hover fills, zebra</div></div></div>
+        </div>
+
+        <h3 class="block">Accents</h3>
+        <div class="pal-row" style="margin-bottom:36px">
+          <div class="sw"><div class="chip" style="background:#C97B2D"></div><div class="meta"><div class="nm" style="color:var(--copper)">copper</div><div class="hx">#C97B2D</div><div class="use">Action · savings</div></div></div>
+          <div class="sw"><div class="chip" style="background:#F7E9D6"></div><div class="meta"><div class="nm" style="color:#9c6322">copper-soft</div><div class="hx">#F7E9D6</div><div class="use">Tag fills</div></div></div>
+          <div class="sw"><div class="chip" style="background:#D4A437"></div><div class="meta"><div class="nm" style="color:#9c7a1f">gold</div><div class="hx">#D4A437</div><div class="use">Premium · ratings</div></div></div>
+          <div class="sw"><div class="chip" style="background:#B34A3B"></div><div class="meta"><div class="nm" style="color:var(--warn)">warn</div><div class="hx">#B34A3B</div><div class="use">Scarcity · alerts</div></div></div>
+          <div class="sw"><div class="chip" style="background:#FCE7E1"></div><div class="meta"><div class="nm" style="color:#a23f31">warn-soft</div><div class="hx">#FCE7E1</div><div class="use">Alert fills</div></div></div>
+        </div>
+
+        <h3 class="block">Neutrals</h3>
+        <div class="pal-row">
+          <div class="sw"><div class="chip" style="background:#F7F4EE"></div><div class="meta"><div class="nm">bg</div><div class="hx">#F7F4EE</div><div class="use">Page · warm paper</div></div></div>
+          <div class="sw"><div class="chip" style="background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--line-2)"></div><div class="meta"><div class="nm">surface</div><div class="hx">#FFFFFF</div><div class="use">Cards</div></div></div>
+          <div class="sw"><div class="chip" style="background:#11201A"></div><div class="meta"><div class="nm" style="color:#11201A">ink</div><div class="hx">#11201A</div><div class="use">Primary text</div></div></div>
+          <div class="sw"><div class="chip" style="background:#4A584F"></div><div class="meta"><div class="nm" style="color:#4A584F">ink-2</div><div class="hx">#4A584F</div><div class="use">Secondary text</div></div></div>
+          <div class="sw"><div class="chip" style="background:#E4DFD3"></div><div class="meta"><div class="nm">line</div><div class="hx">#E4DFD3</div><div class="use">Hairline borders</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 TYPOGRAPHY -->
+    <section class="doc" id="type">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">04</span> Typography &amp; Fonts</span>
+          <h2 class="sec-title">One geometric <em>sans</em>, used with intent.</h2>
+          <p class="lead">Two families do all the work. Poppins carries everything visible — display, headlines, product names, body, UI and numerals; JetBrains Mono is reserved for small technical labels.</p>
+        </div>
+
+        <div class="font-card">
+          <div class="font-top">
+            <div class="font-name">Poppins</div>
+            <div class="font-role">Display · Headlines · Product names — weight 500–600</div>
+          </div>
+          <div class="glyphs" style="font-family:var(--font-display)">Aa Bb Cc Dd · Black Thunder Active+</div>
+          <p class="note">Set display at weight 500–600 with tight tracking (−0.025em). Accent words inside headlines are set in copper, non-italic.</p>
+        </div>
+
+        <div class="font-card">
+          <div class="font-top">
+            <div class="font-name" style="font-family:var(--font-body);font-weight:700;font-size:26px">Poppins</div>
+            <div class="font-role">Body · UI · Numerals — weights 400–800</div>
+          </div>
+          <div class="weights" style="font-family:var(--font-body)">
+            <span style="font-weight:400">Regular</span>
+            <span style="font-weight:500">Medium</span>
+            <span style="font-weight:600">Semibold</span>
+            <span style="font-weight:700">Bold</span>
+            <span style="font-weight:800">Extrabold 3,825</span>
+          </div>
+          <p class="note" style="margin-top:18px">Body copy, labels, and all numerals/stat figures (in 800). Eyebrow numbers use Poppins 800.</p>
+        </div>
+
+        <div class="font-card">
+          <div class="font-top">
+            <div class="font-name" style="font-family:var(--font-mono);font-weight:600;font-size:24px">JetBrains Mono</div>
+            <div class="font-role">Technical tags · hex codes — weights 500–600</div>
+          </div>
+          <p class="note" style="font-family:var(--font-mono);color:var(--ink-2);font-size:15px">CRO · Above-the-fold cluster &nbsp;·&nbsp; #1A4D2E &nbsp;·&nbsp; --green-800</p>
+        </div>
+
+        <h3 class="block" style="margin-top:44px">Type scale</h3>
+        <div class="font-card">
+          <div class="scale-tbl">
+            <div class="scale-line"><span class="scale-tok">--t-hero · 52</span><span class="scale-samp" style="font-size:44px">Section title</span></div>
+            <div class="scale-line"><span class="scale-tok">--t-h2 · 34</span><span class="scale-samp" style="font-size:32px">Sub-header</span></div>
+            <div class="scale-line"><span class="scale-tok">--t-h3 · 24</span><span class="scale-samp" style="font-size:24px">Card title</span></div>
+            <div class="scale-line"><span class="scale-tok">--t-body · 15</span><span class="scale-samp" style="font-size:15px;font-family:var(--font-body);font-weight:400;color:var(--ink-2)">Body copy — Poppins regular, 1.55 line-height</span></div>
+            <div class="scale-line"><span class="scale-tok">--t-tiny · 11</span><span class="scale-samp" style="font-size:11px;font-family:var(--font-body);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green-800)">Eyebrow label</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 BUTTONS -->
+    <section class="doc" id="buttons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">05</span> Buttons &amp; CTA</span>
+          <h2 class="sec-title">Always a pill. <em>Green</em> leads; copper converts.</h2>
+          <p class="lead">Every button is fully rounded (99px). Primary green is the default action; copper is the high-intent "buy" accent; outline and ghost are secondary. Hover lifts and darkens.</p>
+        </div>
+
+        <div class="btn-grid">
+          <div class="btn-demo">
+            <span class="demo-label">Primary — default action</span>
+            <div class="btn-row"><button class="btn btn-primary">Add to Cart</button><button class="btn btn-primary btn-lg">Buy Now →</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Secondary — high-intent / copper</span>
+            <div class="btn-row"><button class="btn btn-secondary">Subscribe &amp; Save</button><button class="btn btn-secondary btn-sm">Claim offer</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Outline — secondary action</span>
+            <div class="btn-row"><button class="btn btn-outline">Add to Cart</button><button class="btn btn-outline btn-lg">Learn more</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Ghost — tertiary / quiet</span>
+            <div class="btn-row"><button class="btn btn-ghost">View details</button><button class="btn btn-ghost btn-sm">Cancel</button></div>
+          </div>
+        </div>
+
+        <div class="spec-list">
+          <div class="row"><span>Radius</span><span>99px · full pill</span></div>
+          <div class="row"><span>Font</span><span>Poppins 700 · 14px</span></div>
+          <div class="row"><span>Padding (default)</span><span>14px 24px</span></div>
+          <div class="row"><span>Padding (large)</span><span>18px 30px</span></div>
+          <div class="row"><span>Hover (primary)</span><span>→ green-900 · −1px lift</span></div>
+          <div class="row"><span>Hover (outline)</span><span>invert → green fill</span></div>
+          <div class="row"><span>Border</span><span>1.5px</span></div>
+          <div class="row"><span>Transition</span><span>all .15s</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 COMPONENTS -->
+    <section class="doc" id="components">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">06</span> Components</span>
+          <h2 class="sec-title">Soft cards, pills, <em>dashed</em> dividers.</h2>
+          <p class="lead">Surfaces are flat with a hairline border and rest at no elevation, lifting only on hover. Dashed dividers separate a card's footer from its body — a recurring motif.</p>
+        </div>
+        <div class="comp-grid">
+          <div class="comp-card">
+            <span class="demo-label">Badges &amp; ribbons</span>
+            <div class="flexrow"><span class="badge green">★ Bestseller</span><span class="badge copper">High Bioavailability</span></div>
+            <div class="flexrow"><span class="badge gold">System Reset</span><span class="badge outline">3,825 mg / 10ml</span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Ingredient chips</span>
+            <div class="flexrow"><span class="chip">Ginseng</span><span class="chip">Ashwagandha</span><span class="chip">Shilajit</span><span class="chip">Safed Musli</span><span class="chip">Gokhru</span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Corner radii — 8 / 14 / 22 / 32 / pill</span>
+            <div class="radii"><div style="border-radius:8px"></div><div style="border-radius:14px"></div><div style="border-radius:22px"></div><div style="border-radius:32px"></div><div style="border-radius:99px;width:84px"></div></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Elevation — flat at rest, soft on hover</span>
+            <div class="shadowrow"><div style="box-shadow:var(--sh-1)"></div><div style="box-shadow:var(--sh-2)"></div><div style="box-shadow:var(--sh-3)"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 ICONS -->
+    <section class="doc" id="icons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">07</span> Iconography</span>
+          <h2 class="sec-title">2px stroke. No fill. <em>Rounded</em> joins.</h2>
+          <p class="lead">Icons follow the Lucide / Feather family — 2px stroke, no fill, round caps. They inherit currentColor. On dark grounds, set them inside a gold circle. The only non-SVG marks are ★ ✓ → ✦. No emoji, ever.</p>
+        </div>
+        <div class="icons">
+          <span class="icon-b"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+          <span class="icon-b"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></span>
+          <span class="icon-b"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12L6 6zM6 6L5 3H2M8 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg></span>
+          <span class="icon-b"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg></span>
+          <span class="icon-b"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6l-5 9a4 4 0 0 0 3.5 6h9A4 4 0 0 0 20 17l-5-9V2M9 2h6"/></svg></span>
+          <span class="icon-b"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+          <span class="icon-b dark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span>
+          <span class="icon-b" style="width:auto;padding:0 22px;font-family:var(--font-mono);font-size:24px;letter-spacing:8px;color:var(--green-800)">★ ✓ → ✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 PHOTOGRAPHY -->
+    <section class="doc" id="photo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">08</span> Photography</span>
+          <h2 class="sec-title">Bright, warm, <em>botanical.</em></h2>
+          <p class="lead">Amber bottle on stone, labelled botanicals, clean seamless light. Lifestyle shots are equally bright — never moody. Always framed in rounded corners; text never sits directly on the image.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="frame"><img src="/assets/hero-1.png" alt="Product photography"></div>
+          <div class="frame"><img src="/assets/how-to-use.png" alt="Lifestyle / usage"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 VOICE -->
+    <section class="doc" id="voice">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">09</span> Voice &amp; Tone</span>
+          <h2 class="sec-title">Confident. Calm. <em>Evidence-led.</em></h2>
+          <p class="lead">Speak in second person, in short declarative fragments. Quantify with specific numbers. Set expectations honestly. Never hype.</p>
+        </div>
+        <div class="voice-grid">
+          <div class="voice-card write">
+            <div class="vlabel">We write</div>
+            <p class="ex">"Not a sudden rush. A steady rise in performance."</p>
+            <p>Short fragments for cadence. Cause → effect with arrows. Specific numbers (3,825 mg · 247 reviews) as proof. Honest disclaimers.</p>
+          </div>
+          <div class="voice-card avoid">
+            <div class="vlabel">We avoid</div>
+            <p class="ex">"The ultimate game-changing miracle boost!!!"</p>
+            <p>No hype, no exclamation pile-ups, no vague superlatives, no emoji. Glyphs limited to ★ ✓ → ✦.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="end">
+      <p class="mono">UBALANCE NATURALS · BRAND GUIDELINES v1.0<br>Tokens: colors_and_type.css · Assets: /assets · UI kit: /ui_kits/storefront</p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // scroll-spy for the sidebar TOC
+  const links = [...document.querySelectorAll('#toc a')];
+  const map = links.map(a => ({ a, sec: document.querySelector(a.getAttribute('href')) }));
+  const spy = () => {
+    const y = window.scrollY + 140;
+    let cur = map[0];
+    for (const m of map) { if (m.sec && m.sec.offsetTop <= y) cur = m; }
+    links.forEach(a => a.classList.remove('active'));
+    if (cur) cur.a.classList.add('active');
+  };
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+</script>
+</body>
+</html>

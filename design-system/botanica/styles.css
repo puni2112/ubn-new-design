@@ -1,0 +1,175 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations (Botanica System)
+   foundations-botanica.css
+   ------------------------------------------------------------
+   The monochrome-green, serif-led sibling to Forest / Aurora /
+   Bold / Mono. Same brand spine — deep botanical green, real
+   herbal honesty — but stripped to a SINGLE hue. There is no
+   copper, no gold, no second accent color anywhere in this
+   system. Emphasis is carried by the DEPTH of green and by an
+   elegant serif italic, never by a competing chroma.
+
+   Two deliberate departures from its siblings:
+     1. A premium serif leads — Sentient (high-contrast,
+        editorial) — paired with the neutral Switzer grotesque.
+        No monospace: the serif italic sets indices and specs.
+     2. A cooler light ground — a pale sage / celadon canvas,
+        not the warm recycled-paper cream of Forest & Aurora.
+
+   Fonts (Fontshare — premium foundry quality, web-licensed):
+     Sentient — display / headlines / accents (serif, w/ italic)
+     Switzer  — body / UI / numerals / labels (neutral grotesque)
+   ============================================================ */
+
+@import url("https://api.fontshare.com/v2/css?f[]=sentient@300,400,500,700&f[]=switzer@400,500,600,700&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     GREEN LADDER — the whole identity lives here
+     Ten deliberate steps from deepest pine to pale celadon.
+     This single ramp is the brand's only chromatic story.
+     --------------------------------------------------------- */
+  --green-950:#0B1E12;   /* deepest — hero ground, darkest field */
+  --green-900:#102A19;   /* dark sections */
+  --green-800:#1A4327;   /* PRIMARY — buttons, dark fields, headlines on dark */
+  --green-700:#265737;   /* hover / pressed primary */
+  --green-600:#356E45;   /* lifted forest / mid depth */
+  --leaf:#56913E;        /* living leaf — links, active, the one accent word */
+  --leaf-600:#3C6B2C;    /* leaf hover / pressed */
+  --moss:#6E9A55;        /* soft mid green — quiet accents on dark */
+  --sage:#9FBE86;        /* pale leaf — accents on deep grounds */
+  --sage-200:#C9D9B6;    /* accent hairline / soft sage */
+  --sage-100:#E0E9D2;    /* faint tint fill — new growth */
+  --sage-50:#EDF1E4;     /* faintest wash */
+
+  --positive:#2E7D52;    /* in-stock / verified — the only functional signal (still green) */
+
+  /* ---------------------------------------------------------
+     NEUTRALS — cool, green-tinted, calm.
+     The departure: a sage / celadon canvas, never warm cream.
+     Nothing pure white, nothing pure black.
+     --------------------------------------------------------- */
+  --canvas:#E8EEE1;      /* page background — pale sage celadon */
+  --canvas-2:#E0E7D6;    /* recessed wash */
+  --surface:#F5F8EF;     /* cards / raised surfaces — soft celadon white */
+  --surface-2:#FAFCF5;   /* lifted inner surface */
+  --ink:#13241A;         /* primary text — green-black */
+  --ink-2:#374A39;       /* secondary text — deep moss */
+  --ink-3:#5C6C5B;       /* tertiary / captions — lichen */
+  --ink-4:#8A9785;       /* faint — placeholders — dry sage */
+  --line:#D3DDC6;        /* default hairline — sage-tinted */
+  --line-2:#DFE7D4;      /* lighter inner hairline */
+  --line-dark:#284033;   /* hairline on deep-green grounds */
+
+  /* ---------------------------------------------------------
+     DEEP-GROUND ACCENTS — the one signature flourish.
+     A single-hue green glow for the dark hero. No gold, ever.
+     --------------------------------------------------------- */
+  --grad-deep:linear-gradient(165deg,#13301D 0%,#0B1E12 100%);
+  --glow-green:
+    radial-gradient(120% 120% at 16% 6%, rgba(86,145,62,.30) 0%, rgba(86,145,62,0) 48%),
+    radial-gradient(130% 130% at 88% 96%, rgba(110,154,85,.16) 0%, rgba(110,154,85,0) 50%),
+    linear-gradient(165deg,#13301D 0%,#0B1E12 100%);
+  --wash-sage:linear-gradient(160deg,#F5F8EF 0%,#E9EFDF 100%); /* faint card / panel wash */
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES — serif leads, grotesque supports, no mono
+     --------------------------------------------------------- */
+  --font-serif:"Sentient", Georgia, "Times New Roman", serif;
+  --font-sans:"Switzer", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display:var(--font-serif);
+
+  /* ---------------------------------------------------------
+     TYPE SCALE — display is large serif, editorial tracking.
+     Labels are Switzer uppercase, tracked. Indices are serif
+     italic — the deliberate "no monospace" choice.
+     --------------------------------------------------------- */
+  --t-display:clamp(48px,7.3vw,116px);
+  --t-hero:clamp(33px,4.3vw,62px);
+  --t-h2:clamp(25px,2.7vw,37px);
+  --t-h3:22px;
+  --t-h4:17px;
+  --t-body:16px;
+  --t-body-lg:19px;
+  --t-small:13px;
+  --t-tiny:11px;
+
+  --lh-tight:1.0;
+  --lh-snug:1.14;
+  --lh-body:1.62;
+
+  --tr-display:-.02em;    /* serif display, gentle */
+  --tr-tight:-.012em;
+  --tr-label:.18em;       /* uppercase grotesque labels open up */
+
+  /* ---------------------------------------------------------
+     RADIUS — soft, organic; between Forest and Aurora.
+     --------------------------------------------------------- */
+  --r:10px;              /* cards / panels */
+  --r-lg:18px;           /* feature panels / photo frames */
+  --r-input:8px;
+  --r-btn:8px;
+  --r-pill:999px;
+
+  /* ---------------------------------------------------------
+     ELEVATION — barely-there, green-tinted. Structure from
+     hairlines; shadow only on hover / overlay.
+     --------------------------------------------------------- */
+  --sh-0:none;
+  --sh-1:0 1px 0 rgba(16,42,25,.04);
+  --sh-2:0 14px 34px -22px rgba(16,42,25,.26);
+  --sh-3:0 30px 76px -34px rgba(16,42,25,.34);
+  --glow-leaf:0 18px 50px -24px rgba(86,145,62,.45);
+
+  /* ---------------------------------------------------------
+     SPACING
+     --------------------------------------------------------- */
+  --space-section:clamp(76px,9vw,132px);
+  --space-gutter:clamp(24px,5vw,72px);
+  --container:1280px;
+
+  --ease:cubic-bezier(.2,.6,.2,1);
+}
+
+/* ============================================================
+   SEMANTIC DEFAULTS  (opt-in via .ubn wrapper)
+   ============================================================ */
+.ubn{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn h1,.ubn h2,.ubn h3{
+  font-family:var(--font-serif);
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:var(--tr-tight);
+  line-height:var(--lh-snug);
+  text-wrap:balance;
+}
+.ubn h1{font-size:var(--t-hero);font-weight:400;letter-spacing:var(--tr-display);line-height:var(--lh-tight);}
+.ubn h2{font-size:var(--t-h2);}
+.ubn h3{font-size:var(--t-h3);font-weight:500;}
+/* Accent word — serif italic in leaf green. Emphasis with no second hue. */
+.ubn h1 em,.ubn h2 em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--leaf);
+}
+.ubn p{font-size:var(--t-body);color:var(--ink-2);line-height:var(--lh-body);}
+.ubn a{color:var(--leaf);text-decoration:none;}
+
+/* Eyebrow — serif-italic index + uppercase tracked grotesque label. */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-sans);
+  font-size:var(--t-tiny);font-weight:600;
+  letter-spacing:var(--tr-label);text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ubn-eyebrow .num{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--leaf);letter-spacing:0;text-transform:none;font-size:15px;}

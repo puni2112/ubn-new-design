@@ -1,0 +1,166 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations (Lab System)
+   foundations-lab.css
+   ------------------------------------------------------------
+   The clinical, scientific sibling to Forest / Aurora /
+   Botanica / Atelier. Same brand spine — deep botanical green —
+   but reframed from a NATURE signal into a PRECISION signal.
+   Forest green here means efficacy, dosage, proof: the colour
+   of a verified result, not of a leaf in sunlight.
+
+   Three deliberate departures from its siblings:
+     1. A premium Swiss-technical typeface leads — Supreme —
+        paired with Tabular, a monospaced face built for data:
+        doses, mg, %, lot codes, assay figures. Numbers are
+        tabular and first-class.
+     2. A COOL clinical ground — a pale instrument-grey green,
+        pure-white cards. Never the warm recycled paper of
+        Forest, never the celadon of Botanica.
+     3. No gradient, no glow, no ornament. Structure is a grid
+        of hairlines and registration marks. Corners are nearly
+        square (3px). The aesthetic of a lab report / COA.
+
+   Fonts (Fontshare — premium foundry quality, web-licensed):
+     Supreme   — display, body, UI (premium neo-grotesque)
+     Tabular   — all data, measurements, indices, spec labels
+                 (a true monospaced face, built for figures)
+   ============================================================ */
+
+@import url("https://api.fontshare.com/v2/css?f[]=supreme@300,400,500,700&f[]=tabular@400,500,700&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     NEUTRALS — cool, clinical, instrument-grey green.
+     Nothing warm, nothing pure black. A lab bench, not a forest.
+     --------------------------------------------------------- */
+  --paper:#EEF1ED;       /* page background — cool instrument grey-green */
+  --paper-2:#E6EAE4;     /* recessed wash / table zebra */
+  --surface:#FFFFFF;     /* cards / panels — clinical pure white */
+  --graphite:#11231A;    /* PRIMARY — deep forest: dark sections, buttons */
+  --graphite-700:#1C3A28;/* hover / lifted */
+  --ink:#101A14;         /* primary text — green-black */
+  --ink-2:#39463E;       /* secondary text */
+  --ink-3:#69736B;       /* tertiary / captions / muted */
+  --ink-4:#98A099;       /* faint — placeholders, disabled */
+  --line:#DCE1DB;        /* default hairline border — cool */
+  --line-2:#E7EAE4;      /* lighter hairline — inside cards */
+  --line-strong:#C3CBC1; /* emphasised rule / table frame */
+  --line-dark:#26392E;   /* hairline on forest grounds */
+
+  /* ---------------------------------------------------------
+     ACCENT — clinical green. A cooler, more saturated emerald
+     than the natural systems' "leaf". The colour of a verified
+     reading on an instrument. Reserved for data emphasis,
+     active state, the single proven figure.
+     --------------------------------------------------------- */
+  --accent:#1E7A4D;      /* clinical green — links, active, key data */
+  --accent-700:#155C3A;  /* hover / pressed */
+  --accent-soft:#E3F0E8; /* faint tint fill — highlighted cell */
+  --accent-line:#BBD8C7; /* accent hairline */
+
+  /* functional signals — flat, data-only, never decorative */
+  --positive:#1E7A4D;    /* pass / in-range / verified */
+  --warn:#B7791F;        /* out-of-range note (rare, mono only) */
+  --signal-grid:#D4DAD2; /* registration / crosshair marks */
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES — Swiss grotesque + mono for all data
+     --------------------------------------------------------- */
+  --font-sans:"Supreme", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono:"Tabular", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* ---------------------------------------------------------
+     TYPE SCALE — display is tight and medium-weight (not light);
+     clinical precision reads as solidity, not airiness.
+     Data labels are mono, uppercase, wide-tracked.
+     --------------------------------------------------------- */
+  --t-display:clamp(44px,6.4vw,94px); /* hero */
+  --t-hero:clamp(31px,4vw,54px);      /* section titles */
+  --t-h2:clamp(23px,2.5vw,33px);      /* sub-headers */
+  --t-h3:20px;                        /* card titles */
+  --t-h4:16px;                        /* list item titles */
+  --t-body:16px;                      /* base body */
+  --t-body-lg:18px;                   /* lead / tagline */
+  --t-small:13px;                     /* secondary */
+  --t-tiny:11px;                      /* eyebrows, captions */
+
+  --lh-tight:1.02;   /* display */
+  --lh-snug:1.16;    /* card titles */
+  --lh-body:1.58;    /* paragraphs */
+
+  --tr-display:-.025em;  /* tight, engineered */
+  --tr-tight:-.012em;    /* sub-heads */
+  --tr-label:.14em;      /* uppercase mono micro-labels */
+  --tr-data:.01em;       /* tabular figures */
+
+  /* ---------------------------------------------------------
+     RADIUS — nearly square. Instrument corners, not organic.
+     Just enough to avoid feeling brittle. No pills anywhere
+     except the status dot.
+     --------------------------------------------------------- */
+  --r:3px;               /* cards / panels */
+  --r-input:3px;
+  --r-btn:3px;
+  --r-pill:3px;          /* badges stay rectangular in this system */
+  --r-dot:999px;         /* the one round element: status dots */
+
+  /* ---------------------------------------------------------
+     ELEVATION — none at rest. Structure is the grid. Shadow
+     appears only on a floating overlay.
+     --------------------------------------------------------- */
+  --sh-0:none;
+  --sh-1:0 1px 0 rgba(16,26,20,.04);
+  --sh-2:0 10px 26px -16px rgba(16,26,20,.22);
+  --sh-3:0 24px 60px -30px rgba(16,26,20,.28);
+
+  /* ---------------------------------------------------------
+     SPACING — tight, gridded, architectural
+     --------------------------------------------------------- */
+  --space-section:clamp(70px,8.5vw,124px);
+  --space-gutter:clamp(24px,5vw,72px);
+  --container:1280px;
+
+  --ease:cubic-bezier(.2,.6,.2,1);
+}
+
+/* ============================================================
+   SEMANTIC DEFAULTS  (opt-in via .ubn wrapper)
+   ============================================================ */
+.ubn{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  font-weight:400;
+  font-feature-settings:"tnum" 1;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn h1,.ubn h2,.ubn h3{
+  font-family:var(--font-sans);
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:var(--tr-tight);
+  line-height:var(--lh-snug);
+  text-wrap:balance;
+}
+.ubn h1{font-size:var(--t-hero);font-weight:500;letter-spacing:var(--tr-display);line-height:var(--lh-tight);}
+.ubn h2{font-size:var(--t-h2);}
+.ubn h3{font-size:var(--t-h3);font-weight:600;}
+/* Accent — clinical-green underline mark, not a colour swap of the
+   whole word; emphasis reads as a measured highlight. */
+.ubn h1 em,.ubn h2 em{font-style:normal;color:var(--accent);}
+.ubn p{font-size:var(--t-body);color:var(--ink-2);line-height:var(--lh-body);}
+.ubn a{color:var(--accent);text-decoration:none;}
+.ubn [data-num],.ubn .num,.ubn .data{font-family:var(--font-mono);font-feature-settings:"tnum" 1;letter-spacing:var(--tr-data);}
+
+/* Eyebrow — mono index + uppercase tracked label. */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);
+  font-size:var(--t-tiny);font-weight:500;
+  letter-spacing:var(--tr-label);text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ubn-eyebrow .num{color:var(--accent);}

@@ -1,0 +1,176 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations (Tactile System)
+   foundations-tactile.css
+   ------------------------------------------------------------
+   The organic, risograph-print sibling to Forest / Aurora /
+   Botanica / Atelier / Lab / Apothecary / Nocturne. Same brand
+   spine — deep botanical green — but printed by hand on a riso
+   duplicator: two flat, slightly translucent inks on warm
+   newsprint, with grain, halftone fills and a little honest
+   misregistration. Where every sibling is precise, Tactile is
+   deliberately, warmly imperfect. The forest green of a hand-
+   pulled print, not a screen.
+
+   Three deliberate departures from its siblings:
+     1. A premium WEATHERED serif leads — Erode, whose eroded
+        contours read as ink soaked into paper — paired with the
+        warm humanist grotesque Synonym for body and UI.
+     2. RISOGRAPH colour: forest green is a flat ink, marigold
+        is the second ink, and where they overlap they overprint
+        to a dark olive. Fills are grained and halftoned, never
+        flat digital colour.
+     3. Honest imperfection: organic blob shapes, generous hand-
+        cut radii, a paper-grain overlay, and a 2–3px ink
+        misregistration on display type. Nothing is pixel-true.
+
+   Fonts (Fontshare — premium foundry quality, web-licensed):
+     Erode    — display / headlines / accents (weathered serif)
+     Synonym  — body / UI / labels (warm humanist grotesque)
+   ============================================================ */
+
+@import url("https://api.fontshare.com/v2/css?f[]=erode@300,400,500,600,700&f[]=synonym@300,400,500,600,700&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     INKS — two flat riso inks on warm paper.
+     Forest green is the spine; marigold is the partner ink.
+     --------------------------------------------------------- */
+  --green:#37683B;       /* PRIMARY riso ink — forest green */
+  --green-deep:#214528;  /* deepest green — dark fields */
+  --green-700:#2B5430;   /* pressed / hover */
+  --green-soft:#DCE6CB;  /* faint green tint (grained fill) */
+  --green-line:#BFD0A8;  /* green hairline */
+
+  --marigold:#D69A33;    /* SECOND ink — warm marigold */
+  --marigold-deep:#B27C1F;/* deeper marigold / pressed */
+  --marigold-soft:#F3E3BE;/* faint marigold tint */
+  --olive:#475127;       /* OVERPRINT — green over marigold */
+
+  --positive:#37683B;    /* in-stock / verified — the green ink */
+
+  /* ---------------------------------------------------------
+     NEUTRALS — warm newsprint & muddy riso black.
+     Riso black is never pure; paper is recycled-warm.
+     --------------------------------------------------------- */
+  --paper:#F0E8D2;       /* page background — warm newsprint */
+  --paper-2:#E7DCC0;     /* recessed / second paper */
+  --surface:#F8F2E2;     /* cards / panels — lighter stock */
+  --surface-2:#FCF8ED;   /* lifted inner stock */
+  --ink:#241F15;         /* primary text — warm muddy black */
+  --ink-2:#4E4733;       /* secondary text — sepia */
+  --ink-3:#7E745A;       /* tertiary / captions — drab */
+  --ink-4:#A89C7E;       /* faint — placeholders */
+  --line:#D8CBA9;        /* default hairline — warm */
+  --line-2:#E2D7BA;      /* lighter inner hairline */
+  --line-strong:#C3B488; /* emphasised rule / frame */
+  --line-dark:#3A5A3E;   /* hairline on green grounds */
+
+  /* ---------------------------------------------------------
+     TEXTURE — paper grain & halftone, the riso signature.
+     Applied as overlays; --grain is a tiled turbulence PNG-like
+     SVG, --halftone a dot pattern for ink fills.
+     --------------------------------------------------------- */
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.5'/></svg>");
+  --misreg:2.5px;        /* ink misregistration offset */
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES — weathered serif leads, humanist sans body
+     --------------------------------------------------------- */
+  --font-serif:"Erode", Georgia, "Times New Roman", serif;
+  --font-sans:"Synonym", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display:var(--font-serif);
+
+  /* ---------------------------------------------------------
+     TYPE SCALE — display is large serif; labels are Synonym
+     uppercase, tracked, a touch heavier (stamped).
+     --------------------------------------------------------- */
+  --t-display:clamp(50px,7.6vw,118px); /* hero */
+  --t-hero:clamp(33px,4.4vw,62px);     /* section titles */
+  --t-h2:clamp(25px,2.7vw,37px);       /* sub-headers */
+  --t-h3:22px;                         /* card titles */
+  --t-h4:17px;                         /* list item titles */
+  --t-body:16px;                       /* base body */
+  --t-body-lg:19px;                    /* lead / tagline */
+  --t-small:13px;                      /* secondary */
+  --t-tiny:11px;                       /* eyebrows, captions */
+
+  --lh-tight:1.0;    /* display */
+  --lh-snug:1.14;    /* card titles */
+  --lh-body:1.64;    /* paragraphs */
+
+  --tr-display:-.018em;  /* serif display, gentle */
+  --tr-tight:-.01em;     /* sub-heads */
+  --tr-label:.16em;      /* uppercase stamped labels */
+
+  /* ---------------------------------------------------------
+     RADIUS — generous, hand-cut. Organic, never crisp.
+     --------------------------------------------------------- */
+  --r:18px;              /* cards / panels */
+  --r-lg:28px;           /* feature panels / blobs */
+  --r-input:14px;
+  --r-btn:999px;         /* buttons are pills — stamped */
+  --r-pill:999px;
+
+  /* ---------------------------------------------------------
+     ELEVATION — flat, printed. Depth comes from misregistration
+     and grain, not from drop shadow. A soft offset only on lift.
+     --------------------------------------------------------- */
+  --sh-0:none;
+  --sh-1:0 1px 0 rgba(36,31,21,.05);
+  --sh-2:3px 4px 0 rgba(36,31,21,.14);   /* hard offset, printed */
+  --sh-3:5px 6px 0 rgba(36,31,21,.16);
+
+  /* ---------------------------------------------------------
+     SPACING
+     --------------------------------------------------------- */
+  --space-section:clamp(74px,9vw,130px);
+  --space-gutter:clamp(24px,5vw,72px);
+  --container:1280px;
+
+  --ease:cubic-bezier(.3,.1,.3,1);
+}
+
+/* ============================================================
+   SEMANTIC DEFAULTS  (opt-in via .ubn wrapper)
+   ============================================================ */
+.ubn{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn h1,.ubn h2,.ubn h3{
+  font-family:var(--font-serif);
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:var(--tr-tight);
+  line-height:var(--lh-snug);
+  text-wrap:balance;
+}
+.ubn h1{font-size:var(--t-hero);font-weight:400;letter-spacing:var(--tr-display);line-height:var(--lh-tight);}
+.ubn h2{font-size:var(--t-h2);}
+.ubn h3{font-size:var(--t-h3);font-weight:500;}
+/* Accent word — green ink with a hand-swiped marigold highlight. */
+.ubn h1 em,.ubn h2 em{
+  font-style:normal;
+  color:var(--green-deep);
+  background:linear-gradient(110deg,transparent 4%,var(--marigold-soft) 4%,var(--marigold-soft) 96%,transparent 96%);
+  padding:0 .06em;
+  box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+.ubn p{font-size:var(--t-body);color:var(--ink-2);line-height:var(--lh-body);}
+.ubn a{color:var(--green-700);text-decoration:none;}
+
+/* Eyebrow — stamped uppercase label with a marigold index. */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-sans);
+  font-size:var(--t-tiny);font-weight:600;
+  letter-spacing:var(--tr-label);text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ubn-eyebrow .num{font-family:var(--font-serif);font-style:italic;font-weight:500;color:var(--marigold-deep);letter-spacing:0;text-transform:none;font-size:15px;}

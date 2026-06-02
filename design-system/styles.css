@@ -1,0 +1,152 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations
+   colors_and_type.css
+   ------------------------------------------------------------
+   Single source of truth for color + type tokens.
+   Import this first; everything else references these vars.
+
+   Fonts (Google Fonts):
+     Poppins             — display / headings / body / UI / numerals
+     JetBrains Mono      — system tags, technical / mono labels
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=JetBrains+Mono:wght@500;600&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     CORE PALETTE — Forest green system
+     The brand's spine. Green-800 is the primary brand color;
+     Green-900 carries dark sections and reversed-out type.
+     --------------------------------------------------------- */
+  --green-900:#0F3A20;   /* darkest — dark section bg, headlines */
+  --green-800:#1A4D2E;   /* PRIMARY brand green — buttons, links */
+  --green-700:#235A39;   /* hover / mid green */
+  --green-100:#E8EFE5;   /* soft sage tint — eyebrows, chips */
+  --green-50:#F1F5EE;    /* lightest sage — hover fills, table zebra */
+
+  /* ---------------------------------------------------------
+     NEUTRALS — Warm off-white & ink
+     Warm-toned, never pure white/black. Paper-like.
+     --------------------------------------------------------- */
+  --bg:#F7F4EE;          /* page background — warm off-white */
+  --surface:#FFFFFF;     /* cards / raised surfaces */
+  --ink:#11201A;         /* primary text — near-black, green-cast */
+  --ink-2:#4A584F;       /* secondary text */
+  --ink-3:#7A857E;       /* tertiary / captions / muted */
+  --line:#E4DFD3;        /* default hairline border */
+  --line-2:#EFEAE0;      /* lighter hairline — inside cards */
+
+  /* ---------------------------------------------------------
+     ACCENTS — Copper & Gold
+     Copper = action / urgency / savings (the "do it now" color).
+     Gold   = premium highlight on dark grounds, ratings, ✓.
+     Warn   = scarcity / alerts only. Used sparingly.
+     --------------------------------------------------------- */
+  --copper:#C97B2D;      --copper-soft:#F7E9D6;
+  --gold:#D4A437;        --gold-soft:#FBF1D6;
+  --warn:#B34A3B;        --warn-soft:#FCE7E1;
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES
+     --------------------------------------------------------- */
+  --font-display:"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body:"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* ---------------------------------------------------------
+     TYPE SCALE  (clamped for responsive product pages)
+     Display uses Poppins at weight 600 with tight tracking.
+     --------------------------------------------------------- */
+  --t-hero:clamp(34px,4vw,52px);   /* hero / section titles */
+  --t-h2:clamp(28px,3vw,34px);     /* sub-headers, dark panels */
+  --t-h3:24px;                     /* card titles, quotes */
+  --t-h4:17px;                     /* list item titles */
+  --t-body:15px;                   /* base body */
+  --t-body-lg:17px;                /* lead / tagline */
+  --t-small:13px;                  /* secondary */
+  --t-tiny:11px;                   /* eyebrows, badges, captions */
+
+  --lh-tight:1.05;   /* display */
+  --lh-snug:1.2;     /* card titles */
+  --lh-body:1.55;    /* paragraphs */
+
+  --tracking-display:-.025em;  /* serif headlines pull in */
+  --tracking-eyebrow:.18em;    /* uppercase labels open up */
+
+  /* ---------------------------------------------------------
+     RADIUS
+     --------------------------------------------------------- */
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:22px;
+  --r-xl:32px;
+  --r-pill:99px;
+
+  /* ---------------------------------------------------------
+     ELEVATION — soft, green-tinted shadows
+     --------------------------------------------------------- */
+  --sh-1:0 1px 2px rgba(17,32,26,.04), 0 4px 12px rgba(17,32,26,.04);
+  --sh-2:0 6px 24px rgba(17,32,26,.08);
+  --sh-3:0 18px 60px rgba(17,32,26,.10);
+
+  /* ---------------------------------------------------------
+     SPACING — section & layout rhythm
+     --------------------------------------------------------- */
+  --space-section:96px;  /* vertical padding per section */
+  --space-gutter:28px;   /* container side padding */
+  --container:1240px;    /* max content width */
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT DEFAULTS
+   Opt-in: add class .ubn-type to a wrapper to apply these,
+   or copy individual rules. Keeps the cascade predictable.
+   ============================================================ */
+.ubn-type{
+  font-family:var(--font-body);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn-type h1,
+.ubn-type h2,
+.ubn-type h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  color:var(--green-900);
+  letter-spacing:var(--tracking-display);
+  line-height:var(--lh-tight);
+  text-wrap:balance;
+}
+.ubn-type h1{font-size:var(--t-hero);}
+.ubn-type h2{font-size:var(--t-h2);}
+.ubn-type h3{font-size:var(--t-h3);line-height:var(--lh-snug);}
+.ubn-type h4{
+  font-family:var(--font-display);
+  font-weight:500;font-size:var(--t-h4);
+  color:var(--green-900);letter-spacing:-.015em;
+}
+/* Accent words inside serif headlines: not italic, copper */
+.ubn-type h1 em,
+.ubn-type h2 em,
+.ubn-type h3 em{font-style:normal;color:var(--copper);}
+.ubn-type p{
+  font-size:var(--t-body);
+  color:var(--ink-2);
+  line-height:var(--lh-body);
+}
+.ubn-type a{color:var(--green-800);text-decoration:none;}
+
+/* Eyebrow — uppercase pill label that opens a section */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-body);
+  font-size:var(--t-tiny);font-weight:700;
+  letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;
+  color:var(--green-800);background:var(--green-100);
+  padding:7px 14px;border-radius:var(--r-pill);
+}
+.ubn-eyebrow .num{font-weight:800;color:var(--copper);letter-spacing:0;}
