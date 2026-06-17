@@ -2,3 +2,13 @@
 .DS_Store
 node_modules/
 .vercel
+
+# Unrelated artifacts that live in this folder but are not part of the site
+Quince_*
+build_deck.js
+build_doc.js
+build_model.py
+build_notes.py
+build_prep.py
+proposal*.html
+proposal*.pdf
