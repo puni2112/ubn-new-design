@@ -1,0 +1,152 @@
+/* ============================================================
+   UBALANCE NATURALS — Brand Foundations (Forest · V4)
+   foundations-forest-v4.css
+   ------------------------------------------------------------
+   Forest, taken toward Direction 1. The grounded forest spine
+   stays — but the system adopts Satoshi for a contemporary,
+   premium read, one VITAL light-green that signals life, and
+   generously soft-rounded surfaces. Three core colours:
+     · Forest      — grounded depths (dark fields, primary)
+     · Botanica    — warm light-green surfaces & paper
+     · Vital leaf  — the single bright accent that signals life
+   Weight does the expression (Satoshi 300 → 700). No glow.
+
+   Fonts:
+     Satoshi (Fontshare) — display, body, UI, numerals (300–700)
+     IBM Plex Mono       — index numbers, technical / spec labels
+   ============================================================ */
+
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root{
+
+  /* ---------------------------------------------------------
+     NEUTRALS — warm, natural, green-grounded
+     Never cold, never pure. A forest spine on recycled paper.
+     --------------------------------------------------------- */
+  --paper:#ECEFE2;       /* page background — warm botanica light-green paper */
+  --surface:#FAFCF4;     /* cards / raised surfaces — soft celadon white */
+  --graphite:#16301E;    /* PRIMARY — deep forest: dark sections, buttons, type */
+  --graphite-700:#214A2E;/* hover / lifted forest */
+  --ink:#16261A;         /* primary text — warm green-black */
+  --ink-2:#3B4A3A;       /* secondary text — bark */
+  --ink-3:#677062;       /* tertiary / captions / muted — lichen */
+  --ink-4:#97A18C;       /* faint — placeholders, disabled — dry sage */
+  --line:#D7DCC8;        /* default hairline border — sage-warm */
+  --line-2:#E3E7D6;      /* lighter hairline — inside cards */
+  --line-dark:#2C3F2E;   /* hairline on forest grounds */
+
+  /* ---------------------------------------------------------
+     ACCENT — a single living leaf
+     The only bright color in the system. Interactive states,
+     the one emphasised word, the active marker. Used sparingly —
+     a fresh shoot against deep forest.
+     --------------------------------------------------------- */
+  --accent:#5CB23A;      /* VITAL leaf — the one bright colour that signals life */
+  --accent-700:#42852A;  /* hover / pressed — deeper vital leaf */
+  --accent-soft:#E7F1D8; /* faint tint fill — new growth */
+  --accent-line:#CBE2B2; /* accent hairline — soft sage */
+  --botanica:#DCE7C9;    /* botanica mid-light green surface tint */
+  --botanica-soft:#E9EFDC;/* faintest botanica wash */
+
+  /* one functional signal only — used for nothing decorative */
+  --positive:#2E7D52;    /* in-stock / verified — pine */
+
+  /* ---------------------------------------------------------
+     TYPE FAMILIES
+     --------------------------------------------------------- */
+  --font-sans:"Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* ---------------------------------------------------------
+     TYPE SCALE
+     Display is large and light (300–400). Tight tracking.
+     Micro-labels are uppercase, mono-numbered, wide-tracked.
+     --------------------------------------------------------- */
+  --t-display:clamp(46px,7vw,104px); /* hero */
+  --t-hero:clamp(32px,4.2vw,58px);   /* section titles */
+  --t-h2:clamp(24px,2.6vw,34px);     /* sub-headers */
+  --t-h3:21px;                       /* card titles */
+  --t-h4:16px;                       /* list item titles */
+  --t-body:16px;                     /* base body */
+  --t-body-lg:19px;                  /* lead / tagline */
+  --t-small:13px;                    /* secondary */
+  --t-tiny:11px;                     /* eyebrows, captions */
+
+  --lh-tight:1.0;    /* display */
+  --lh-snug:1.18;    /* card titles */
+  --lh-body:1.6;     /* paragraphs */
+
+  --tr-display:-.03em;   /* large display pulls in hard */
+  --tr-tight:-.015em;    /* sub-heads */
+  --tr-label:.2em;       /* uppercase micro-labels open up */
+
+  /* ---------------------------------------------------------
+     RADIUS — softened, organic. Nothing is razor-sharp; edges
+     breathe a little, the way grown things do. The documentation
+     grid stays square; controls and chips round off.
+     --------------------------------------------------------- */
+  --r:20px;              /* cards / panels — soft, premium */
+  --r-lg:28px;           /* feature surfaces / image frames */
+  --r-input:14px;        /* inputs */
+  --r-btn:14px;          /* buttons — friendly, soft */
+  --r-pill:999px;        /* chips, badges, eyebrows — organic */
+
+  /* ---------------------------------------------------------
+     ELEVATION — barely-there, forest-tinted. Structure comes
+     from hairlines, not from depth.
+     --------------------------------------------------------- */
+  --sh-0:none;
+  --sh-1:0 1px 0 rgba(22,48,30,.04);
+  --sh-2:0 12px 30px -18px rgba(22,48,30,.20);
+  --sh-3:0 28px 70px -30px rgba(22,48,30,.26);
+
+  /* ---------------------------------------------------------
+     SPACING — generous, architectural rhythm
+     --------------------------------------------------------- */
+  --space-section:clamp(72px,9vw,128px);
+  --space-gutter:clamp(24px,5vw,72px);
+  --container:1280px;
+
+  --ease:cubic-bezier(.2,.6,.2,1);
+}
+
+/* ============================================================
+   SEMANTIC DEFAULTS  (opt-in via .ubn wrapper)
+   ============================================================ */
+.ubn{
+  font-family:var(--font-sans);
+  font-size:var(--t-body);
+  line-height:var(--lh-body);
+  color:var(--ink);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.ubn h1,.ubn h2,.ubn h3{
+  font-family:var(--font-sans);
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:var(--tr-tight);
+  line-height:var(--lh-snug);
+  text-wrap:balance;
+}
+/* Satoshi expresses through WEIGHT: Medium ground, Bold emphasis. */
+.ubn h1{font-size:var(--t-hero);font-weight:500;letter-spacing:var(--tr-display);line-height:var(--lh-tight);}
+.ubn h2{font-size:var(--t-h2);}
+.ubn h3{font-size:var(--t-h3);font-weight:700;}
+.ubn h1 strong,.ubn h2 strong{font-weight:700;color:inherit;}
+.ubn h1 em,.ubn h2 em{font-style:normal;color:var(--accent-700);font-weight:700;}
+.ubn p{font-size:var(--t-body);color:var(--ink-2);line-height:var(--lh-body);}
+.ubn a{color:var(--accent);text-decoration:none;}
+
+/* Eyebrow — mono index + uppercase tracked label. */
+.ubn-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-sans);
+  font-size:var(--t-tiny);font-weight:600;
+  letter-spacing:var(--tr-label);text-transform:uppercase;
+  color:var(--ink-3);
+}
+.ubn-eyebrow .num{font-family:var(--font-mono);font-weight:500;color:var(--accent);letter-spacing:0;}

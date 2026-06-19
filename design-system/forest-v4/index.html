@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBalance Naturals — Design System · Forest V4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/design-system/forest-v4/styles.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:var(--lh-body);font-weight:400}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#fff}
+
+  /* ---- shell ---- */
+  .shell{display:grid;grid-template-columns:288px 1fr;align-items:start}
+  .side{position:sticky;top:0;height:100vh;background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:38px 30px;overflow-y:auto}
+  .side-logo{height:30px;width:auto;filter:brightness(0);margin-bottom:26px}
+  .side-tag{font-size:11px;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:40px;display:flex;align-items:center;gap:10px}
+  .side-tag::before{content:"";width:18px;height:1px;background:var(--accent)}
+  .side nav{display:flex;flex-direction:column;gap:1px;flex:1}
+  .side nav a{display:flex;gap:14px;align-items:baseline;font-size:13.5px;font-weight:500;color:var(--ink-3);padding:9px 0;transition:color .15s var(--ease);border-bottom:1px solid transparent}
+  .side nav a .n{font-family:var(--font-mono);font-size:11px;color:var(--ink-4);width:20px;transition:color .15s}
+  .side nav a:hover{color:var(--ink)}
+  .side nav a.active{color:var(--ink)}
+  .side nav a.active .n{color:var(--accent)}
+  .side-foot{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-4);margin-top:34px;line-height:1.9;letter-spacing:.01em}
+
+  .main{min-width:0}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 var(--space-gutter);min-width:0}
+
+  /* ---- hero ---- weight contrast does the talking ---- */
+  .hero{background:var(--graphite);color:#fff;padding:clamp(96px,13vw,168px) 0 clamp(80px,11vw,140px);position:relative;overflow:hidden;border-bottom:1px solid var(--graphite)}
+  .hero .wrap{position:relative;z-index:1}
+  .hero-kicker{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:600;letter-spacing:var(--tr-label);text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:34px}
+  .hero-kicker .num{font-family:var(--font-mono);color:var(--accent);font-weight:500;letter-spacing:0}
+  .hero-kicker::after{content:"";flex:1;max-width:120px;height:1px;background:var(--line-dark)}
+  .hero h1{font-weight:500;font-size:var(--t-display);line-height:1.0;letter-spacing:var(--tr-display);margin-bottom:30px;color:#fff}
+  .hero h1 strong{font-weight:700;color:#fff}
+  .hero h1 .lo{color:rgba(255,255,255,.46);font-weight:400}
+  .hero p{font-size:var(--t-body-lg);color:rgba(255,255,255,.62);max-width:560px;font-weight:400;line-height:1.55}
+  .hero p b{color:#fff;font-weight:600}
+  .hero-meta{display:flex;gap:42px;margin-top:54px;flex-wrap:wrap}
+  .hero-meta .m{display:flex;flex-direction:column;gap:6px}
+  .hero-meta .m .k{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
+  .hero-meta .m .v{font-size:15px;color:rgba(255,255,255,.92);font-weight:600}
+
+  /* ---- section ---- */
+  section.doc{padding:var(--space-section) 0;border-bottom:1px solid var(--line)}
+  section.doc.alt{background:var(--surface)}
+  .sec-head{display:flex;flex-direction:column;gap:20px;margin-bottom:56px;max-width:780px}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3)}
+  .eyebrow .num{font-family:var(--font-mono);font-weight:500;color:var(--accent);letter-spacing:0}
+  /* section titles — Medium ground, Bold + accent emphasis */
+  h2.sec-title{font-weight:500;font-size:var(--t-hero);line-height:1.06;letter-spacing:var(--tr-display);color:var(--ink)}
+  h2.sec-title strong{font-weight:700;color:var(--ink)}
+  h2.sec-title em{font-style:normal;color:var(--accent-700);font-weight:700}
+  .lead{font-size:var(--t-body-lg);color:var(--ink-2);max-width:700px;font-weight:400;line-height:1.55}
+  .lead b{color:var(--ink);font-weight:600}
+  h3.block{font-size:11px;font-weight:600;letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--ink-3);margin:0 0 22px;display:flex;align-items:center;gap:12px}
+  h3.block::after{content:"";flex:1;height:1px;background:var(--line)}
+  .note{font-size:13px;color:var(--ink-3);line-height:1.6}
+
+  /* ---- brand principles ---- */
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .principle{padding:34px 32px 38px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);background:var(--surface)}
+  .principle:nth-child(3n){border-right:0}
+  .principle:nth-last-child(-n+3){border-bottom:0}
+  .principle .picon{width:46px;height:46px;border-radius:13px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+  .principle .pidx{font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-bottom:14px}
+  .principle h4{font-size:21px;font-weight:600;color:var(--ink);letter-spacing:var(--tr-tight);margin-bottom:12px}
+  .principle p{font-size:14px;color:var(--ink-2);line-height:1.6}
+
+  /* ---- logo ---- */
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .logo-cell{border-right:1px solid var(--line)}
+  .logo-cell:last-child{border-right:0}
+  .logo-stage{height:240px;display:flex;align-items:center;justify-content:center;position:relative}
+  .logo-stage img{height:46px}
+  .logo-stage.light{background:var(--surface)}
+  .logo-stage.light img{filter:brightness(0)}
+  .logo-stage.dark{background:var(--graphite)}
+  .logo-stage.dark img{filter:brightness(0) invert(1)}
+  .logo-cell .cap{padding:16px 22px;font-size:12.5px;color:var(--ink-2);font-weight:500;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px}
+  .logo-cell .cap span{font-family:var(--font-mono);color:var(--ink-4);font-weight:400;font-size:11.5px}
+  .clearspace{margin-top:18px;border:1px solid var(--line);border-radius:var(--r-lg);padding:40px;display:flex;align-items:center;gap:40px;background:var(--surface);flex-wrap:wrap}
+  .cs-box{position:relative;padding:34px;border:1px dashed var(--accent-line);outline:1px solid var(--line);border-radius:12px}
+  .cs-box img{height:40px;filter:brightness(0)}
+  .cs-box .x{position:absolute;font-family:var(--font-mono);font-size:11px;color:var(--accent);background:var(--surface);padding:0 5px}
+  .cs-box .x.t{top:-8px;left:50%;transform:translateX(-50%)}
+  .cs-box .x.l{left:-13px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+  .clearspace .csnote{font-size:13px;color:var(--ink-2);max-width:280px;line-height:1.6}
+  .clearspace .csnote b{color:var(--ink);font-weight:600}
+  .dos{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin-top:18px}
+  .do-item{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .do-item:nth-child(2n){border-right:0}
+  .do-item:nth-last-child(-n+2){border-bottom:0}
+  .do-item .tick{width:22px;height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:7px;margin-top:1px}
+  .do-item.yes .tick{color:var(--accent);background:var(--accent-soft)}
+  .do-item.no .tick{color:var(--ink-3);background:var(--line-2)}
+  .do-item p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+  .do-item b{color:var(--ink);font-weight:600}
+
+  /* ---- color ---- */
+  .pal{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-right:0;overflow:hidden}
+  .pal.r-top{border-radius:var(--r-lg) var(--r-lg) 0 0}
+  .pal.r-bot{border-radius:0 0 var(--r-lg) var(--r-lg)}
+  .pal.r-all{border-radius:var(--r-lg)}
+  .sw{border-right:1px solid var(--line)}
+  .sw .chip{height:128px;position:relative}
+  .sw .meta{padding:14px 15px;border-top:1px solid var(--line);background:var(--surface)}
+  .sw .nm{font-weight:600;font-size:13px;letter-spacing:-.01em}
+  .sw .hx{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-top:4px;text-transform:uppercase}
+  .sw .use{font-size:11.5px;color:var(--ink-3);margin-top:9px;line-height:1.4}
+  .pal + .pal{border-top:0}
+  .palwrap{margin-bottom:34px}
+
+  /* ---- typography ---- */
+  .type-spec{border:1px solid var(--line);background:var(--surface);border-radius:var(--r-lg);overflow:hidden}
+  .type-hero-row{padding:44px 40px 40px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .type-hero-row .big{font-size:clamp(54px,8vw,108px);font-weight:400;letter-spacing:var(--tr-display);line-height:.86;color:var(--ink)}
+  .type-hero-row .big b{font-weight:700}
+  .type-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-top:24px;width:100%}
+  .type-meta .fam{font-size:15px;font-weight:600}
+  .type-meta .role{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+  .weights{display:grid;grid-template-columns:repeat(3,1fr)}
+  .wcell{padding:26px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .wcell:nth-child(3n){border-right:0}
+  .wcell:nth-last-child(-n+3){border-bottom:0}
+  .wcell .ws{font-size:30px;color:var(--ink);line-height:1;margin-bottom:12px}
+  .wcell .wl{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+  .wcell.key{background:var(--accent-soft)}
+
+  /* ---- type IN PRACTICE — the social/marketplace weight discipline ---- */
+  .practice{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  .pr-card{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);padding:34px 34px 30px;display:flex;flex-direction:column;min-height:230px}
+  .pr-card.dark{background:var(--graphite);border-color:var(--graphite)}
+  .pr-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px}
+  .pr-card.dark .pr-tag{color:rgba(255,255,255,.45)}
+  .pr-head{font-size:clamp(30px,3.4vw,42px);line-height:1.02;letter-spacing:-.025em;font-weight:400;color:var(--ink)}
+  .pr-head strong{font-weight:700}
+  .pr-head .mut{color:var(--ink-3);font-weight:400}
+  .pr-card.dark .pr-head{color:#fff}
+  .pr-card.dark .pr-head .mut{color:rgba(255,255,255,.45)}
+  .pr-card.dark .pr-head em{font-style:normal;color:var(--accent);font-weight:700}
+  .pr-spec{font-size:15px;line-height:1.7;color:var(--ink-2);font-weight:400;margin-top:auto}
+  .pr-spec b{font-weight:700;color:var(--ink)}
+  .pr-spec .fig{font-weight:700;color:var(--ink)}
+  .pr-foot{margin-top:18px;font-size:12.5px;color:var(--ink-3);line-height:1.6;border-top:1px solid var(--line);padding-top:16px}
+  .pr-card.dark .pr-foot{border-color:var(--line-dark);color:rgba(255,255,255,.5)}
+
+  .mono-row{border:1px solid var(--line);border-radius:var(--r);margin-top:18px;padding:26px 28px;background:var(--surface);font-family:var(--font-mono);font-size:15px;color:var(--ink-2);display:flex;gap:8px;flex-wrap:wrap}
+  .mono-row span{color:var(--accent)}
+  .scale-tbl{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--surface);margin-top:18px}
+  .scale-line{display:grid;grid-template-columns:190px 1fr;gap:24px;align-items:baseline;border-bottom:1px solid var(--line);padding:20px 28px}
+  .scale-line:last-child{border-bottom:0}
+  .scale-tok{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-3)}
+  .scale-samp{color:var(--ink);letter-spacing:var(--tr-tight);line-height:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:var(--r-btn);font-weight:600;font-size:14px;border:1px solid transparent;letter-spacing:.005em;font-family:var(--font-sans);cursor:pointer;transition:all .16s var(--ease)}
+  .btn svg{width:17px;height:17px}
+  .btn-primary{background:var(--graphite);color:#fff}
+  .btn-primary:hover{background:var(--graphite-700)}
+  .btn-accent{background:var(--accent);color:#fff}
+  .btn-accent:hover{background:var(--accent-700)}
+  .btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:#fff}
+  .btn-ghost{background:transparent;color:var(--ink-2);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+  .btn-lg{padding:18px 34px;font-size:15px}
+  .btn-sm{padding:11px 20px;font-size:13px}
+  .btn-grid{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .btn-demo{padding:30px 30px 34px;display:flex;flex-direction:column;gap:20px;align-items:flex-start;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .btn-demo:nth-child(2n){border-right:0}
+  .btn-demo:nth-last-child(-n+2){border-bottom:0}
+  .demo-label{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  .btn-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .spec-list{display:grid;grid-template-columns:1fr 1fr;gap:0 0;margin-top:18px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .spec-list .row{display:flex;justify-content:space-between;gap:16px;font-size:13px;padding:14px 22px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+  .spec-list .row:nth-child(2n){border-right:0}
+  .spec-list .row:nth-last-child(-n+2){border-bottom:0}
+  .spec-list .row span:first-child{color:var(--ink-3)}
+  .spec-list .row span:last-child{font-family:var(--font-mono);color:var(--ink);font-size:12px}
+
+  /* ---- components ---- */
+  .comp-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .comp-card{padding:28px 30px;display:flex;flex-direction:column;gap:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .comp-card:nth-child(2n){border-right:0}
+  .comp-card:nth-last-child(-n+2){border-bottom:0}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:6px 13px;border-radius:var(--r-pill)}
+  .badge svg{width:13px;height:13px}
+  .badge.solid{background:var(--graphite);color:#fff}
+  .badge.accent{background:var(--accent-soft);color:var(--accent-700);border:1px solid var(--accent-line)}
+  .badge.line{border:1px solid var(--line);color:var(--ink-2);background:var(--surface)}
+  .badge.dot{border:1px solid var(--line);color:var(--ink-2);background:var(--surface)}
+  .badge.dot::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--positive)}
+  .chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;padding:8px 15px;background:var(--surface);color:var(--ink-2);border:1px solid var(--line);font-weight:500;border-radius:var(--r-pill);transition:all .15s var(--ease)}
+  .chip svg{width:14px;height:14px;color:var(--accent)}
+  .chip:hover{border-color:var(--accent-line);background:var(--accent-soft);color:var(--ink)}
+  .flexrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .radii{display:flex;gap:14px;align-items:flex-end}
+  .radii .rc{position:relative}
+  .radii .rc div{background:var(--accent-soft);border:1px solid var(--accent);width:60px;height:48px}
+  .radii .rc .rl{font-family:var(--font-mono);font-size:10px;color:var(--ink-3);margin-top:7px;text-align:center}
+  .field{display:flex;flex-direction:column;gap:8px;width:100%}
+  .field label{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+  .field input{font-family:var(--font-sans);font-size:14px;padding:13px 15px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:var(--r-input);outline:none;transition:border-color .15s}
+  .field input::placeholder{color:var(--ink-4)}
+  .field input:focus{border-color:var(--accent)}
+  .divline{display:flex;flex-direction:column;gap:14px;width:100%}
+  .divline .dl{height:1px;background:var(--line)}
+  .divline .dl.accent{height:2px;background:var(--accent);width:40px;border-radius:2px}
+  .divline .dl.dash{height:0;border-top:1px dashed var(--line)}
+
+  /* ---- ICONOGRAPHY — duotone, alive ---- */
+  .di{width:26px;height:26px;display:block}
+  .di .fill{fill:currentColor;opacity:.16}
+  .di .stroke{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .icon-board{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .icon-b{aspect-ratio:1/1;background:var(--surface);color:var(--accent);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
+  .icon-b:nth-child(7n){border-right:0}
+  .icon-b:nth-last-child(-n+7){border-bottom:0}
+  .icon-b .ilab{position:absolute;bottom:9px;left:0;right:0;text-align:center;font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;color:var(--ink-4);text-transform:lowercase}
+  .icon-b.ink{color:var(--ink)}
+  .icon-b.dark{background:var(--graphite);color:#fff}
+  .icon-b.dark .ilab{color:rgba(255,255,255,.45)}
+  .icon-b.solid{background:var(--accent);color:#fff}
+  .icon-b.solid .ilab{color:rgba(255,255,255,.6)}
+  .icon-b.solid .di .fill{opacity:.28;fill:#fff}
+
+  /* icons in context — the marketplace pill pattern */
+  .icon-pills{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .ipill{display:inline-flex;align-items:center;gap:11px;padding:11px 18px 11px 12px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--surface);font-size:14px;font-weight:500;color:var(--ink)}
+  .ipill .ic{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent-700);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .ipill .ic .di{width:19px;height:19px}
+  .ipill.dark{background:var(--graphite);border-color:var(--graphite);color:#fff}
+  .ipill.dark .ic{background:rgba(255,255,255,.1);color:#fff}
+
+  .icon-meta{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .icon-meta .im{padding:18px 20px;border-right:1px solid var(--line);background:var(--surface)}
+  .icon-meta .im:last-child{border-right:0}
+  .icon-meta .im .k{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+  .icon-meta .im .v{font-size:14px;color:var(--ink);font-weight:600}
+
+  /* ---- photography ---- */
+  .photo-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:12px}
+  .photo-grid .frame{overflow:hidden;aspect-ratio:1/1;background:var(--paper);border-radius:var(--r-lg);filter:saturate(1.05) contrast(1.01)}
+  .photo-grid .frame img{width:100%;height:100%;object-fit:cover}
+  .photo-rules{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin-top:12px}
+  .photo-rules .pr{padding:24px 26px;border-right:1px solid var(--line);background:var(--surface)}
+  .photo-rules .pr:last-child{border-right:0}
+  .photo-rules .pr .k{font-family:var(--font-mono);font-size:10.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+  .photo-rules .pr p{font-size:13px;color:var(--ink-2);line-height:1.55}
+
+  /* ---- voice ---- */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+  .voice-card{padding:34px 36px;border-right:1px solid var(--line);background:var(--surface)}
+  .voice-card:last-child{border-right:0}
+  .voice-card .vlabel{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+  .voice-card.write .vlabel{color:var(--accent-700)}
+  .voice-card.avoid .vlabel{color:var(--ink-3)}
+  .voice-card .vlabel::before{content:"";width:8px;height:8px;border-radius:50%}
+  .voice-card.write .vlabel::before{background:var(--accent)}
+  .voice-card.avoid .vlabel::before{background:var(--ink-3)}
+  .voice-card .ex{font-size:25px;font-weight:400;line-height:1.3;letter-spacing:var(--tr-tight);margin-bottom:18px}
+  .voice-card .ex b{font-weight:700}
+  .voice-card.write .ex{color:var(--ink)}
+  .voice-card.avoid .ex{color:var(--ink-4)}
+  .voice-card p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+
+  .end{padding:70px 0 96px;color:var(--ink-3)}
+  .end .mono{font-family:var(--font-mono);font-size:12px;line-height:2;letter-spacing:.01em}
+  .end .mono b{color:var(--ink);font-weight:500}
+
+  @media (max-width:920px){
+    .shell{grid-template-columns:1fr}
+    .side{position:static;height:auto;flex-direction:row;align-items:center;gap:18px;padding:16px 22px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line)}
+    .side-tag,.side-foot{display:none}
+    .side nav{flex-direction:row;gap:14px}
+    .side nav a{border-bottom:0;white-space:nowrap;padding:4px 0}
+    .side-logo{margin:0}
+    .principles,.weights,.icon-meta,.photo-rules,.practice{grid-template-columns:1fr 1fr}
+    .icon-board{grid-template-columns:repeat(4,1fr)}
+    .icon-b:nth-child(7n){border-right:1px solid var(--line)}
+    .icon-b:nth-child(4n){border-right:0}
+    .pal{grid-template-columns:1fr 1fr;border-right:1px solid var(--line)}
+    .sw:nth-child(2n) .chip,.sw:nth-child(2n) .meta{border-right:0}
+    .logo-grid,.dos,.btn-grid,.comp-grid,.voice-grid,.photo-grid,.spec-list,.principles{grid-template-columns:1fr}
+    .scale-line{grid-template-columns:120px 1fr;gap:14px}
+  }
+</style>
+</head>
+<body class="ubn">
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect width="100" height="100" fill="#16301E"/>
+<path d="M30 70C30 46 46 30 70 30C70 54 54 70 30 70Z" fill="#5CB23A"/>
+<path d="M30 70L58 42" stroke="#16301E" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
+</template>
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <img class="side-logo" src="/assets/logo.svg" alt="UBalance Naturals">
+    <div class="side-tag">Design System · V4</div>
+    <nav id="toc">
+      <a href="#brand"><span class="n">01</span> Brand</a>
+      <a href="#logo"><span class="n">02</span> Logo</a>
+      <a href="#color"><span class="n">03</span> Color</a>
+      <a href="#type"><span class="n">04</span> Typography</a>
+      <a href="#buttons"><span class="n">05</span> Buttons &amp; CTA</a>
+      <a href="#components"><span class="n">06</span> Components</a>
+      <a href="#icons"><span class="n">07</span> Iconography</a>
+      <a href="#photo"><span class="n">08</span> Photography</a>
+      <a href="#voice"><span class="n">09</span> Voice &amp; Tone</a>
+    </nav>
+    <div class="side-foot">UBALANCE NATURALS<br>SYSTEM 4.2 · FOREST V4 · 2026<br>satoshi · vital leaf · soft-rounded</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <div class="hero-kicker"><span class="num">v4.2</span> Visual System · Direction 1</div>
+        <h1><span class="lo">Rooted,</span> <strong>not rushed.</strong><br><span class="lo">Grown,</span> <strong>not made.</strong></h1>
+        <p>Forest, taken toward Direction 1. The grounded forest spine stays — now set in <b>Satoshi</b> for a contemporary, premium read, lit by <b>one vital light-green</b> that signals life, on generously soft-rounded surfaces.</p>
+        <div class="hero-meta">
+          <div class="m"><span class="k">Type</span><span class="v">Satoshi · 300–700</span></div>
+          <div class="m"><span class="k">Accent</span><span class="v">Vital leaf · single</span></div>
+          <div class="m"><span class="k">Form</span><span class="v">Soft · premium</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 01 BRAND -->
+    <section class="doc" id="brand">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">01</span> The Brand</span>
+          <h2 class="sec-title">We don't stimulate the body. We <em>strengthen</em> it.</h2>
+          <p class="lead">UBalance Naturals makes high-potency liquid Ayurvedic formulations from real botanicals. The forest system speaks in living color — deep green, leaf and bark — grounded, honest and unmistakably natural.</p>
+        </div>
+        <div class="principles">
+          <div class="principle">
+            <div class="picon"><svg class="di" viewBox="0 0 24 24"><path class="fill" d="M5 19C5 11 11 5 19 5C19 13 13 19 5 19Z"/><path class="stroke" d="M5 19C5 11 11 5 19 5C19 13 13 19 5 19Z"/><path class="stroke" d="M5 19L14.5 9.5"/></svg></div>
+            <div class="pidx">P.01</div>
+            <h4>Rooted</h4>
+            <p>Grown from real botanicals, not lab shortcuts. The system stays close to the earth — natural paper, deep green, deliberate and unhurried.</p>
+          </div>
+          <div class="principle">
+            <div class="picon"><svg class="di" viewBox="0 0 24 24"><path class="fill" d="M12 12C12 8 14 5 18 5C18 9 16 12 12 12Z"/><path class="fill" d="M12 13C9 13 6 11 6 7C10 7 12 9.5 12 13Z"/><path class="stroke" d="M12 21V10"/><path class="stroke" d="M12 12C12 8 14 5 18 5C18 9 16 12 12 12Z"/><path class="stroke" d="M12 13C9 13 6 11 6 7C10 7 12 9.5 12 13Z"/></svg></div>
+            <div class="pidx">P.02</div>
+            <h4>Living</h4>
+            <p>Fresh, breathing, green. Generous light and open space. Nature does the work; the layout stays out of its way.</p>
+          </div>
+          <div class="principle">
+            <div class="picon"><svg class="di" viewBox="0 0 24 24"><path class="fill" d="M12 3L19 6V11C19 16 16 19 12 21C8 19 5 16 5 11V6L12 3Z"/><path class="stroke" d="M12 3L19 6V11C19 16 16 19 12 21C8 19 5 16 5 11V6L12 3Z"/><path class="stroke" d="M9 12L11 14L15.5 9.5"/></svg></div>
+            <div class="pidx">P.03</div>
+            <h4>Honest</h4>
+            <p>Specific figures, real sources, nothing embellished. Transparency is the most natural thing we can offer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 LOGO -->
+    <section class="doc alt" id="logo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">02</span> Logo</span>
+          <h2 class="sec-title">The mark stays. The <em>habitat</em> changes.</h2>
+          <p class="lead">We keep the existing medallion wordmark — here it lives in forest ink. No gold, no recolor. Deep green on natural paper, reversed on forest, surrounded by generous clear space.</p>
+        </div>
+        <div class="logo-grid">
+          <div class="logo-cell">
+            <div class="logo-stage light"><img src="/assets/logo.svg" alt="Primary logo"></div>
+            <div class="cap">Primary — forest ink on paper <span>filter: brightness(0)</span></div>
+          </div>
+          <div class="logo-cell">
+            <div class="logo-stage dark"><img src="/assets/logo.svg" alt="Reversed logo"></div>
+            <div class="cap">Reversed — on forest green <span>brightness(0) invert(1)</span></div>
+          </div>
+        </div>
+        <div class="clearspace">
+          <div class="cs-box">
+            <span class="x t">x</span><span class="x l">x</span>
+            <img src="/assets/logo.svg" alt="Logo clear space">
+          </div>
+          <p class="csnote"><b>Clear space &amp; minimum size.</b> Maintain padding equal to the medallion height (x) on every side. Never set the wordmark below 26px tall. The mark always scales as one locked unit.</p>
+        </div>
+        <div class="dos">
+          <div class="do-item yes"><span class="tick"><svg class="di" style="width:14px;height:14px"><path class="stroke" d="M3 7.5L6 10.5L11 4.5"/></svg></span><p><b>One ink only.</b> Use forest green, paper white or full reverse. The mark carries no accent color in this system.</p></div>
+          <div class="do-item yes"><span class="tick"><svg class="di" style="width:14px;height:14px"><path class="stroke" d="M3 7.5L6 10.5L11 4.5"/></svg></span><p><b>Lock proportions.</b> Scale uniformly; medallion and wordmark always move together.</p></div>
+          <div class="do-item no"><span class="tick"><svg class="di" style="width:14px;height:14px"><path class="stroke" d="M4 4L10 10M10 4L4 10"/></svg></span><p><b>Don't recolor,</b> add shadow, gradient, rotate, or reintroduce the old gold treatment.</p></div>
+          <div class="do-item no"><span class="tick"><svg class="di" style="width:14px;height:14px"><path class="stroke" d="M4 4L10 10M10 4L4 10"/></svg></span><p><b>Don't place</b> on a busy photo without a solid forest or paper field behind it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 COLOR -->
+    <section class="doc" id="color">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">03</span> Color</span>
+          <h2 class="sec-title">Three core colours. <em>One</em> system.</h2>
+          <p class="lead">Direction 1 settles the palette into three roles: <b>Forest</b> grounds the depths, <b>Botanica</b> supplies warm light-green surfaces and paper, and a single <b>vital leaf</b> is the only bright colour — reserved for interaction, the active state and the one word that must signal life. Used anywhere else, it loses its meaning.</p>
+        </div>
+
+        <div class="palwrap">
+          <h3 class="block">Forest &amp; ink — grounded depths</h3>
+          <div class="pal r-all">
+            <div class="sw"><div class="chip" style="background:#16301E"></div><div class="meta"><div class="nm">forest</div><div class="hx">#16301E</div><div class="use">Dark sections · primary button</div></div></div>
+            <div class="sw"><div class="chip" style="background:#16261A"></div><div class="meta"><div class="nm">ink</div><div class="hx">#16261A</div><div class="use">Primary text</div></div></div>
+            <div class="sw"><div class="chip" style="background:#3B4A3A"></div><div class="meta"><div class="nm">ink-2</div><div class="hx">#3B4A3A</div><div class="use">Secondary text</div></div></div>
+            <div class="sw"><div class="chip" style="background:#677062"></div><div class="meta"><div class="nm">ink-3</div><div class="hx">#677062</div><div class="use">Captions · muted</div></div></div>
+            <div class="sw"><div class="chip" style="background:#97A18C"></div><div class="meta"><div class="nm">ink-4</div><div class="hx">#97A18C</div><div class="use">Placeholders</div></div></div>
+          </div>
+        </div>
+
+        <div class="palwrap">
+          <h3 class="block">Botanica — surfaces &amp; light greens</h3>
+          <div class="pal r-all">
+            <div class="sw"><div class="chip" style="background:#ECEFE2"></div><div class="meta"><div class="nm">paper</div><div class="hx">#ECEFE2</div><div class="use">Page background</div></div></div>
+            <div class="sw"><div class="chip" style="background:#FAFCF4;box-shadow:inset 0 0 0 1px var(--line)"></div><div class="meta"><div class="nm">surface</div><div class="hx">#FAFCF4</div><div class="use">Cards · panels</div></div></div>
+            <div class="sw"><div class="chip" style="background:#DCE7C9"></div><div class="meta"><div class="nm">botanica</div><div class="hx">#DCE7C9</div><div class="use">Light-green surface tint</div></div></div>
+            <div class="sw"><div class="chip" style="background:#E9EFDC"></div><div class="meta"><div class="nm">botanica-soft</div><div class="hx">#E9EFDC</div><div class="use">Faint botanica wash</div></div></div>
+            <div class="sw"><div class="chip" style="background:#D7DCC8"></div><div class="meta"><div class="nm">line</div><div class="hx">#D7DCC8</div><div class="use">Hairline borders</div></div></div>
+          </div>
+        </div>
+
+        <div class="palwrap" style="margin-bottom:0">
+          <h3 class="block">Vital accent — the one bright colour</h3>
+          <div class="pal r-all">
+            <div class="sw"><div class="chip" style="background:#5CB23A"></div><div class="meta"><div class="nm" style="color:var(--accent-700)">vital leaf</div><div class="hx">#5CB23A</div><div class="use">Links · active · emphasis</div></div></div>
+            <div class="sw"><div class="chip" style="background:#42852A"></div><div class="meta"><div class="nm" style="color:#42852A">leaf-700</div><div class="hx">#42852A</div><div class="use">Hover · pressed · text</div></div></div>
+            <div class="sw"><div class="chip" style="background:#E7F1D8"></div><div class="meta"><div class="nm">leaf-soft</div><div class="hx">#E7F1D8</div><div class="use">Duotone fill · tint</div></div></div>
+            <div class="sw"><div class="chip" style="background:#CBE2B2"></div><div class="meta"><div class="nm">leaf-line</div><div class="hx">#CBE2B2</div><div class="use">Accent hairline</div></div></div>
+            <div class="sw"><div class="chip" style="background:#2E7D52"></div><div class="meta"><div class="nm" style="color:#2E7D52">positive</div><div class="hx">#2E7D52</div><div class="use">In-stock · verified only</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 TYPOGRAPHY -->
+    <section class="doc alt" id="type">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">04</span> Typography</span>
+          <h2 class="sec-title">Satoshi. <em>Weight</em> is the voice.</h2>
+          <p class="lead">Direction 1 adopts <b>Satoshi</b> — a contemporary, credible grotesque that reads premium without decoration. Personality comes from <b>contrast in weight and scale</b>: Regular and Medium carry the reading; Bold lands the emphasis. Tight tracking at display sizes, never a second voice.</p>
+        </div>
+
+        <div class="type-spec">
+          <div class="type-hero-row">
+            <div class="big">A<b>a</b></div>
+            <div class="type-meta">
+              <div class="fam">Satoshi</div>
+              <div class="role">Light · Regular · Medium · Bold — 300–700</div>
+            </div>
+          </div>
+          <div class="weights">
+            <div class="wcell"><div class="ws" style="font-weight:300">Light</div><div class="wl">300 · quiet captions</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:400">Regular</div><div class="wl">400 · body · long specs</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:500">Medium</div><div class="wl">500 · UI · sub-heads</div></div>
+            <div class="wcell key"><div class="ws" style="font-weight:700">Bold</div><div class="wl">700 · highlights · buttons</div></div>
+            <div class="wcell key"><div class="ws" style="font-weight:700">3,825</div><div class="wl">700 · figures land hard</div></div>
+            <div class="wcell"><div class="ws" style="font-weight:500">10ml</div><div class="wl">500 · unit · quiet</div></div>
+          </div>
+        </div>
+
+        <h3 class="block" style="margin-top:44px">Weight in practice — banners &amp; specs</h3>
+        <div class="practice">
+          <div class="pr-card dark">
+            <div class="pr-tag">Banner — Medium ground, Bold lift</div>
+            <div class="pr-head"><span class="mut">From</span> <strong>Drained</strong> <span class="mut">to</span> <em>Driven</em></div>
+            <div class="pr-foot">The constant face stays interesting because the eye reads the jump in weight, not a change in font. Mute the connective words; bold the payload.</div>
+          </div>
+          <div class="pr-card">
+            <div class="pr-tag">Banner — headline pairing</div>
+            <div class="pr-head"><span class="mut">Your natural</span><br><strong>Pre-Workout</strong></div>
+            <div class="pr-foot">Headline label in Regular, the product idea in Bold. One step of contrast is enough — never more than two weights in a single line.</div>
+          </div>
+          <div class="pr-card">
+            <div class="pr-tag">Long spec — Regular + highlights</div>
+            <div class="pr-spec">Each <b>10ml</b> serving delivers <span class="fig">3,825&nbsp;mg</span> of concentrated Ayurvedic actives — Ashwagandha, Shilajit, Safed Musli and Gokhru — for <b>stamina, strength</b> and steady recovery. Backed by <span class="fig">247</span> verified reviews.</div>
+            <div class="pr-foot">Set running specs in Regular; lift only the figures and the two or three words that carry the claim into Bold.</div>
+          </div>
+          <div class="pr-card">
+            <div class="pr-tag">UI label — Medium does the work</div>
+            <div class="pr-spec" style="margin:0"><span style="font-weight:500;font-size:18px;color:var(--ink)">Subscribe &amp; Save 15%</span><br><span style="color:var(--ink-3)">Delivered every <b>30 days</b>. Pause or cancel anytime.</span></div>
+            <div class="pr-foot">Interface text holds at Medium — readable, calm, never shouting. Reserve Bold for the number and the offer.</div>
+          </div>
+        </div>
+
+        <div class="mono-row">IBM Plex Mono — <span>01</span>&nbsp; #5CB23A &nbsp; <span>--accent</span> &nbsp; 3,825 mg / 10ml &nbsp; <span>v4.2</span></div>
+
+        <h3 class="block" style="margin-top:44px">Type scale</h3>
+        <div class="scale-tbl">
+          <div class="scale-line"><span class="scale-tok">--t-display · 104</span><span class="scale-samp" style="font-size:50px;font-weight:400">Display <b style="font-weight:700">Bold</b></span></div>
+          <div class="scale-line"><span class="scale-tok">--t-hero · 58</span><span class="scale-samp" style="font-size:38px;font-weight:500">Section <b style="font-weight:700">title</b></span></div>
+          <div class="scale-line"><span class="scale-tok">--t-h2 · 34</span><span class="scale-samp" style="font-size:30px;font-weight:500">Sub-header</span></div>
+          <div class="scale-line"><span class="scale-tok">--t-h3 · 21</span><span class="scale-samp" style="font-size:21px;font-weight:700">Card title</span></div>
+          <div class="scale-line"><span class="scale-tok">--t-body · 16</span><span class="scale-samp" style="font-size:16px;font-weight:400;color:var(--ink-2)">Body copy — Regular, with <b style="color:var(--ink);font-weight:700">Bold highlights</b></span></div>
+          <div class="scale-line"><span class="scale-tok">--t-tiny · 11</span><span class="scale-samp" style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)">Eyebrow label</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 BUTTONS -->
+    <section class="doc" id="buttons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">05</span> Buttons &amp; CTA</span>
+          <h2 class="sec-title">Soft edges. <em>Solid</em> ground.</h2>
+          <p class="lead">Every control is a soft-rounded rectangle — a generous 14px radius now, one-pixel border. Forest green is the default action; the vital leaf is reserved for the single highest-intent moment on a page. A duotone icon can ride along to warm the call.</p>
+        </div>
+
+        <div class="btn-grid">
+          <div class="btn-demo">
+            <span class="demo-label">Primary — default action</span>
+            <div class="btn-row"><button class="btn btn-primary"><svg class="di" style="color:#fff"><path class="stroke" d="M6 6h12l-1.3 7.5h-9.4L6 6zM6 6L5.3 3.5H3M8.5 18.5h.01M16 18.5h.01"/></svg>Add to Cart</button><button class="btn btn-primary btn-lg">Buy Now</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Accent — single highest intent</span>
+            <div class="btn-row"><button class="btn btn-accent"><svg class="di" style="color:#fff"><path class="stroke" d="M5 12l5 5L19 7"/></svg>Subscribe &amp; Save</button><button class="btn btn-accent btn-sm">Claim offer</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Outline — secondary</span>
+            <div class="btn-row"><button class="btn btn-outline">Add to Cart</button><button class="btn btn-outline btn-lg">Learn more</button></div>
+          </div>
+          <div class="btn-demo">
+            <span class="demo-label">Ghost — tertiary / quiet</span>
+            <div class="btn-row"><button class="btn btn-ghost">View details</button><button class="btn btn-ghost btn-sm">Cancel</button></div>
+          </div>
+        </div>
+
+        <div class="spec-list">
+          <div class="row"><span>Radius</span><span>14px · soft</span></div>
+          <div class="row"><span>Font</span><span>Satoshi 700 · 14px</span></div>
+          <div class="row"><span>Padding (default)</span><span>15px 28px</span></div>
+          <div class="row"><span>Padding (large)</span><span>18px 34px</span></div>
+          <div class="row"><span>Icon</span><span>duotone · 17px</span></div>
+          <div class="row"><span>Hover (outline)</span><span>invert → ink fill</span></div>
+          <div class="row"><span>Border</span><span>1px</span></div>
+          <div class="row"><span>Transition</span><span>.16s ease</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 COMPONENTS -->
+    <section class="doc alt" id="components">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">06</span> Components</span>
+          <h2 class="sec-title">Hairline surfaces. <em>Rounder</em> at rest.</h2>
+          <p class="lead">Cards sit at zero elevation, divided by single-pixel rules rather than shadow — but corners now round to a soft 20px for a premium read. Chips and badges carry duotone icons; structure comes from rhythm, not depth.</p>
+        </div>
+        <div class="comp-grid">
+          <div class="comp-card">
+            <span class="demo-label">Badges</span>
+            <div class="flexrow"><span class="badge solid">Bestseller</span><span class="badge accent"><svg class="di" style="width:13px;height:13px"><path class="stroke" d="M6.5 2l1.4 3 3.3.4-2.4 2.3.6 3.3-2.9-1.6-2.9 1.6.6-3.3L2 5.4l3.3-.4z"/></svg>High Bioavailability</span></div>
+            <div class="flexrow"><span class="badge dot">In stock</span><span class="badge line">3,825 mg / 10ml</span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Ingredient chips — with duotone marks</span>
+            <div class="flexrow"><span class="chip"><svg class="di"><path class="fill" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/><path class="stroke" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/></svg>Ginseng</span><span class="chip"><svg class="di"><path class="fill" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/><path class="stroke" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/></svg>Ashwagandha</span><span class="chip"><svg class="di"><path class="fill" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/><path class="stroke" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/></svg>Shilajit</span><span class="chip"><svg class="di"><path class="fill" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/><path class="stroke" d="M3 11C3 7 7 3 11 3C11 7 7 11 3 11Z"/></svg>Safed Musli</span></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Input field</span>
+            <div class="field"><label>Email</label><input type="text" placeholder="you@email.com"></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Dividers — rule · accent · dashed</span>
+            <div class="divline"><div class="dl"></div><div class="dl accent"></div><div class="dl dash"></div></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Corner radius — softer &amp; organic</span>
+            <div class="radii"><div class="rc"><div style="border-radius:var(--r)"></div><div class="rl">20px · card</div></div><div class="rc"><div style="width:84px;border-radius:var(--r-btn)"></div><div class="rl">14px · button</div></div><div class="rc"><div style="width:64px;border-radius:var(--r-pill)"></div><div class="rl">pill</div></div></div>
+          </div>
+          <div class="comp-card">
+            <span class="demo-label">Elevation — flat, lift only on overlay</span>
+            <div class="flexrow" style="gap:18px;padding-top:4px"><div style="width:78px;height:50px;background:var(--surface);border:1px solid var(--line);border-radius:10px"></div><div style="width:78px;height:50px;background:var(--surface);box-shadow:var(--sh-2);border-radius:10px"></div><div style="width:78px;height:50px;background:var(--surface);box-shadow:var(--sh-3);border-radius:10px"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 ICONS -->
+    <section class="doc" id="icons">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">07</span> Iconography</span>
+          <h2 class="sec-title">Duotone. <em>Warmer</em>, not flat.</h2>
+          <p class="lead">A clean line set on its own can read flat next to a constant grotesque. So the set gains a <b>duotone treatment</b> — a soft vital-leaf tint behind a 1.6px stroke, on a 24px grid. The fill carries warmth and mood; the stroke keeps it crisp and scalable. A broader vocabulary covers botanical, vitality and ritual.</p>
+        </div>
+        <div class="icon-board">
+          <span class="icon-b"><svg class="di"><path class="fill" d="M5 19C5 11 11 5 19 5C19 13 13 19 5 19Z"/><path class="stroke" d="M5 19C5 11 11 5 19 5C19 13 13 19 5 19Z"/><path class="stroke" d="M5 19L14.5 9.5"/></svg><span class="ilab">leaf</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M12 12C12 8 14 5 18 5C18 9 16 12 12 12Z"/><path class="fill" d="M12 13C9 13 6 11 6 7C10 7 12 9.5 12 13Z"/><path class="stroke" d="M12 21V10"/><path class="stroke" d="M12 12C12 8 14 5 18 5C18 9 16 12 12 12Z"/><path class="stroke" d="M12 13C9 13 6 11 6 7C10 7 12 9.5 12 13Z"/></svg><span class="ilab">sprout</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M12 3C12 3 19 11 19 15A7 7 0 0 1 5 15C5 11 12 3 12 3Z"/><path class="stroke" d="M12 3C12 3 19 11 19 15A7 7 0 0 1 5 15C5 11 12 3 12 3Z"/><path class="stroke" d="M9 15a3 3 0 0 0 3 3"/></svg><span class="ilab">droplet</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M10 9L5 19A1 1 0 0 0 6 21H18A1 1 0 0 0 19 19L14 9Z"/><path class="stroke" d="M10 3V9L5 19A1 1 0 0 0 6 21H18A1 1 0 0 0 19 19L14 9V3"/><path class="stroke" d="M9 3H15"/><path class="stroke" d="M7.5 14.5H16.5"/></svg><span class="ilab">flask</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M12 3L19 6V11C19 16 16 19 12 21C8 19 5 16 5 11V6L12 3Z"/><path class="stroke" d="M12 3L19 6V11C19 16 16 19 12 21C8 19 5 16 5 11V6L12 3Z"/><path class="stroke" d="M9 12L11 14L15.5 9.5"/></svg><span class="ilab">verified</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M12 20C12 20 4 14.5 4 9A4 4 0 0 1 12 7A4 4 0 0 1 20 9C20 14.5 12 20 12 20Z"/><path class="stroke" d="M12 20C12 20 4 14.5 4 9A4 4 0 0 1 12 7A4 4 0 0 1 20 9C20 14.5 12 20 12 20Z"/><path class="stroke" d="M5 12H9L10.5 9L13 15L14.5 12H19"/></svg><span class="ilab">vitality</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M12 22C8 22 5 19 5 15C5 11 9 10 9 6C12 8 12 11 12 11C12 11 13 8 15 7C15 10 19 11 19 15C19 19 16 22 12 22Z"/><path class="stroke" d="M12 22C8 22 5 19 5 15C5 11 9 10 9 6C12 8 12 11 12 11C12 11 13 8 15 7C15 10 19 11 19 15C19 19 16 22 12 22Z"/></svg><span class="ilab">flame</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M13 3L5 13H11L10 21L19 10H13Z"/><path class="stroke" d="M13 3L5 13H11L10 21L19 10H13Z"/></svg><span class="ilab">energy</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M3 19L9 8L13 14L16 9L21 19Z"/><path class="stroke" d="M3 19L9 8L13 14L16 9L21 19Z"/></svg><span class="ilab">endurance</span></span>
+          <span class="icon-b"><svg class="di"><circle class="fill" cx="12" cy="12" r="4.5"/><circle class="stroke" cx="12" cy="12" r="4.5"/><path class="stroke" d="M12 2.5V4.5M12 19.5V21.5M2.5 12H4.5M19.5 12H21.5M5.5 5.5L7 7M17 17L18.5 18.5M18.5 5.5L17 7M7 17L5.5 18.5"/></svg><span class="ilab">daily</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M20 14A8 8 0 1 1 10 4A6 6 0 0 0 20 14Z"/><path class="stroke" d="M20 14A8 8 0 1 1 10 4A6 6 0 0 0 20 14Z"/></svg><span class="ilab">recovery</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M12 3C12 8 8 12 3 12C8 12 12 16 12 21C12 16 16 12 21 12C16 12 12 8 12 3Z"/><path class="stroke" d="M12 3C12 8 8 12 3 12C8 12 12 16 12 21C12 16 16 12 21 12C16 12 12 8 12 3Z"/></svg><span class="ilab">premium</span></span>
+          <span class="icon-b"><svg class="di"><path class="fill" d="M4 13A8 8 0 0 0 20 13Z"/><path class="stroke" d="M4 13H20A8 8 0 0 1 4 13Z"/><path class="stroke" d="M13.5 5L18 9.5"/><path class="stroke" d="M12 13V21M9 21H15"/></svg><span class="ilab">ayurveda</span></span>
+          <span class="icon-b solid"><svg class="di"><path class="fill" d="M4 10H6V14H4ZM18 10H20V14H18Z"/><path class="stroke" d="M5 9V15M8 7V17M16 7V17M19 9V15M8 12H16"/></svg><span class="ilab">strength</span></span>
+        </div>
+
+        <h3 class="block" style="margin-top:34px">Icons in context — the pill pattern</h3>
+        <div class="icon-pills">
+          <span class="ipill"><span class="ic"><svg class="di"><path class="fill" d="M4 10H6V14H4ZM18 10H20V14H18Z"/><path class="stroke" d="M5 9V15M8 7V17M16 7V17M19 9V15M8 12H16"/></svg></span>Pre-Workout Boost</span>
+          <span class="ipill"><span class="ic"><svg class="di"><path class="fill" d="M13 3L5 13H11L10 21L19 10H13Z"/><path class="stroke" d="M13 3L5 13H11L10 21L19 10H13Z"/></svg></span>Stamina &amp; Output</span>
+          <span class="ipill"><span class="ic"><svg class="di"><path class="fill" d="M12 20C12 20 4 14.5 4 9A4 4 0 0 1 12 7A4 4 0 0 1 20 9C20 14.5 12 20 12 20Z"/><path class="stroke" d="M12 20C12 20 4 14.5 4 9A4 4 0 0 1 12 7A4 4 0 0 1 20 9C20 14.5 12 20 12 20Z"/></svg></span>Post-Workout Recovery</span>
+          <span class="ipill dark"><span class="ic"><svg class="di"><path class="fill" d="M12 3L19 6V11C19 16 16 19 12 21C8 19 5 16 5 11V6L12 3Z"/><path class="stroke" d="M12 3L19 6V11C19 16 16 19 12 21C8 19 5 16 5 11V6L12 3Z"/><path class="stroke" d="M9 12L11 14L15.5 9.5"/></svg></span>Lab-Verified Potency</span>
+        </div>
+
+        <div class="icon-meta">
+          <div class="im"><div class="k">Style</div><div class="v">Duotone</div></div>
+          <div class="im"><div class="k">Stroke</div><div class="v">1.6px · round</div></div>
+          <div class="im"><div class="k">Fill</div><div class="v">leaf-soft 16%</div></div>
+          <div class="im"><div class="k">Grid</div><div class="v">24 × 24</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 PHOTOGRAPHY -->
+    <section class="doc alt" id="photo">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">08</span> Photography</span>
+          <h2 class="sec-title">Lush, living, <em>natural light.</em></h2>
+          <p class="lead">Product among real botanicals — root, leaf and stone — in warm natural light, with room to breathe. Imagery stays in full, living color: green and earthy, never desaturated. Soft-edged crops with a generous radius; text never sits on the image.</p>
+        </div>
+        <div class="photo-grid">
+          <div class="frame"><img src="/assets/hero-1.png" alt="Product photography"></div>
+          <div class="frame"><img src="/assets/how-to-use.png" alt="Lifestyle / usage"></div>
+        </div>
+        <div class="photo-rules">
+          <div class="pr"><div class="k">Treatment</div><p>Full natural color — rich greens, warm earth. Bright, even daylight; never moody.</p></div>
+          <div class="pr"><div class="k">Crop</div><p>Soft rectangle with a generous 28px radius. No vignette, no heavy drop shadow.</p></div>
+          <div class="pr"><div class="k">Composition</div><p>The bottle with real botanicals — roots, leaves, stone — and generous negative space.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 VOICE -->
+    <section class="doc" id="voice">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="num">09</span> Voice &amp; Tone</span>
+          <h2 class="sec-title">Fewer words. <em>More</em> certainty.</h2>
+          <p class="lead">Speak in short, declarative lines. State the fact, cite the number, stop. The natural system extends to language — no hype, no exclamation, no filler. Confidence reads as economy — and weight, not volume, does the emphasis.</p>
+        </div>
+        <div class="voice-grid">
+          <div class="voice-card write">
+            <div class="vlabel">We write</div>
+            <p class="ex">Not a sudden rush. <b>A steady rise</b> in performance.</p>
+            <p>Short fragments. One claim per line. Specific numbers (3,825 mg · 247 reviews) carry the weight. Honest about what it does and doesn't do.</p>
+          </div>
+          <div class="voice-card avoid">
+            <div class="vlabel">We avoid</div>
+            <p class="ex">The ultimate game-changing miracle boost!!!</p>
+            <p>No hype, no exclamation pile-ups, no vague superlatives, no emoji. If a word can be cut without losing meaning, cut it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="end">
+      <div class="wrap">
+        <p class="mono"><b>UBALANCE NATURALS · DESIGN SYSTEM v4.2 — FOREST V4</b><br>Tokens: foundations-forest-v4.css · Assets: /assets<br>Satoshi typography · vital light-green accent · soft-rounded premium surfaces</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  const links = [...document.querySelectorAll('#toc a')];
+  const map = links.map(a => ({ a, sec: document.querySelector(a.getAttribute('href')) }));
+  const spy = () => {
+    const y = window.scrollY + 160;
+    let cur = map[0];
+    for (const m of map) { if (m.sec && m.sec.offsetTop <= y) cur = m; }
+    links.forEach(a => a.classList.remove('active'));
+    if (cur) cur.a.classList.add('active');
+  };
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+</script>
+</body>
+</html>
